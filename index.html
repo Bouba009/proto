@@ -266,45 +266,45 @@
 
         <div class="glass-card" id="form-section">
             <div class="form-header">
-                <h1 id="lbl-title">أطلق مشروعك</h1>
-                <p id="lbl-subtitle">أدخل تفاصيل فكرتك وسنقوم ببناء دراسة كاملة ونموذج حي في ثوانٍ.</p>
+                <h1 id="lbl-title">استخبارات السوق العميقة لمشروعك</h1>
+                <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل OSINT متقدم لاكتشاف الفرص المخفية والمنافسة.</p>
             </div>
 
             <div class="input-group">
-                <label id="lbl-name">اسم المشروع</label>
+                <label id="lbl-name">اسم المشروع / الفكرة</label>
                 <i class="fa-solid fa-signature"></i>
                 <input type="text" id="proj-name" placeholder="مثال: NexusTech">
             </div>
             <div class="input-group">
-                <label id="lbl-field">مجال المشروع</label>
+                <label id="lbl-field">مجال أو سوق المشروع</label>
                 <i class="fa-solid fa-briefcase"></i>
-                <input type="text" id="proj-field" placeholder="مثال: التكنولوجيا المالية (FinTech)">
+                <input type="text" id="proj-field" placeholder="مثال: الذكاء الاصطناعي في الرعاية الصحية">
             </div>
             <div class="input-group">
-                <label id="lbl-desc">وصف الفكرة بالتفصيل</label>
+                <label id="lbl-desc">وصف دقيق للمشكلة والحل</label>
                 <i class="fa-solid fa-align-right"></i>
-                <textarea id="proj-desc" rows="5" placeholder="اشرح المشكلة، الحل المقترح، والجمهور المستهدف... بدقة"></textarea>
+                <textarea id="proj-desc" rows="5" placeholder="اشرح بدقة المشكلة التي تحلها، ولمن موجه هذا المشروع..."></textarea>
             </div>
             
             <button class="btn-premium" id="btn-generate" onclick="generateProject()">
-                <i class="fa-solid fa-wand-magic-sparkles"></i> <span id="lbl-btn">توليد المشروع بالكامل</span>
+                <i class="fa-solid fa-radar"></i> <span id="lbl-btn">بدء التحليل الاستخباراتي العميق</span>
             </button>
         </div>
 
         <div class="loading-state" id="loader">
             <div class="orb-loader"><i class="fa-solid fa-microchip"></i></div>
-            <h3 id="lbl-loading">جاري التفكير العميق وتحليل البيانات... يرجى الانتظار للحصول على تقرير مفصل.</h3>
+            <h3 id="lbl-loading">جاري إجراء تحليل OSINT واستخبارات السوق... استخراج الأسرار والأنماط المخفية...</h3>
         </div>
 
         <div id="results-container" class="glass-card">
             <div id="printable-area">
-                <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">التقرير الاستراتيجي الشامل والمفصل</h2>
+                <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">تقرير استخبارات السوق والتحليل الاستراتيجي</h2>
                 <div id="ai-content"></div> 
             </div>
             
             <div class="action-grid">
-                <button class="btn-outline" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> <span id="btn-pdf">تصدير PDF احترافي</span></button>
-                <button class="btn-outline" onclick="downloadPPT()"><i class="fa-solid fa-file-powerpoint"></i> <span id="btn-ppt">تصدير عرض PowerPoint مخصص</span></button>
+                <button class="btn-outline" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> <span id="btn-pdf">تصدير التقرير PDF</span></button>
+                <button class="btn-outline" onclick="downloadPPT()"><i class="fa-solid fa-file-powerpoint"></i> <span id="btn-ppt">تصدير عرض تقديمي</span></button>
             </div>
         </div>
     </div>
@@ -316,7 +316,7 @@
             <i class="fa-solid fa-times" style="cursor:pointer; color: var(--text-muted);" onclick="toggleChat()"></i>
         </div>
         <div class="chat-body" id="chat-messages">
-            <div class="msg ai" id="chat-welcome">أهلاً بك! كيف يمكنني مساعدتك في تطوير مشروعك؟</div>
+            <div class="msg ai" id="chat-welcome">أهلاً بك! أنا خبير في تحليل الأسواق. كيف يمكنني إفادتك بخصوص مشروعك؟</div>
         </div>
         <div class="chat-input-area">
             <input type="text" id="chat-input-field" placeholder="اكتب استفسارك..." onkeypress="handleChatEnter(event)">
@@ -325,7 +325,7 @@
     </div>
 
     <footer class="glass-footer">
-        <h3 id="contact-title">اتصل بنا</h3>
+        <h3 id="contact-title">تواصل معنا</h3>
         <div class="contact-info">
             <a href="mailto:krelouf@yahoo.com"><i class="fa-solid fa-envelope"></i> krelouf@yahoo.com</a>
             <a href="https://wa.me/213559293773" target="_blank"><i class="fa-brands fa-whatsapp"></i> +213 559 29 37 73</a>
@@ -339,12 +339,12 @@
 
         const dict = {
             ar: {
-                title: "أطلق مشروعك", sub: "أدخل تفاصيل فكرتك وسنقوم ببناء دراسة كاملة ونموذج حي في ثوانٍ.",
-                name: "اسم المشروع", phName: "مثال: NexusTech", field: "مجال المشروع", phField: "مثال: التكنولوجيا المالية (FinTech)",
-                desc: "وصف الفكرة بالتفصيل", phDesc: "اشرح المشكلة، الحل المقترح، والجمهور المستهدف... بدقة",
-                btnGen: "توليد المشروع بالكامل", loading: "جاري التفكير العميق وتحليل البيانات... يرجى الانتظار للحصول على تقرير مفصل.",
-                reportTitle: "التقرير الاستراتيجي الشامل والمفصل", pdf: "تصدير PDF احترافي", ppt: "تصدير عرض PowerPoint مخصص",
-                chatTitle: "المساعد الذكي", chatWelcome: "أهلاً بك! كيف يمكنني مساعدتك في تطوير مشروعك؟", chatInput: "اكتب استفسارك...", contact: "اتصل بنا", aiError: "حدث خطأ في الاتصال: ",
+                title: "استخبارات السوق العميقة لمشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل OSINT متقدم لاكتشاف الفرص المخفية والمنافسة.",
+                name: "اسم المشروع / الفكرة", phName: "مثال: NexusTech", field: "مجال أو سوق المشروع", phField: "مثال: الذكاء الاصطناعي في الرعاية الصحية",
+                desc: "وصف دقيق للمشكلة والحل", phDesc: "اشرح بدقة المشكلة التي تحلها، ولمن موجه هذا المشروع...",
+                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري إجراء تحليل OSINT واستخبارات السوق... استخراج الأسرار والأنماط المخفية...",
+                reportTitle: "تقرير استخبارات السوق والتحليل الاستراتيجي", pdf: "تصدير التقرير PDF", ppt: "تصدير عرض تقديمي",
+                chatTitle: "المساعد الذكي", chatWelcome: "أهلاً بك! أنا خبير في تحليل الأسواق. كيف يمكنني إفادتك بخصوص مشروعك؟", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
                 sideTitle: "الخطوة القادمة", sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.",
                 sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
                 sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
@@ -352,12 +352,12 @@
                 sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI."
             },
             en: {
-                title: "Launch Your Project", sub: "Enter your idea details and we'll build a full study in seconds.",
-                name: "Project Name", phName: "e.g., NexusTech", field: "Industry / Field", phField: "e.g., Financial Technology",
-                desc: "Detailed Idea Description", phDesc: "Thoroughly explain the problem, solution, and audience...",
-                btnGen: "Generate Full Project", loading: "Deep thinking & analyzing data... please wait for the detailed report.",
-                reportTitle: "Comprehensive Strategic Report", pdf: "Export Professional PDF", ppt: "Export Custom PowerPoint",
-                chatTitle: "Smart Assistant", chatWelcome: "Welcome! How can I help you develop your project?", chatInput: "Type your message...", contact: "Contact Us", aiError: "Error: ",
+                title: "Deep Market Intelligence", sub: "Enter your idea details for an advanced OSINT analysis to discover hidden opportunities.",
+                name: "Project Name", phName: "e.g., NexusTech", field: "Market / Industry", phField: "e.g., AI in Healthcare",
+                desc: "Precise Problem & Solution", phDesc: "Precisely explain the problem you're solving and your target audience...",
+                btnGen: "Start Deep Intelligence Analysis", loading: "Running OSINT & market intelligence... extracting hidden patterns and secrets...",
+                reportTitle: "Market Intelligence & Strategic Report", pdf: "Export PDF Report", ppt: "Export Presentation",
+                chatTitle: "Smart Analyst", chatWelcome: "Welcome! I am a market analysis expert. How can I assist you?", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
                 sideTitle: "The Next Step", sideDom: "Domain & Hosting", sideDomDesc: "To book your suggested domain, we recommend these reliable global platforms.",
                 sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
                 sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
@@ -365,12 +365,12 @@
                 sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially."
             },
             fr: {
-                title: "Lancez Votre Projet", sub: "Entrez les détails de votre idée, nous créerons une étude complète en direct.",
-                name: "Nom du Projet", phName: "ex: NexusTech", field: "Domaine / Secteur", phField: "ex: Technologie Financière",
-                desc: "Description Détaillée", phDesc: "Expliquez précisément le problème, la solution et le public...",
-                btnGen: "Générer le Projet", loading: "Réflexion profonde et analyse... veuillez patienter pour le rapport détaillé.",
-                reportTitle: "Rapport Stratégique Complet", pdf: "Exporter PDF Professionnel", ppt: "Exporter PowerPoint Personnalisé",
-                chatTitle: "Assistant Intelligent", chatWelcome: "Bienvenue ! Comment puis-je vous aider ?", chatInput: "Écrivez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
+                title: "Intelligence de Marché Approfondie", sub: "Entrez les détails pour une analyse OSINT avancée et découvrez les opportunités cachées.",
+                name: "Nom du Projet", phName: "ex: NexusTech", field: "Marché / Secteur", phField: "ex: IA dans la santé",
+                desc: "Problème et Solution Précis", phDesc: "Expliquez précisément le problème que vous résolvez et votre cible...",
+                btnGen: "Démarrer l'Analyse Intel", loading: "Exécution de l'OSINT et intelligence de marché... extraction des secrets...",
+                reportTitle: "Rapport d'Intelligence Stratégique", pdf: "Exporter le Rapport PDF", ppt: "Exporter la Présentation",
+                chatTitle: "Analyste Intelligent", chatWelcome: "Bienvenue ! Je suis expert en analyse de marché. Comment puis-je vous aider ?", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
                 sideTitle: "L'Étape Suivante", sideDom: "Domaine et Hébergement", sideDomDesc: "Pour réserver votre nom de domaine, nous recommandons ces plateformes mondiales.",
                 sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
                 sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
@@ -410,3 +410,178 @@
             document.getElementById('side-dom-title').innerText = ui.sideDom; document.getElementById('side-dom-desc').innerText = ui.sideDomDesc;
             document.getElementById('side-dev-title').innerText = ui.sideDev; document.getElementById('side-dev-desc').innerText = ui.sideDevDesc;
             document.getElementById('side-inc-title').innerText = ui.sideInc; document.getElementById('side-inc-desc').innerText = ui.sideIncDesc;
+            document.getElementById('side-lab-title').innerText = ui.sideLab; document.getElementById('side-lab-desc').innerText = ui.sideLabDesc;
+            document.getElementById('side-ip-title').innerText = ui.sideIp; document.getElementById('side-ip-desc').innerText = ui.sideIpDesc;
+
+            document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
+        }
+
+        async function fetchGroq(prompt, temp = 0.5) {
+            const response = await fetch(GROQ_URL, {
+                method: 'POST', headers: { 'Authorization': `Bearer ${GROQ_API_KEY}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify({ model: MODEL, messages: [{ role: "user", content: prompt }], temperature: temp })
+            });
+            const data = await response.json();
+            if(data.error) throw new Error(data.error.message); return data.choices[0].message.content;
+        }
+
+        async function generateProject() {
+            const name = document.getElementById('proj-name').value;
+            const field = document.getElementById('proj-field').value;
+            const desc = document.getElementById('proj-desc').value;
+            if(!name || !field || !desc) { alert(currentLang === 'ar' ? "يرجى ملء جميع الحقول." : "Please fill all fields."); return; }
+
+            document.getElementById('form-section').style.display = 'none'; document.getElementById('loader').style.display = 'block';
+
+            const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
+
+            // البرومبت المدمج: يجمع بين طلب المستخدم (OSINT) ومتطلبات واجهة المستخدم (HTML هيكلي)
+            const prompt = `
+            أنت خبير عالمي في البحث والتحليل المتقدم (OSINT + Market Intelligence).
+            
+            المهمة: أعطني معلومات دقيقة، عميقة، ومفصلة حول هذا المشروع:
+            اسم المشروع: "${name}"
+            المجال: "${field}"
+            الوصف: "${desc}"
+
+            الشروط الاستخباراتية (OSINT Rules):
+            1. اعتمد فقط على معلومات واقعية أو منطقية مبنية على تحليل عميق.
+            2. أعطني تفاصيل لا يعرفها المبتدئون (Insights متقدمة جداً).
+            3. حلل الموضوع من عدة زوايا (تقنية، تجارية، نفسية، مستقبلية).
+            4. استخرج أنماط أو أسرار أو فرص غير واضحة للعامة.
+            5. إذا كانت المعلومات غير متوفرة مباشرة، قم بالاستنتاج الذكي بناءً على معطيات قريبة.
+            6. قدم أمثلة واقعية أو سيناريوهات تطبيقية.
+            7. اقترح كيف يمكن استغلال هذه المعلومات للحصول على ميزة تنافسية غير عادلة (Unfair Advantage).
+
+            CRITICAL FORMATTING INSTRUCTIONS:
+            - You MUST output the ENTIRE response STRICTLY in ${langStr}.
+            - You MUST wrap your response ONLY in the exact HTML tags below, starting with <analysis> and ending with </analysis>.
+            - DO NOT use markdown format (like \`\`\`html) around the output. Just raw HTML inside the <analysis> tag.
+
+            <analysis>
+            <h3>1. [Translate to ${langStr}: نظرة عامة مختصرة]</h3>
+            <p>[A deep, concise overview of the project's true potential and market positioning.]</p>
+
+            <h3>2. [Translate to ${langStr}: معلومات عميقة (غير شائعة)]</h3>
+            <ul>
+                <li>[Deep psychological insight about the target audience]</li>
+                <li>[Hidden technical or market dynamic]</li>
+                <li>[Future trend prediction relevant to this]</li>
+            </ul>
+
+            <h3>3. [Translate to ${langStr}: تحليل احترافي (SWOT)]</h3>
+            <table>
+                <tr><th>[Strengths]</th><th>[Weaknesses]</th></tr>
+                <tr><td>[List 3 deep strengths]</td><td>[List 3 hidden weaknesses]</td></tr>
+                <tr><th>[Opportunities]</th><th>[Threats]</th></tr>
+                <tr><td>[List 3 blue-ocean opportunities]</td><td>[List 3 realistic market threats]</td></tr>
+            </table>
+
+            <h3>4. [Translate to ${langStr}: أسرار وفرص مخفية]</h3>
+            <ul>
+                <li>[Secret/Pattern 1 and how to exploit it for competitive advantage]</li>
+                <li>[Secret/Pattern 2 and how to exploit it]</li>
+            </ul>
+
+            <h3>5. [Translate to ${langStr}: تحليل المنافسين الحقيقيين]</h3>
+            <ul>
+                <li><strong>[Real Competitor Name 1]:</strong> [Their strength] - [Their fatal weakness] - [How we beat them].</li>
+                <li><strong>[Real Competitor Name 2]:</strong> [Their strength] - [Their fatal weakness] - [How we beat them].</li>
+            </ul>
+
+            <h3>6. [Translate to ${langStr}: توصيات عملية قابلة للتطبيق]</h3>
+            <ul>
+                <li>[Specific feature the MVP must have based on psychological analysis]</li>
+                <li>[Exact growth hack or marketing tactic to acquire the first 100 users]</li>
+                <li>[Monetization strategy recommendation]</li>
+            </ul>
+            </analysis>
+            `;
+
+            try {
+                const textResp = await fetchGroq(prompt, 0.7);
+                
+                // تنظيف الرد من علامات الماركداون العشوائية التي قد يضيفها الذكاء الاصطناعي
+                let cleanText = textResp.replace(/```html/gi, '').replace(/```/gi, '');
+                const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
+
+                let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>Error parsing the advanced analysis. Please try again.</p>";
+                
+                // تغليف الجداول بـ div لتصبح متجاوبة على الهاتف
+                analysisHtml = analysisHtml.replace(/<table/gi, '<div class="table-responsive"><table').replace(/<\/table>/gi, '</table></div>');
+
+                document.getElementById('ai-content').innerHTML = analysisHtml;
+                
+                // إضافة أيقونات للعناوين
+                document.getElementById('ai-content').querySelectorAll('h3').forEach(h => {
+                    h.innerHTML = `<i class="fa-solid fa-radar"></i> ` + h.innerHTML;
+                });
+
+                document.getElementById('loader').style.display = 'none'; 
+                document.getElementById('results-container').style.display = 'block';
+            } catch (err) { 
+                alert(dict[currentLang].aiError + err.message); 
+                document.getElementById('loader').style.display = 'none'; 
+                document.getElementById('form-section').style.display = 'block'; 
+            }
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('printable-area');
+            const opt = { margin: 15, filename: 'Market_Intelligence_Report.pdf', image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
+            // تلوين حدود الجدول للطباعة
+            const tables = element.querySelectorAll('table'); tables.forEach(t => t.style.border = "1px solid #555");
+            html2pdf().set(opt).from(element).save().then(()=>{ tables.forEach(t => t.style.border = "none"); });
+        }
+
+        async function downloadPPT() {
+            let pptx = new PptxGenJS();
+            pptx.layout = 'LAYOUT_16x9';
+            
+            let slide = pptx.addSlide();
+            slide.background = { color: "030305" };
+            slide.addText(`Market Intelligence Report`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
+            slide.addText(`${document.getElementById('proj-name').value}`, { x:0.5, y:2.5, w:'90%', h:2, fontSize:44, color:'ffffff', bold:true, align:'center', fontFace: 'Arial' });
+
+            const contentDiv = document.getElementById('ai-content');
+            const sections = contentDiv.querySelectorAll('h3');
+            
+            sections.forEach(sec => {
+                let s = pptx.addSlide();
+                s.background = { color: "0a0a0f" };
+                
+                let titleText = sec.innerText.trim();
+                s.addText(titleText, { x:0.5, y:0.5, w:'90%', h:1, fontSize:22, color:'8b5cf6', bold:true, align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial' });
+
+                let nextElement = sec.nextElementSibling;
+                let slideContent = "";
+                
+                while(nextElement && nextElement.tagName !== 'H3') {
+                    if(nextElement.tagName === 'DIV' && nextElement.classList.contains('table-responsive')) { slideContent += "[بيانات الجدول - يرجى الرجوع لملف PDF للتفاصيل الكاملة]\n"; }
+                    else { slideContent += nextElement.innerText + "\n\n"; }
+                    nextElement = nextElement.nextElementSibling;
+                }
+
+                if(slideContent.trim() !== "") {
+                    s.addText(slideContent.substring(0, 1000), { x:0.5, y:1.5, w:'90%', h:'75%', fontSize:14, color:'e2e8f0', align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial', valign: 'top' });
+                }
+            });
+
+            pptx.writeFile({ fileName: `OSINT_${document.getElementById('proj-name').value}.pptx` });
+        }
+
+        function toggleChat() { document.getElementById('chat-window').style.display = document.getElementById('chat-window').style.display === 'flex' ? 'none' : 'flex'; }
+        function handleChatEnter(e) { if(e.key === 'Enter') sendChatMessage(); }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chat-input-field'); const msg = input.value.trim(); if(!msg) return;
+            const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
+            const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
+            try {
+                const reply = await fetchGroq(`You are an elite Market Intelligence AI assistant. Answer politely and provide deep insights strictly in ${langStr}. User: "${msg}"`, 0.6);
+                chatBox.innerHTML += `<div class="msg ai">${reply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (err) { chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56">Error connecting to server.</div>`; }
+        }
+    </script>
+</body>
+</html>
