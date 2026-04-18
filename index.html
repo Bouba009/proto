@@ -66,10 +66,9 @@
         @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
         @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.5;} 100% { transform: scale(1.2); opacity: 1;} }
 
-        /* تأثير الشهب (Shooting Stars) */
+        /* تأثير الشهب */
         .shooting-star {
-            position: absolute; width: 150px; height: 2px;
-            background: linear-gradient(to right, rgba(255,255,255,0), #fff);
+            position: absolute; width: 150px; height: 2px; background: linear-gradient(to right, rgba(255,255,255,0), #fff);
             transform: rotate(-45deg); opacity: 0; filter: drop-shadow(0 0 5px #fff);
         }
         .shooting-star::before { content: ''; position: absolute; top: -2px; right: 0; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px 2px rgba(255,255,255,0.8); }
@@ -85,27 +84,41 @@
 
         .logo-box { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
 
-        /* القائمة المنسدلة الاحترافية للغة */
-        .custom-select-wrapper { position: relative; display: inline-block; }
-        .custom-select-wrapper i { position: absolute; top: 50%; transform: translateY(-50%); color: var(--accent-2); pointer-events: none; font-size: 12px;}
-        [dir="rtl"] .custom-select-wrapper i { left: 18px; } [dir="ltr"] .custom-select-wrapper i { right: 18px; }
-        
-        .lang-switch {
-            appearance: none; -webkit-appearance: none;
+        /* ================= القائمة المنسدلة المخصصة مع الأعلام ================= */
+        .custom-dropdown { position: relative; user-select: none; z-index: 100; }
+        .dropdown-selected {
             background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
-            color: #fff; border-radius: 50px; font-size: 15px; font-weight: 600;
-            cursor: pointer; backdrop-filter: blur(10px); transition: all 0.3s;
+            color: #fff; border-radius: 50px; padding: 12px 20px; font-weight: 600; font-size: 15px;
+            display: flex; align-items: center; gap: 10px; cursor: pointer;
+            backdrop-filter: blur(10px); transition: all 0.3s;
         }
-        [dir="rtl"] .lang-switch { padding: 12px 20px 12px 45px; }
-        [dir="ltr"] .lang-switch { padding: 12px 45px 12px 20px; }
-        .lang-switch:hover { border-color: var(--accent-1); background: rgba(255,255,255,0.1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
-        .lang-switch option { background: var(--bg-deep); color: #fff; }
-
-        .glass-card {
-            background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border);
-            border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden;
-        }
+        .dropdown-selected:hover { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
+        .dropdown-selected i { transition: transform 0.3s; font-size: 12px; color: var(--accent-2); }
         
+        .custom-dropdown.open .dropdown-selected i { transform: rotate(180deg); }
+        
+        .dropdown-options {
+            position: absolute; top: 120%; width: 140px;
+            background: rgba(15, 15, 25, 0.95); backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 15px;
+            overflow: hidden; opacity: 0; visibility: hidden;
+            transform: translateY(-15px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        [dir="rtl"] .dropdown-options { left: 0; right: auto; }
+        [dir="ltr"] .dropdown-options { right: 0; left: auto; }
+
+        .custom-dropdown.open .dropdown-options { opacity: 1; visibility: visible; transform: translateY(0); }
+        
+        .dropdown-option {
+            padding: 12px 20px; display: flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600;
+        }
+        .dropdown-option:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); }
+        .dropdown-option span { font-size: 18px; }
+
+        /* ================= نافذة الإدخال ================= */
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
         .form-header { text-align: center; margin-bottom: 40px; }
         .form-header h1 { font-size: 32px; margin-bottom: 10px; font-weight: 700; }
         .form-header p { color: var(--text-muted); font-size: 16px; }
@@ -176,17 +189,10 @@
         .chat-input-area button { width: 45px; height: 45px; border-radius: 12px; border: none; background: var(--accent-1); color: #fff; cursor: pointer; transition: 0.3s; }
 
         /* ================= الفوتر ================= */
-        .glass-footer {
-            margin-top: 60px; padding: 40px 20px; text-align: center;
-            background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px);
-        }
+        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
         .glass-footer h3 { font-size: 24px; color: #fff; margin-bottom: 20px; }
         .contact-info { display: flex; flex-direction: column; gap: 15px; align-items: center; }
-        .contact-info a {
-            color: var(--text-muted); text-decoration: none; font-size: 16px;
-            display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 10px 20px;
-            border-radius: 50px; border: 1px solid transparent;
-        }
+        .contact-info a { color: var(--text-muted); text-decoration: none; font-size: 16px; display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 10px 20px; border-radius: 50px; border: 1px solid transparent; }
         .contact-info a:hover { color: #fff; border-color: var(--glass-border); background: rgba(255,255,255,0.05); transform: translateY(-3px);}
         .contact-info a i { font-size: 20px; color: var(--accent-2); }
         .contact-info a .fa-whatsapp { color: #25D366; }
@@ -202,19 +208,13 @@
 <body>
 
     <!-- شريط المطور العلوي -->
-    <div class="top-dev-bar">
-        by developer: <span>krelouf Aboubakr</span>
-    </div>
+    <div class="top-dev-bar">by developer: <span>krelouf Aboubakr</span></div>
 
     <!-- الخلفية الفاخرة والشهب -->
     <div class="galaxy-wrapper">
-        <div class="nebula-glow"></div>
-        <div class="nebula-glow-2"></div>
-        <div class="stars-layer1"></div>
-        <div class="stars-layer2"></div>
-        <div class="shooting-star star-1"></div>
-        <div class="shooting-star star-2"></div>
-        <div class="shooting-star star-3"></div>
+        <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
+        <div class="stars-layer1"></div><div class="stars-layer2"></div>
+        <div class="shooting-star star-1"></div><div class="shooting-star star-2"></div><div class="shooting-star star-3"></div>
     </div>
 
     <div class="container">
@@ -222,13 +222,16 @@
         <header>
             <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
             
-            <div class="custom-select-wrapper">
-                <select class="lang-switch" id="lang-selector" onchange="changeLanguage()">
-                    <option value="ar">العربية</option>
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                </select>
-                <i class="fa-solid fa-chevron-down"></i>
+            <!-- القائمة المنسدلة المخصصة الجديدة -->
+            <div class="custom-dropdown" id="langDropdown">
+                <div class="dropdown-selected" onclick="toggleDropdown()">
+                    <span id="selected-flag">🇸🇦</span> <span id="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-options">
+                    <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية')"><span>🇸🇦</span> العربية</div>
+                    <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English')"><span>🇺🇸</span> English</div>
+                    <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français')"><span>🇫🇷</span> Français</div>
+                </div>
             </div>
         </header>
 
@@ -317,11 +320,10 @@
 
     <!-- سكربت المنطق -->
     <script>
-        const GROQ_API_KEY = "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"; 
+        // المفتاح الجديد والنموذج الصحيح والمستقر
+        const GROQ_API_KEY = "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"; 
         const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
-        
-        // تم التغيير لنموذج Mixtral المستقر والذي لا يتم إيقافه
-        const MODEL = "mixtral-8x7b-32768"; 
+        const MODEL = "llama-3.3-70b-versatile"; 
 
         const dict = {
             ar: {
@@ -362,8 +364,28 @@
         let currentLang = 'ar';
         let generatedContentText = ""; 
 
-        function changeLanguage() {
-            currentLang = document.getElementById('lang-selector').value;
+        // دوال القائمة المنسدلة المخصصة
+        function toggleDropdown() {
+            document.getElementById('langDropdown').classList.toggle('open');
+        }
+
+        // إغلاق القائمة عند النقر في أي مكان آخر
+        document.addEventListener('click', function(event) {
+            const dropdown = document.getElementById('langDropdown');
+            if (!dropdown.contains(event.target)) {
+                dropdown.classList.remove('open');
+            }
+        });
+
+        function selectLanguage(langCode, flag, langName) {
+            currentLang = langCode;
+            document.getElementById('selected-flag').innerText = flag;
+            document.getElementById('selected-lang').innerText = langName;
+            document.getElementById('langDropdown').classList.remove('open');
+            applyLanguageChanges();
+        }
+
+        function applyLanguageChanges() {
             const ui = dict[currentLang];
             
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr';
