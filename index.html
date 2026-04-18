@@ -24,12 +24,11 @@
         body { background-color: var(--bg-deep); color: var(--text-main); font-family: var(--font-ar); min-height: 100vh; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
         [dir="ltr"] body, [dir="ltr"] input, [dir="ltr"] textarea, [dir="ltr"] button { font-family: var(--font-en); }
 
-        /* ================= شريط المطور ================= */
         .top-dev-bar { background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px; font-size: 13px; letter-spacing: 1px; backdrop-filter: blur(10px); }
         .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
 
         /* ================= الخلفية ================= */
-        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: radial-gradient(circle at 50% 0%, #1a103c 0%, #030305 70%); overflow: hidden; }
+        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(circle at 50% 0%, #1a103c 0%, #030305 70%); overflow: hidden; }
         .stars-layer1, .stars-layer2 { position: absolute; width: 200%; height: 200%; background: transparent; }
         .stars-layer1 { animation: drift 120s linear infinite; background-image: radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,0.9), transparent); background-size: 400px 400px; }
         .stars-layer2 { animation: drift 180s linear infinite; background-image: radial-gradient(1px 1px at 50px 150px, rgba(139, 92, 246, 0.8), transparent), radial-gradient(1.5px 1.5px at 200px 50px, rgba(6, 182, 212, 0.8), transparent); background-size: 300px 300px; }
@@ -38,18 +37,14 @@
         @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
         @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.5;} 100% { transform: scale(1.2); opacity: 1;} }
 
-        /* ================= الشهب ================= */
-        .shooting-star { position: absolute; width: 150px; height: 2px; background: linear-gradient(to right, rgba(255,255,255,0), #fff); transform: rotate(-45deg); opacity: 0; filter: drop-shadow(0 0 5px #fff); }
-        .shooting-star::before { content: ''; position: absolute; top: -2px; right: 0; width: 5px; height: 5px; background: #fff; border-radius: 50%; box-shadow: 0 0 10px 2px rgba(255,255,255,0.8); }
-        .star-1 { top: 10%; left: 80%; animation: shoot 4s infinite linear 1s; }
-        .star-2 { top: 30%; left: 60%; animation: shoot 5s infinite linear 3s; }
-        .star-3 { top: 5%; left: 40%; animation: shoot 6s infinite linear 5s; }
-        @keyframes shoot { 0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; } 20% { transform: translate(-500px, 500px) rotate(-45deg); opacity: 0; } 100% { opacity: 0; } }
-
         /* ================= التصميم العام ================= */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
+        
+        .header-actions { display: flex; align-items: center; gap: 20px; }
         .logo-box { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
+        .menu-btn { font-size: 24px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--glass-border); }
+        .menu-btn:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); border-color: var(--accent-1); }
 
         /* ================= القائمة المنسدلة للغة ================= */
         .custom-dropdown { position: relative; user-select: none; z-index: 100; }
@@ -57,12 +52,11 @@
         .dropdown-selected:hover { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
         .dropdown-selected i { transition: transform 0.3s; font-size: 12px; color: var(--accent-2); }
         .custom-dropdown.open .dropdown-selected i { transform: rotate(180deg); }
-        .dropdown-options { position: absolute; top: 120%; width: 140px; background: rgba(15, 15, 25, 0.95); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .dropdown-options { position: absolute; top: 120%; width: 140px; background: rgba(15, 15, 25, 0.95); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         [dir="rtl"] .dropdown-options { left: 0; right: auto; } [dir="ltr"] .dropdown-options { right: 0; left: auto; }
         .custom-dropdown.open .dropdown-options { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600; }
         .dropdown-option:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); }
-        .dropdown-option span { font-size: 18px; }
 
         /* ================= نافذة الإدخال ================= */
         .glass-card { background: var(--glass-bg); backdrop-filter: blur(24px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
@@ -99,14 +93,33 @@
         ul, p { color: #cbd5e1; line-height: 1.9; margin-bottom: 15px; font-size: 15.5px;} 
         ul { padding-inline-start: 25px; } li { margin-bottom: 10px; }
 
-        .browser-mockup { border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.5); margin-top: 20px;}
-        .browser-header { background: rgba(255,255,255,0.05); padding: 12px 20px; display: flex; gap: 8px; border-bottom: 1px solid var(--glass-border); }
-        .dot { width: 12px; height: 12px; border-radius: 50%; } .dot.red { background: #ff5f56; } .dot.yellow { background: #ffbd2e; } .dot.green { background: #27c93f; }
-        #proto-frame { width: 100%; height: 500px; border: none; background: #fff; }
-
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
         .btn-outline { padding: 16px; background: transparent; border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn-outline:hover { background: rgba(139, 92, 246, 0.15); border-color: var(--accent-2); box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: translateY(-2px);}
+
+        /* ================= القائمة الجانبية (Sidebar) ================= */
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .sidebar-overlay.active { opacity: 1; visibility: visible; }
+        
+        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 15, 25, 0.95); backdrop-filter: blur(30px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
+        [dir="rtl"] .sidebar { right: -360px; border-left: none; border-right: 1px solid var(--glass-border); }
+        [dir="ltr"] .sidebar { left: -360px; border-left: 1px solid var(--glass-border); border-right: none; }
+        
+        [dir="rtl"] .sidebar.active { right: 0; }
+        [dir="ltr"] .sidebar.active { left: 0; }
+
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .sidebar-header h2 { font-size: 22px; color: var(--accent-2); display: flex; align-items: center; gap: 10px; }
+        .sidebar-header i { font-size: 24px; color: var(--text-muted); cursor: pointer; transition: 0.3s; }
+        .sidebar-header i:hover { color: #ff5f56; transform: rotate(90deg); }
+
+        .step-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
+        .step-item:hover { border-color: var(--accent-1); background: rgba(139, 92, 246, 0.05); transform: translateY(-2px); }
+        .step-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #fff; margin-bottom: 15px; }
+        .step-item h4 { font-size: 18px; color: #fff; margin-bottom: 10px; }
+        .step-item p { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 15px; }
+        .step-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2); text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
+        .step-link:hover { color: #fff; }
 
         /* ================= الشات بوت ================= */
         .chatbot-btn { position: fixed; bottom: 40px; right: 40px; width: 65px; height: 65px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 28px; color: white; cursor: pointer; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); z-index: 1000; transition: 0.3s; }
@@ -138,6 +151,7 @@
         @media (max-width: 768px) {
             .container { padding: 20px 15px; } .glass-card { padding: 25px 15px; }
             .action-grid { grid-template-columns: 1fr; } .result-section { overflow-x: auto; } table { min-width: 600px; }
+            .sidebar { width: 85vw; } [dir="rtl"] .sidebar { right: -85vw; } [dir="ltr"] .sidebar { left: -85vw; }
             .chat-widget { width: 90vw; height: 70vh; bottom: 100px; right: 5vw; left: 5vw; } [dir="ltr"] .chat-widget { left: 5vw; }
             .chatbot-btn { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 22px; } [dir="ltr"] .chatbot-btn { left: 20px; }
         }
@@ -150,20 +164,74 @@
     <div class="galaxy-wrapper">
         <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
         <div class="stars-layer1"></div><div class="stars-layer2"></div>
-        <div class="shooting-star star-1"></div><div class="shooting-star star-2"></div><div class="shooting-star star-3"></div>
+    </div>
+
+    <!-- ================= القائمة الجانبية (الخطوة القادمة) ================= -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+    <div class="sidebar" id="mainSidebar">
+        <div class="sidebar-header">
+            <h2 id="side-title"><i class="fa-solid fa-rocket"></i> الخطوة القادمة</h2>
+            <i class="fa-solid fa-times" onclick="closeSidebar()"></i>
+        </div>
+        <div class="sidebar-content">
+            
+            <div class="step-item">
+                <div class="step-icon"><i class="fa-solid fa-globe"></i></div>
+                <h4 id="side-dom-title">شراء دومين واسطة استضافة</h4>
+                <p id="side-dom-desc">لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة ومناسبة للشركات الناشئة.</p>
+                <a href="https://www.namecheap.com/" target="_blank" class="step-link">Namecheap <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
+                <a href="https://www.hostinger.com/" target="_blank" class="step-link" style="margin-top:5px;">Hostinger <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon"><i class="fa-solid fa-code"></i></div>
+                <h4 id="side-dev-title">مؤسسات تطوير وتطبيقات جزائرية</h4>
+                <p id="side-dev-desc">لبناء الـ MVP الخاص بك، يمكنك الاعتماد على وكالات البرمجة والتطوير المحلية الموثوقة أو منصات العمل الحر لإيجاد مبرمجين جزائريين محترفين.</p>
+                <a href="https://mawthouq.com/" target="_blank" class="step-link">Mawthouq (للمستقلين) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon"><i class="fa-solid fa-seedling"></i></div>
+                <h4 id="side-inc-title">حاضنات ومسرعات أعمال</h4>
+                <p id="side-inc-desc">للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة في الجزائر.</p>
+                <a href="https://www.aventure.dz/" target="_blank" class="step-link">Algeria Venture (A-Venture) <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
+                <a href="https://sylabs-dz.com/" target="_blank" class="step-link" style="margin-top:5px;">Sylabs <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon"><i class="fa-solid fa-award"></i></div>
+                <h4 id="side-lab-title">منصة علامة لابل (Startup DZ)</h4>
+                <p id="side-lab-desc">المنصة الرسمية لوزارة اقتصاد المعرفة والشركات الناشئة للحصول على علامة "لابل مشروع مبتكر" والاستفادة من الامتيازات الضريبية.</p>
+                <a href="https://startup.dz/" target="_blank" class="step-link">Startup.dz <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="step-item">
+                <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h4 id="side-ip-title">المعهد الوطني للملكية الصناعية</h4>
+                <p id="side-ip-desc">قم بحماية اسم مشروعك، علامتك التجارية، وفكرتك المبتكرة عبر تسجيلها رسمياً في INAPI.</p>
+                <a href="https://inapi.org/" target="_blank" class="step-link">INAPI.org <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+        </div>
     </div>
 
     <div class="container">
         <header>
             <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
-            <div class="custom-dropdown" id="langDropdown">
-                <div class="dropdown-selected" onclick="toggleDropdown()">
-                    <span id="selected-flag">🇸🇦</span> <span id="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
+            
+            <div class="header-actions">
+                <div class="custom-dropdown" id="langDropdown">
+                    <div class="dropdown-selected" onclick="toggleDropdown()">
+                        <span id="selected-flag">🇸🇦</span> <span id="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-options">
+                        <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية')"><span>🇸🇦</span> العربية</div>
+                        <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English')"><span>🇺🇸</span> English</div>
+                        <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français')"><span>🇫🇷</span> Français</div>
+                    </div>
                 </div>
-                <div class="dropdown-options">
-                    <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية')"><span>🇸🇦</span> العربية</div>
-                    <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English')"><span>🇺🇸</span> English</div>
-                    <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français')"><span>🇫🇷</span> Français</div>
+                <div class="menu-btn" onclick="openSidebar()">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
             </div>
         </header>
@@ -206,16 +274,6 @@
                 <div id="ai-content"></div> 
             </div>
             
-            <div class="result-section" style="margin-top: 50px;">
-                <h3 id="lbl-proto"><i class="fa-solid fa-laptop-code"></i> المعاينة الحية للواجهة (Live Prototype)</h3>
-                <div class="browser-mockup">
-                    <div class="browser-header">
-                        <div class="dot red"></div><div class="dot yellow"></div><div class="dot green"></div>
-                    </div>
-                    <iframe id="proto-frame"></iframe>
-                </div>
-            </div>
-
             <div class="action-grid">
                 <button class="btn-outline" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> <span id="btn-pdf">تصدير PDF احترافي</span></button>
                 <button class="btn-outline" onclick="downloadPPT()"><i class="fa-solid fa-file-powerpoint"></i> <span id="btn-ppt">تصدير عرض PowerPoint مخصص</span></button>
@@ -257,34 +315,51 @@
                 name: "اسم المشروع", phName: "مثال: NexusTech", field: "مجال المشروع", phField: "مثال: التكنولوجيا المالية (FinTech)",
                 desc: "وصف الفكرة بالتفصيل", phDesc: "اشرح المشكلة، الحل المقترح، والجمهور المستهدف... بدقة",
                 btnGen: "توليد المشروع بالكامل", loading: "جاري التفكير العميق وتحليل البيانات... يرجى الانتظار للحصول على تقرير مفصل.",
-                reportTitle: "التقرير الاستراتيجي الشامل والمفصل", proto: "المعاينة الحية للواجهة (Live Prototype)",
-                pdf: "تصدير PDF احترافي", ppt: "تصدير عرض PowerPoint مخصص", chatTitle: "المساعد الذكي",
-                chatWelcome: "أهلاً بك! كيف يمكنني مساعدتك في تطوير مشروعك؟", chatInput: "اكتب استفسارك...", contact: "اتصل بنا", aiError: "حدث خطأ في الاتصال: "
+                reportTitle: "التقرير الاستراتيجي الشامل والمفصل", pdf: "تصدير PDF احترافي", ppt: "تصدير عرض PowerPoint مخصص",
+                chatTitle: "المساعد الذكي", chatWelcome: "أهلاً بك! كيف يمكنني مساعدتك في تطوير مشروعك؟", chatInput: "اكتب استفسارك...", contact: "اتصل بنا", aiError: "حدث خطأ في الاتصال: ",
+                // القائمة الجانبية
+                sideTitle: "الخطوة القادمة", sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.",
+                sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
+                sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
+                sideLab: "منصة علامة لابل (Startup DZ)", sideLabDesc: "المنصة الرسمية للحصول على علامة مشروع مبتكر والاستفادة من الامتيازات.",
+                sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI."
             },
             en: {
-                title: "Launch Your Project", sub: "Enter your idea details and we'll build a full study and prototype in seconds.",
+                title: "Launch Your Project", sub: "Enter your idea details and we'll build a full study in seconds.",
                 name: "Project Name", phName: "e.g., NexusTech", field: "Industry / Field", phField: "e.g., Financial Technology",
                 desc: "Detailed Idea Description", phDesc: "Thoroughly explain the problem, solution, and audience...",
                 btnGen: "Generate Full Project", loading: "Deep thinking & analyzing data... please wait for the detailed report.",
-                reportTitle: "Comprehensive Strategic Report", proto: "Live UI Prototype",
-                pdf: "Export Professional PDF", ppt: "Export Custom PowerPoint", chatTitle: "Smart Assistant",
-                chatWelcome: "Welcome! How can I help you develop your project?", chatInput: "Type your message...", contact: "Contact Us", aiError: "Error: "
+                reportTitle: "Comprehensive Strategic Report", pdf: "Export Professional PDF", ppt: "Export Custom PowerPoint",
+                chatTitle: "Smart Assistant", chatWelcome: "Welcome! How can I help you develop your project?", chatInput: "Type your message...", contact: "Contact Us", aiError: "Error: ",
+                sideTitle: "The Next Step", sideDom: "Domain & Hosting", sideDomDesc: "To book your suggested domain, we recommend these reliable global platforms.",
+                sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
+                sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
+                sideLab: "Startup DZ (Label)", sideLabDesc: "The official platform to get the Innovative Project Label and benefits.",
+                sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially."
             },
             fr: {
                 title: "Lancez Votre Projet", sub: "Entrez les détails de votre idée, nous créerons une étude complète en direct.",
                 name: "Nom du Projet", phName: "ex: NexusTech", field: "Domaine / Secteur", phField: "ex: Technologie Financière",
                 desc: "Description Détaillée", phDesc: "Expliquez précisément le problème, la solution et le public...",
                 btnGen: "Générer le Projet", loading: "Réflexion profonde et analyse... veuillez patienter pour le rapport détaillé.",
-                reportTitle: "Rapport Stratégique Complet", proto: "Aperçu en Direct (Prototype)",
-                pdf: "Exporter PDF Professionnel", ppt: "Exporter PowerPoint Personnalisé", chatTitle: "Assistant Intelligent",
-                chatWelcome: "Bienvenue ! Comment puis-je vous aider ?", chatInput: "Écrivez votre message...", contact: "Contactez-nous", aiError: "Erreur: "
+                reportTitle: "Rapport Stratégique Complet", pdf: "Exporter PDF Professionnel", ppt: "Exporter PowerPoint Personnalisé",
+                chatTitle: "Assistant Intelligent", chatWelcome: "Bienvenue ! Comment puis-je vous aider ?", chatInput: "Écrivez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
+                sideTitle: "L'Étape Suivante", sideDom: "Domaine et Hébergement", sideDomDesc: "Pour réserver votre nom de domaine, nous recommandons ces plateformes mondiales.",
+                sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
+                sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
+                sideLab: "Label Startup DZ", sideLabDesc: "La plateforme officielle pour obtenir le label de projet innovant et ses avantages.",
+                sideIp: "INAPI (Propriété Intellectuelle)", sideIpDesc: "Protégez votre nom de marque et votre idée en l'enregistrant officiellement."
             }
         };
 
         let currentLang = 'ar';
 
+        /* وظائف القائمة الجانبية والمنسدلة */
         function toggleDropdown() { document.getElementById('langDropdown').classList.toggle('open'); }
         document.addEventListener('click', function(e) { const d = document.getElementById('langDropdown'); if (!d.contains(e.target)) d.classList.remove('open'); });
+        
+        function openSidebar() { document.getElementById('mainSidebar').classList.add('active'); document.getElementById('sidebarOverlay').classList.add('active'); }
+        function closeSidebar() { document.getElementById('mainSidebar').classList.remove('active'); document.getElementById('sidebarOverlay').classList.remove('active'); }
 
         function selectLanguage(code, flag, name) {
             currentLang = code;
@@ -292,15 +367,25 @@
             document.getElementById('langDropdown').classList.remove('open');
             const ui = dict[currentLang];
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr'; document.documentElement.lang = currentLang;
+            
             document.getElementById('lbl-title').innerText = ui.title; document.getElementById('lbl-subtitle').innerText = ui.sub;
             document.getElementById('lbl-name').innerText = ui.name; document.getElementById('proj-name').placeholder = ui.phName;
             document.getElementById('lbl-field').innerText = ui.field; document.getElementById('proj-field').placeholder = ui.phField;
             document.getElementById('lbl-desc').innerText = ui.desc; document.getElementById('proj-desc').placeholder = ui.phDesc;
             document.getElementById('lbl-btn').innerText = ui.btnGen; document.getElementById('lbl-loading').innerText = ui.loading;
-            document.getElementById('res-title').innerText = ui.reportTitle; document.getElementById('lbl-proto').innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${ui.proto}`;
+            document.getElementById('res-title').innerText = ui.reportTitle; 
             document.getElementById('btn-pdf').innerText = ui.pdf; document.getElementById('btn-ppt').innerText = ui.ppt;
             document.getElementById('chat-title').innerHTML = `<i class="fa-solid fa-headset"></i> ${ui.chatTitle}`; document.getElementById('chat-welcome').innerText = ui.chatWelcome;
             document.getElementById('chat-input-field').placeholder = ui.chatInput; document.getElementById('contact-title').innerText = ui.contact;
+            
+            // تحديث نصوص القائمة الجانبية
+            document.getElementById('side-title').innerHTML = `<i class="fa-solid fa-rocket"></i> ${ui.sideTitle}`;
+            document.getElementById('side-dom-title').innerText = ui.sideDom; document.getElementById('side-dom-desc').innerText = ui.sideDomDesc;
+            document.getElementById('side-dev-title').innerText = ui.sideDev; document.getElementById('side-dev-desc').innerText = ui.sideDevDesc;
+            document.getElementById('side-inc-title').innerText = ui.sideInc; document.getElementById('side-inc-desc').innerText = ui.sideIncDesc;
+            document.getElementById('side-lab-title').innerText = ui.sideLab; document.getElementById('side-lab-desc').innerText = ui.sideLabDesc;
+            document.getElementById('side-ip-title').innerText = ui.sideIp; document.getElementById('side-ip-desc').innerText = ui.sideIpDesc;
+
             document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
         }
 
@@ -323,51 +408,48 @@
 
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
 
-            // برومبت فائق الاحترافية والدقة (Super Prompt)
+            // برومبت فائق الاحترافية والدقة (Super Prompt) بدون Iframe، مع خطط مالية ومنافسين حقيقيين
             const prompt = `
-            You are an elite, world-class Business Strategist, Startup Consultant, and Expert Web Developer.
-            Your task is to provide an EXHAUSTIVE, highly detailed, and professional strategic report and a functional landing page prototype.
+            You are an elite, world-class Business Strategist, Startup Consultant, and Product Manager.
+            Your task is to provide an EXHAUSTIVE, highly detailed, and professional strategic report.
 
             Project Name: "${name}"
             Industry/Field: "${field}"
             Description: "${desc}"
 
             CRITICAL INSTRUCTIONS:
-            1. Output Language: You MUST write the ENTIRE response (all explanations, analysis, and UI text) STRICTLY in ${langStr}.
-            2. Domain Names Exception: Premium Domain suggestions MUST ALWAYS be in English/Latin characters (e.g., projectname.com, projectname.io, projectname.ai) regardless of the chosen language. Do not translate domain URLs.
-            3. Level of Detail: Be incredibly detailed. DO NOT summarize. Provide deep market insights, thorough explanations, and highly professional business terminology. Provide AT LEAST 5 points for every list.
+            1. Output Language: You MUST write the ENTIRE response STRICTLY in ${langStr}.
+            2. Domain Names Exception: Premium Domain suggestions MUST ALWAYS be in English/Latin characters (e.g., projectname.com, projectname.io, projectname.ai). Do not translate domain URLs.
+            3. Level of Detail: Be incredibly detailed. DO NOT summarize. Provide deep market insights, thorough explanations, and highly professional business terminology.
             4. Output Format: Reply ONLY with the exact XML tags below. Do NOT use Markdown formatting (\`\`\`html) around the tags.
 
             <analysis>
             Write raw HTML (using <div>, <h3>, <ul>, <li>, <p>, <table>, <th>, <td>). Include these EXACT sections, with highly detailed content:
-            <h3>1. [Translate to ${langStr}: Brand Identity & Logo Concept]</h3>: <p>Provide a highly detailed Midjourney/DALL-E prompt to generate a premium logo. Explain the color psychology and typography choices in depth.</p>
-            <h3>2. [Translate to ${langStr}: Premium Domain Names]</h3>: <ul> Suggest 5 creative, highly available-like domain names (MUST BE IN LATIN/ENGLISH e.g., domain.com, domain.io). Explain why each is effective.</ul>
-            <h3>3. [Translate to ${langStr}: Comprehensive SWOT Analysis]</h3>: Create a detailed HTML <table>. Provide at least 4 deep, analytical points for each: Strengths, Weaknesses, Opportunities, and Threats.
-            <h3>4. [Translate to ${langStr}: Business Model Canvas (BMC)]</h3>: Create a professional HTML <table> covering all 9 blocks (Key Partners, Activities, Resources, Value Propositions, Customer Relationships, Channels, Segments, Cost Structure, Revenue Streams). Fill each block with specific, actionable details.
-            <h3>5. [Translate to ${langStr}: Strategic Advantages (Pros)]</h3>: <ul> Provide at least 5 highly detailed and explained advantages.</ul>
-            <h3>6. [Translate to ${langStr}: Risks & Mitigation (Cons)]</h3>: <ul> Provide at least 5 detailed risks and how to practically solve them.</ul>
-            <h3>7. [Translate to ${langStr}: Deep Competitor Analysis]</h3>: <ul> List 3 real or highly probable competitors. Detail their specific strengths, weaknesses, and exactly how this project will beat them.</ul>
-            <h3>8. [Translate to ${langStr}: Groundbreaking Features]</h3>: <ul> Suggest 5 highly innovative, out-of-the-box features to give this project a massive competitive edge.</ul>
+            
+            <h3>1. [Translate to ${langStr}: Brand Identity & Logo Concept]</h3>: <p>Detailed Midjourney/DALL-E prompt to generate a premium logo. Explain color psychology.</p>
+            
+            <h3>2. [Translate to ${langStr}: Premium Domain Names]</h3>: <ul> Suggest 5 creative domain names (MUST BE LATIN e.g., domain.com). Explain why each is effective.</ul>
+            
+            <h3>3. [Translate to ${langStr}: Comprehensive SWOT Analysis]</h3>: Create a detailed HTML <table>. Provide at least 4 deep, analytical points for Strengths, Weaknesses, Opportunities, and Threats.
+            
+            <h3>4. [Translate to ${langStr}: Business Model Canvas (BMC)]</h3>: Create a professional HTML <table> covering all 9 blocks. Fill each block with specific, actionable details.
+            
+            <h3>5. [Translate to ${langStr}: Deep Competitor Analysis]</h3>: <ul> List 3 REAL, EXISTING COMPANIES in the global or regional market that compete with this idea. State their real names, their specific strengths, their weaknesses, and exactly how this project will beat them.</ul>
+            
+            <h3>6. [Translate to ${langStr}: Prototype & MVP Requirements]</h3>: <ul> Describe in detail exactly what the Minimum Viable Product (MVP) should contain. List the necessary screens (e.g., Dashboard, Landing Page, User Profile) and the core features the user must see to understand the value immediately.</ul>
+            
+            <h3>7. [Translate to ${langStr}: Go-to-Market Strategy (Launch Plan)]</h3>: <ul> Provide a detailed, step-by-step practical plan for the first 90 days. How to get the first 100 users, marketing channels to use, and launch tactics.</ul>
+            
+            <h3>8. [Translate to ${langStr}: Financial & Revenue Plan]</h3>: <ul> Explain exactly how this project will make money (Monetization models: Subscriptions, Ads, Freemium, etc.). Also, list the expected initial startup costs (servers, legal, marketing).</ul>
+            
             </analysis>
-
-            <proto_html>
-            Write a complete, modern Landing Page HTML structure (Header, Hero section, Features grid, Call to Action, Footer). Text inside MUST be in ${langStr}. Do not include <html>, <head>, or <body> tags.
-            </proto_html>
-
-            <proto_css>
-            Write modern, highly polished CSS for the landing page. Use CSS variables, Flexbox/Grid, smooth hover animations, and a premium color palette. Make it fully responsive. No <style> tags.
-            </proto_css>
             `;
 
             try {
                 const textResp = await fetchGroq(prompt, 0.7);
                 const analysisMatch = textResp.match(/<analysis>([\s\S]*?)<\/analysis>/i);
-                const htmlMatch = textResp.match(/<proto_html>([\s\S]*?)<\/proto_html>/i);
-                const cssMatch = textResp.match(/<proto_css>([\s\S]*?)<\/proto_css>/i);
 
                 const analysisHtml = analysisMatch ? analysisMatch[1] : "Error in analysis.";
-                const protoHtml = htmlMatch ? htmlMatch[1] : "<h1>Error</h1>";
-                const protoCss = cssMatch ? cssMatch[1] : "body { background: #f4f4f4; }";
 
                 document.getElementById('ai-content').innerHTML = analysisHtml;
                 
@@ -375,12 +457,6 @@
                 document.getElementById('ai-content').querySelectorAll('h3').forEach(h => {
                     h.innerHTML = `<i class="fa-solid fa-gem"></i> ` + h.innerHTML;
                 });
-
-                const iframe = document.getElementById('proto-frame');
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                iframeDoc.open();
-                iframeDoc.write(`<!DOCTYPE html><html dir="${currentLang === 'ar' ? 'rtl' : 'ltr'}"><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&family=Outfit:wght@400;600&display=swap" rel="stylesheet"><style>body { font-family: ${currentLang==='ar'? "'Tajawal'":"'Outfit'"}, sans-serif; margin:0; padding:0; background:#fff; color:#111; line-height: 1.6; } ${protoCss}</style></head><body>${protoHtml}</body></html>`);
-                iframeDoc.close();
 
                 document.getElementById('loader').style.display = 'none'; document.getElementById('results-container').style.display = 'block';
             } catch (err) { alert(dict[currentLang].aiError + err.message); document.getElementById('loader').style.display = 'none'; document.getElementById('form-section').style.display = 'block'; }
@@ -393,18 +469,15 @@
             html2pdf().set(opt).from(element).save().then(()=>{ tables.forEach(t => t.style.border = "1px solid var(--glass-border)"); });
         }
 
-        // دالة ذكية وجديدة لاستخراج البوربوينت بناءً على الـ HTML المنظم
         async function downloadPPT() {
             let pptx = new PptxGenJS();
             pptx.layout = 'LAYOUT_16x9';
             
-            // شريحة الغلاف
             let slide = pptx.addSlide();
             slide.background = { color: "030305" };
             slide.addText(`Protoptimal Strategy Report`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
             slide.addText(`${document.getElementById('proj-name').value}`, { x:0.5, y:2.5, w:'90%', h:2, fontSize:44, color:'ffffff', bold:true, align:'center', fontFace: 'Arial' });
 
-            // تقسيم المحتوى بناءً على العناوين <h3> التي طلبناها من الذكاء الاصطناعي
             const contentDiv = document.getElementById('ai-content');
             const sections = contentDiv.querySelectorAll('h3');
             
@@ -412,11 +485,9 @@
                 let s = pptx.addSlide();
                 s.background = { color: "0a0a0f" };
                 
-                // إضافة العنوان
                 let titleText = sec.innerText.replace('💎', '').trim();
                 s.addText(titleText, { x:0.5, y:0.5, w:'90%', h:1, fontSize:22, color:'8b5cf6', bold:true, align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial' });
 
-                // استخراج النص أو الجدول الذي يلي العنوان
                 let nextElement = sec.nextElementSibling;
                 let slideContent = "";
                 
@@ -426,7 +497,6 @@
                     nextElement = nextElement.nextElementSibling;
                 }
 
-                // إضافة المحتوى (مع قص النص الطويل جداً لتجنب تداخل الشريحة)
                 if(slideContent.trim() !== "") {
                     s.addText(slideContent.substring(0, 1200), { x:0.5, y:1.5, w:'90%', h:'75%', fontSize:14, color:'e2e8f0', align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial', valign: 'top' });
                 }
