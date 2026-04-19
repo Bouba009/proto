@@ -15,9 +15,9 @@
         /* ================= المتغيرات ================= */
         :root {
             --bg-deep: #030305; --accent-1: #8b5cf6; --accent-2: #06b6d4;
-            /* تم تقليل الشفافية لتبدو الخلفية واضحة */
-            --glass-bg: rgba(15, 15, 25, 0.15); 
-            --glass-border: rgba(255, 255, 255, 0.05);
+            /* شفافية عالية جداً لتبدو الخلفية واضحة من خلال الاستمارة */
+            --glass-bg: rgba(15, 15, 25, 0.1); 
+            --glass-border: rgba(255, 255, 255, 0.1);
             --text-main: #f8fafc; --text-muted: #94a3b8;
             --font-ar: 'Tajawal', sans-serif; --font-en: 'Outfit', sans-serif;
         }
@@ -30,30 +30,31 @@
         .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
 
         /* ================= الخلفية المتقدمة (جالاكسي وشهاب) ================= */
-        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); overflow: hidden; }
+        /* تعديل الألوان لتبدو المجرة أكثر وضوحاً */
+        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%); overflow: hidden; }
         .stars-layer1, .stars-layer2 { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: transparent; }
-        .stars-layer1 { animation: rotateLayer 150s linear infinite; background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.9), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,1), transparent); background-size: 400px 400px; }
-        .stars-layer2 { animation: rotateLayer 200s linear infinite reverse; background-image: radial-gradient(1px 1px at 50px 150px, rgba(139, 92, 246, 0.8), transparent), radial-gradient(1.5px 1.5px at 200px 50px, rgba(6, 182, 212, 0.8), transparent); background-size: 300px 300px; opacity: 0.7; }
-        .nebula-glow { position: absolute; top: 20%; left: 30%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%); filter: blur(80px); animation: pulseNebula 15s ease-in-out infinite alternate; }
-        .nebula-glow-2 { position: absolute; bottom: 10%; right: 20%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 60%); filter: blur(80px); animation: pulseNebula 20s ease-in-out infinite alternate-reverse; }
+        .stars-layer1 { animation: rotateLayer 150s linear infinite; background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,1), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.8), transparent), radial-gradient(2.5px 2.5px at 300px 200px, rgba(255,255,255,1), transparent); background-size: 400px 400px; }
+        .stars-layer2 { animation: rotateLayer 200s linear infinite reverse; background-image: radial-gradient(1.5px 1.5px at 50px 150px, rgba(139, 92, 246, 1), transparent), radial-gradient(2px 2px at 200px 50px, rgba(6, 182, 212, 1), transparent); background-size: 300px 300px; }
+        .nebula-glow { position: absolute; top: 10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.2) 0%, transparent 60%); filter: blur(60px); animation: pulseNebula 12s ease-in-out infinite alternate; }
+        .nebula-glow-2 { position: absolute; bottom: 0%; right: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.15) 0%, transparent 60%); filter: blur(60px); animation: pulseNebula 15s ease-in-out infinite alternate-reverse; }
         
-        /* حركة الشهاب - التعديل لينطلق من الأعلى */
-        .shooting-stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotateZ(45deg); pointer-events: none; }
-        .shooting-star { position: absolute; height: 2px; background: linear-gradient(-45deg, #06b6d4, rgba(0, 0, 255, 0)); border-radius: 999px; filter: drop-shadow(0 0 6px #8b5cf6); animation: tail 4000ms ease-in-out infinite, shooting 4000ms ease-in-out infinite; }
-        .shooting-star::before, .shooting-star::after { content: ''; position: absolute; top: calc(50% - 1px); right: 0; height: 2px; background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #fff, rgba(0, 0, 255, 0)); border-radius: 100%; animation: shining 4000ms ease-in-out infinite; }
+        /* حركة الشهاب - واضحة وتخترق منتصف الشاشة */
+        .shooting-stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotateZ(45deg); pointer-events: none; z-index: -1; }
+        .shooting-star { position: absolute; height: 3px; background: linear-gradient(-45deg, #fff, rgba(0, 0, 255, 0)); border-radius: 999px; filter: drop-shadow(0 0 10px var(--accent-2)); animation: tail 3000ms ease-in-out infinite, shooting 3000ms ease-in-out infinite; }
+        .shooting-star::before, .shooting-star::after { content: ''; position: absolute; top: calc(50% - 1.5px); right: 0; height: 3px; background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #fff, rgba(0, 0, 255, 0)); border-radius: 100%; animation: shining 3000ms ease-in-out infinite; }
         .shooting-star::before { transform: translateX(50%) rotateZ(45deg); } .shooting-star::after { transform: translateX(50%) rotateZ(-45deg); }
-        /* تبدأ من إحداثيات علوية (سالبة أو صفر) */
-        .shooting-star:nth-child(1) { top: -10%; left: 0%; animation-delay: 1000ms; }
-        .shooting-star:nth-child(2) { top: -20%; left: 30%; animation-delay: 3500ms; }
-        .shooting-star:nth-child(3) { top: 0%; left: 60%; animation-delay: 6000ms; }
-        .shooting-star:nth-child(4) { top: -30%; left: 80%; animation-delay: 8500ms; }
+        
+        /* توزيع الشهب لتبدأ من الأعلى وتمر خلف الاستمارة */
+        .shooting-star:nth-child(1) { top: 0%; left: 10%; animation-delay: 0s; }
+        .shooting-star:nth-child(2) { top: -20%; left: 40%; animation-delay: 4000ms; }
+        .shooting-star:nth-child(3) { top: 10%; left: 70%; animation-delay: 8000ms; }
+        .shooting-star:nth-child(4) { top: -10%; left: 90%; animation-delay: 12000ms; }
 
         @keyframes rotateLayer { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.5;} 100% { transform: scale(1.3); opacity: 1;} }
-        @keyframes tail { 0% { width: 0; } 30% { width: 150px; } 100% { width: 0; } }
-        @keyframes shining { 0% { width: 0; } 50% { width: 30px; } 100% { width: 0; } }
-        /* مسافة أطول للشهاب ليغطي الشاشة */
-        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(1800px); } }
+        @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.6;} 100% { transform: scale(1.2); opacity: 1;} }
+        @keyframes tail { 0% { width: 0; } 30% { width: 200px; } 100% { width: 0; } }
+        @keyframes shining { 0% { width: 0; } 50% { width: 40px; } 100% { width: 0; } }
+        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(2000px); } }
 
         /* ================= التصميم العام ================= */
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 10; }
@@ -76,9 +77,17 @@
         .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600; font-size: 14px; }
         .dropdown-option:hover { background: rgba(139, 92, 246, 0.3); color: var(--accent-2); }
 
-        /* ================= نافذة الإدخال ================= */
-        /* تم تقليل البلور (blur) لتوضيح الخلفية */
-        .glass-card { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 30px 60px rgba(0,0,0,0.4); position: relative; overflow: hidden; }
+        /* ================= نافذة الإدخال (شديدة الشفافية) ================= */
+        .glass-card { 
+            background: var(--glass-bg); 
+            backdrop-filter: blur(8px); /* ضبابية خفيفة جدا لتبدو الخلفية */
+            border: 1px solid var(--glass-border); 
+            border-radius: 24px; 
+            padding: 40px; 
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5); 
+            position: relative; 
+            overflow: hidden; 
+        }
         .form-header { text-align: center; margin-bottom: 35px; }
         .form-header h1 { font-size: 32px; margin-bottom: 10px; font-weight: 700; }
         .form-header p { color: var(--text-muted); font-size: 16px; line-height: 1.5; }
@@ -86,10 +95,16 @@
         .input-group i { position: absolute; top: 43px; right: 20px; color: var(--text-muted); font-size: 18px; }
         [dir="ltr"] .input-group i { right: auto; left: 20px; }
         .input-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 15px; color: #e2e8f0; }
-        /* تم جعل حقول الإدخال أكثر شفافية */
-        .input-group input, .input-group textarea { width: 100%; padding: 16px 50px 16px 20px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; }
+        
+        /* حقول الإدخال شفافة ليظهر ما خلفها */
+        .input-group input, .input-group textarea { 
+            width: 100%; padding: 16px 50px 16px 20px; 
+            background: rgba(0,0,0,0.15); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; 
+        }
         [dir="ltr"] .input-group input, [dir="ltr"] .input-group textarea { padding: 16px 20px 16px 50px; }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15); background: rgba(0,0,0,0.4); }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15); background: rgba(0,0,0,0.3); }
         .btn-premium { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border: none; border-radius: 16px; color: #fff; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(6, 182, 212, 0.4); }
 
@@ -133,8 +148,7 @@
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(3px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
         
-        /* تقليل الشفافية والضبابية للقائمة الجانبية */
-        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 15, 25, 0.5); backdrop-filter: blur(15px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
+        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 15, 25, 0.4); backdrop-filter: blur(12px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
         [dir="rtl"] .sidebar { right: -360px; border-left: none; border-right: 1px solid var(--glass-border); }
         [dir="ltr"] .sidebar { left: -360px; border-left: 1px solid var(--glass-border); border-right: none; }
         [dir="rtl"] .sidebar.active { right: 0; }
@@ -157,8 +171,7 @@
         .chatbot-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: white; cursor: pointer; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); z-index: 1000; transition: 0.3s; }
         .chatbot-btn:hover { transform: scale(1.1); }
         [dir="ltr"] .chatbot-btn { right: auto; left: 30px; }
-        /* تقليل الشفافية والضبابية لنافذة المحادثة */
-        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; max-height: 75vh; background: rgba(10, 10, 15, 0.6); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; transform-origin: bottom right; animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; max-height: 75vh; background: rgba(10, 10, 15, 0.5); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; transform-origin: bottom right; animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         [dir="ltr"] .chat-widget { right: auto; left: 30px; transform-origin: bottom left; }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
         .chat-header { background: rgba(255,255,255,0.05); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); font-weight: 700; font-size: 15px; }
@@ -347,9 +360,9 @@
     </footer>
 
     <script>
-        // إعدادات Gemini API الجديدة بناءً على الكود المرسل
+        // إعدادات Gemini API مع تصحيح الإصدار إلى v1beta
         const GEMINI_API_KEY = "AIzaSyA5axVEHdvxiZ8PBXWXA6womwO5PKaerME"; 
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
+        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
 
         const dict = {
             ar: {
@@ -428,18 +441,32 @@
             document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
         }
 
-        // دالة الاتصال بـ Gemini API
+        // دالة الاتصال المحسنة بـ Gemini API
         async function fetchGemini(prompt) {
-            const response = await fetch(GEMINI_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                })
-            });
-            const data = await response.json();
-            if(data.error) throw new Error(data.error.message); 
-            return data.candidates[0].content.parts[0].text;
+            try {
+                const response = await fetch(GEMINI_URL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: prompt }] }]
+                    })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error?.message || "حدث خطأ غير معروف في السيرفر.");
+                }
+
+                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content) {
+                    return data.candidates[0].content.parts[0].text;
+                } else {
+                    throw new Error("لم يتم الحصول على نتيجة من الذكاء الاصطناعي.");
+                }
+            } catch (error) {
+                console.error("API Error:", error);
+                throw error;
+            }
         }
 
         async function generateProject() {
@@ -508,7 +535,6 @@
             `;
 
             try {
-                // الاتصال بـ Gemini بدلاً من Groq
                 const textResp = await fetchGemini(prompt);
                 let cleanText = textResp.replace(/```html/gi, '').replace(/```/gi, '');
                 const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
@@ -586,14 +612,13 @@
             const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
             try {
-                // الاتصال بـ Gemini لخدمة الشات بوت أيضاً
                 const reply = await fetchGemini(`You are an elite Market Strategy Consultant. Answer politely, directly, and provide deep strategic insights strictly in ${langStr}. User: "${msg}"`);
-                
-                // تنظيف بعض العلامات التي قد يضعها Gemini في المحادثة العادية
                 const cleanReply = reply.replace(/\*\*/g, '').replace(/\*/g, '<br>• ');
-
                 chatBox.innerHTML += `<div class="msg ai">${cleanReply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
-            } catch (err) { chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56">Error connecting to server.</div>`; }
+            } catch (err) { 
+                chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56; border-left:3px solid #ff5f56"><i class="fa-solid fa-circle-exclamation"></i> خطأ: ${err.message}</div>`; 
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
         }
     </script>
 </body>
