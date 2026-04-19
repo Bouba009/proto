@@ -53,7 +53,6 @@
         .nebula-glow { position: absolute; top: 10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 12s ease-in-out infinite alternate; }
         .nebula-glow-2 { position: absolute; bottom: 0%; right: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 15s ease-in-out infinite alternate-reverse; }
         
-        /* حركة الشهاب - تنطلق من منتصف الأعلى (من اللوجو) وتتفرع */
         .shooting-stars { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
         .star-wrapper { position: absolute; top: 60px; left: 50%; z-index: 1;}
         .sw-1 { transform: rotate(45deg); }
@@ -275,6 +274,20 @@
             </div>
 
             <div class="sidebar-content">
+                <!-- الروابط الجديدة NESDA و ASF -->
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                    <h4 id="side-nesda-title">وكالة (NESDA)</h4>
+                    <p id="side-nesda-desc">الوكالة الوطنية لدعم وتنمية المقاولاتية، مختصة في تمويل ومرافقة أصحاب المشاريع المصغرة.</p>
+                    <a href="https://nesda.dz/" target="_blank" class="step-link">موقع NESDA <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h4 id="side-asf-title">صندوق تمويل الشركات الناشئة (ASF)</h4>
+                    <p id="side-asf-desc">الصندوق الجزائري للاستثمار، صندوق حكومي مخصص لتمويل الشركات التي تمتلك علامة "لابل".</p>
+                    <a href="https://asf.dz/" target="_blank" class="step-link">موقع ASF <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-globe"></i></div>
                     <h4 id="side-dom-title">شراء دومين واسطة استضافة</h4>
@@ -402,7 +415,7 @@
     </div> 
 
     <script>
-        // إعدادات Groq API الجديدة المطلوبة
+        // مفتاح API الصحيح
         const GROQ_API_KEY = "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"; 
         const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
@@ -418,7 +431,9 @@
                 sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
                 sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
                 sideLab: "منصة علامة لابل (Startup DZ)", sideLabDesc: "المنصة الرسمية للحصول على علامة مشروع مبتكر والاستفادة من الامتيازات.",
-                sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI."
+                sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI.",
+                sideNesda: "وكالة (NESDA)", sideNesdaDesc: "الوكالة الوطنية لدعم وتنمية المقاولاتية، مختصة في تمويل ومرافقة أصحاب المشاريع المصغرة.",
+                sideAsf: "صندوق تمويل الشركات الناشئة (ASF)", sideAsfDesc: "الصندوق الجزائري للاستثمار، صندوق حكومي مخصص لتمويل الشركات التي تمتلك علامة لابل."
             },
             en: {
                 title: "Launch Your Project", sub: "Enter your idea details for an advanced strategic analysis to discover hidden competitive edges and engineer market hacking.",
@@ -431,7 +446,9 @@
                 sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
                 sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
                 sideLab: "Startup DZ (Label)", sideLabDesc: "The official platform to get the Innovative Project Label and benefits.",
-                sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially."
+                sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially.",
+                sideNesda: "NESDA Agency", sideNesdaDesc: "National Agency for Support and Development of Entrepreneurship for micro-projects.",
+                sideAsf: "Algerian Startup Fund (ASF)", sideAsfDesc: "The state investment fund dedicated to financing startups with the Label."
             },
             fr: {
                 title: "Lancez Votre Projet", sub: "Entrez les détails pour une analyse stratégique approfondie et découvrez vos avantages concurrentiels cachés.",
@@ -444,7 +461,9 @@
                 sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
                 sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
                 sideLab: "Label Startup DZ", sideLabDesc: "La plateforme officielle pour obtenir le label de projet innovant et ses avantages.",
-                sideIp: "INAPI (Propriété Intellectuelle)", sideIpDesc: "Protégez votre nom de marque et votre idée en l'enregistrant officiellement."
+                sideIp: "INAPI (Propriété Intellectuelle)", sideIpDesc: "Protégez votre nom de marque et votre idée en l'enregistrant officiellement.",
+                sideNesda: "Agence NESDA", sideNesdaDesc: "Agence Nationale d'Appui et de Développement de l'Entrepreneuriat pour les micro-projets.",
+                sideAsf: "Algerian Startup Fund (ASF)", sideAsfDesc: "Le fonds d'investissement de l'État dédié au financement des startups labellisées."
             }
         };
 
@@ -487,6 +506,10 @@
             document.getElementById('chat-input-field').placeholder = ui.chatInput; document.getElementById('contact-title').innerText = ui.contact;
             
             document.getElementById('side-title').innerHTML = `<i class="fa-solid fa-rocket"></i> ${ui.sideTitle}`;
+            
+            // تحديث نصوص القائمة الجانبية (بما فيها NESDA و ASF)
+            document.getElementById('side-nesda-title').innerText = ui.sideNesda; document.getElementById('side-nesda-desc').innerText = ui.sideNesdaDesc;
+            document.getElementById('side-asf-title').innerText = ui.sideAsf; document.getElementById('side-asf-desc').innerText = ui.sideAsfDesc;
             document.getElementById('side-dom-title').innerText = ui.sideDom; document.getElementById('side-dom-desc').innerText = ui.sideDomDesc;
             document.getElementById('side-dev-title').innerText = ui.sideDev; document.getElementById('side-dev-desc').innerText = ui.sideDevDesc;
             document.getElementById('side-inc-title').innerText = ui.sideInc; document.getElementById('side-inc-desc').innerText = ui.sideIncDesc;
@@ -505,7 +528,8 @@
                         "Authorization": `Bearer ${GROQ_API_KEY}`
                     },
                     body: JSON.stringify({
-                        model: "llama3-70b-8192", 
+                        // تم التحديث إلى النموذج الجديد والأكثر تطوراً من Groq
+                        model: "llama-3.3-70b-versatile", 
                         messages: [{ role: "user", content: prompt }]
                     })
                 });
@@ -537,7 +561,6 @@
 
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
 
-            // برومبت قوي جداً وعنيف مخصص للـ VC والـ Growth Hackers
             const prompt = `
             You are an elite Venture Capitalist (VC), a ruthless Silicon Valley Growth Hacker, and a Tier-1 Strategist. 
             You despise generic, beginner-level advice like "use social media", "improve customer service", or "run ads". If you provide cliché marketing fluff, you fail your mission. 
