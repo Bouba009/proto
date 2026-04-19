@@ -37,205 +37,140 @@
         [dir="ltr"] body, [dir="ltr"] input, [dir="ltr"] textarea, [dir="ltr"] button { font-family: var(--font-en); }
 
         /* ================= الخلفية الفضائية ================= */
-        .galaxy-wrapper { 
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100vw; height: 100vh; 
-            z-index: 0; 
-            background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%); 
-            overflow: hidden; 
-            pointer-events: none;
-        }
+        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%); overflow: hidden; pointer-events: none; }
         .stars-layer1, .stars-layer2 { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: transparent; }
         .stars-layer1 { animation: rotateLayer 150s linear infinite; background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,1), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.8), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,1), transparent); background-size: 400px 400px; }
         .stars-layer2 { animation: rotateLayer 200s linear infinite reverse; background-image: radial-gradient(1.5px 1.5px at 50px 150px, rgba(139, 92, 246, 0.9), transparent), radial-gradient(2px 2px at 200px 50px, rgba(6, 182, 212, 0.9), transparent); background-size: 300px 300px; }
-        
         .nebula-glow { position: absolute; top: 10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 12s ease-in-out infinite alternate; }
         .nebula-glow-2 { position: absolute; bottom: 0%; right: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 15s ease-in-out infinite alternate-reverse; }
         
-        .shooting-stars { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
-        .star-wrapper { position: absolute; top: 60px; left: 50%; z-index: 1;}
-        .sw-1 { transform: rotate(45deg); }
-        .sw-2 { transform: rotate(70deg); }
-        .sw-3 { transform: rotate(120deg); }
-        .sw-4 { transform: rotate(150deg); }
-
-        .shooting-star { position: absolute; height: 3px; background: linear-gradient(-45deg, #fff, rgba(0, 0, 255, 0)); border-radius: 999px; filter: drop-shadow(0 0 12px var(--accent-2)); animation: tail 3500ms ease-in-out infinite, shooting 3500ms ease-in-out infinite; }
-        .shooting-star::before, .shooting-star::after { content: ''; position: absolute; top: calc(50% - 1.5px); right: 0; height: 3px; background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #fff, rgba(0, 0, 255, 0)); border-radius: 100%; animation: shining 3500ms ease-in-out infinite; }
-        .shooting-star::before { transform: translateX(50%) rotateZ(45deg); } .shooting-star::after { transform: translateX(50%) rotateZ(-45deg); }
-        
-        .sw-1 .shooting-star { animation-delay: 0ms; }
-        .sw-2 .shooting-star { animation-delay: 4500ms; }
-        .sw-3 .shooting-star { animation-delay: 8000ms; }
-        .sw-4 .shooting-star { animation-delay: 11000ms; }
-
         @keyframes rotateLayer { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.7;} 100% { transform: scale(1.2); opacity: 1;} }
-        @keyframes tail { 0% { width: 0; } 30% { width: 200px; } 100% { width: 0; } }
-        @keyframes shining { 0% { width: 0; } 50% { width: 40px; } 100% { width: 0; } }
-        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(1500px); } }
 
         /* ================= التصميم الأمامي والمحتوى ================= */
         .main-content-wrapper { position: relative; z-index: 10; }
-
         .top-dev-bar { background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px; font-size: 12px; letter-spacing: 1px; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
-        .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
+        .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        
         header { position: relative; display: flex; justify-content: flex-end; align-items: center; margin-bottom: 50px; min-height: 50px; }
-        [dir="ltr"] header { justify-content: flex-end; }
-        
-        .logo-box { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; z-index: 20; text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);}
+        .logo-box { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; z-index: 20;}
         
         .header-actions { display: flex; align-items: center; gap: 15px; position: relative; z-index: 20;}
-        .menu-btn { font-size: 22px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--glass-border); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+        .menu-btn { font-size: 22px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--glass-border); }
         .menu-btn:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); border-color: var(--accent-1); }
 
         .custom-dropdown { position: relative; user-select: none; z-index: 100; margin-bottom: 25px; width: fit-content;}
-        .dropdown-selected { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; border-radius: 50px; padding: 10px 18px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: all 0.3s; }
-        .dropdown-selected:hover { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
-        .dropdown-selected i { transition: transform 0.3s; font-size: 12px; color: var(--accent-2); }
-        .custom-dropdown.open .dropdown-selected i { transform: rotate(180deg); }
-        .dropdown-options { position: absolute; top: 120%; width: 140px; background: rgba(15, 15, 25, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .dropdown-selected { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; border-radius: 50px; padding: 10px 18px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .dropdown-options { position: absolute; top: 120%; width: 140px; background: rgba(15, 15, 25, 0.9); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
         [dir="rtl"] .dropdown-options { right: 0; } [dir="ltr"] .dropdown-options { left: 0; }
         .custom-dropdown.open .dropdown-options { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600; font-size: 14px; }
+        .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; color: #fff; font-weight: 600; font-size: 14px; }
         .dropdown-option:hover { background: rgba(139, 92, 246, 0.3); color: var(--accent-2); }
 
-        /* ================= نافذة الإدخال الزجاجية ================= */
-        .glass-card { 
-            background: var(--glass-bg); 
-            backdrop-filter: blur(3px); 
-            -webkit-backdrop-filter: blur(3px);
-            border: 1px solid var(--glass-border); 
-            border-radius: 24px; 
-            padding: 40px; 
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5); 
-            position: relative; 
-            overflow: hidden; 
-        }
+        /* ================= نافذة الإدخال ================= */
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 40px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); position: relative; }
         .form-header { text-align: center; margin-bottom: 35px; }
         .form-header h1 { font-size: 32px; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
-        .form-header p { color: #cbd5e1; font-size: 16px; line-height: 1.5; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
+        .form-header p { color: #cbd5e1; font-size: 16px; line-height: 1.5; }
         .input-group { margin-bottom: 25px; position: relative; }
         .input-group i { position: absolute; top: 43px; right: 20px; color: #cbd5e1; font-size: 18px; }
         [dir="ltr"] .input-group i { right: auto; left: 20px; }
-        .input-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 15px; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
-        
-        .input-group input, .input-group textarea { 
-            width: 100%; padding: 16px 50px 16px 20px; 
-            background: rgba(0,0,0,0.2); 
-            border: 1px solid rgba(255,255,255,0.1); 
-            border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; 
-        }
+        .input-group label { display: block; margin-bottom: 10px; font-weight: 600; font-size: 15px; color: #fff; }
+        .input-group input, .input-group textarea { width: 100%; padding: 16px 50px 16px 20px; background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; }
         [dir="ltr"] .input-group input, [dir="ltr"] .input-group textarea { padding: 16px 20px 16px 50px; }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2); background: rgba(0,0,0,0.4); }
-        .input-group input::placeholder, .input-group textarea::placeholder { color: rgba(255,255,255,0.4); }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; background: rgba(0,0,0,0.4); }
 
-        .btn-premium { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border: none; border-radius: 16px; color: #fff; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-premium { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border: none; border-radius: 16px; color: #fff; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.4s; }
         .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(6, 182, 212, 0.4); }
 
-        /* ================= التحميل والنتائج ================= */
+        /* ================= النتائج وتنسيق الذكاء الاصطناعي ================= */
         .loading-state { display: none; text-align: center; padding: 60px 0; }
         .orb-loader { width: 80px; height: 80px; margin: 0 auto 30px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, var(--accent-1), var(--accent-2)); animation: rotateOrb 1.5s linear infinite; position: relative; }
         .orb-loader::after { content: ''; position: absolute; inset: 4px; background: var(--bg-deep); border-radius: 50%; }
-        .orb-loader i { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: #fff; z-index: 10; }
         @keyframes rotateOrb { 100% { transform: rotate(360deg); } }
-        .loading-state h3 { font-size: 18px; font-weight: 400; background: linear-gradient(90deg, #fff, var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: pulseText 2s infinite; line-height: 1.6; padding: 0 15px; text-shadow: 0 2px 4px rgba(0,0,0,0.8);}
-        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         
-        #results-container { display: none; animation: fadeIn 0.8s ease-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        #ai-content h3 { font-size: 22px; color: var(--accent-2); margin-top: 40px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px; line-height: 1.4; text-shadow: 0 1px 2px rgba(0,0,0,0.8);}
+        #results-container { display: none; }
+        #ai-content h3 { font-size: 22px; color: var(--accent-2); margin-top: 40px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px;}
         #ai-content h3 i { color: var(--accent-1); font-size: 20px;}
-        #ai-content h4 { font-size: 18px; color: #fff; margin-top: 20px; margin-bottom: 10px; }
         
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2);}
+        .table-responsive { width: 100%; overflow-x: auto; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.4);}
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
         th, td { padding: 16px; border-bottom: 1px solid var(--glass-border); border-left: 1px solid rgba(255,255,255,0.05); text-align: right; font-size: 15px; line-height: 1.6; }
         [dir="ltr"] th, [dir="ltr"] td { text-align: left; border-left: none; border-right: 1px solid rgba(255,255,255,0.05); }
-        th { background: rgba(139, 92, 246, 0.2); font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+        th { background: rgba(139, 92, 246, 0.2); font-weight: 700; color: #fff; }
         td { color: #e2e8f0; }
-        tr:hover td { background: rgba(255,255,255,0.05); }
         
-        ul, p { color: #f1f5f9; line-height: 1.9; margin-bottom: 15px; font-size: 15.5px; text-shadow: 0 1px 2px rgba(0,0,0,0.8);} 
+        ul, p { color: #f1f5f9; line-height: 1.9; margin-bottom: 15px; font-size: 15.5px;} 
         ul { padding-inline-start: 25px; list-style-type: none; } 
         li { margin-bottom: 12px; position: relative; padding-inline-start: 15px;}
-        li::before { content: "›"; position: absolute; left: 0; color: var(--accent-2); font-weight: bold; font-size: 18px; line-height: 1.6; }
-        [dir="rtl"] li::before { right: 0; left: auto; content: "‹"; }
-        strong { color: #fff; background: rgba(139, 92, 246, 0.3); padding: 2px 6px; border-radius: 4px;}
+        li::before { content: "✓"; position: absolute; left: 0; color: var(--accent-2); font-weight: bold; }
+        [dir="rtl"] li::before { right: 0; left: auto; }
+        strong { color: #fff; color: var(--accent-2); }
 
+        /* شبكة أزرار التصدير */
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
         .btn-outline { padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
-        .btn-outline:hover { background: rgba(139, 92, 246, 0.3); border-color: var(--accent-2); box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: translateY(-2px);}
+        .btn-outline:hover { background: rgba(139, 92, 246, 0.3); border-color: var(--accent-2); }
 
         /* ================= القائمة الجانبية ================= */
-        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
+        .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
-        
-        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 23, 42, 0.25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
+        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 23, 42, 0.95); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s; overflow-y: auto; padding: 30px; }
         [dir="rtl"] .sidebar { right: -360px; border-left: none; border-right: 1px solid var(--glass-border); }
         [dir="ltr"] .sidebar { left: -360px; border-left: 1px solid var(--glass-border); border-right: none; }
-        [dir="rtl"] .sidebar.active { right: 0; }
-        [dir="ltr"] .sidebar.active { left: 0; }
+        [dir="rtl"] .sidebar.active { right: 0; } [dir="ltr"] .sidebar.active { left: 0; }
 
         .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
         .sidebar-header h2 { font-size: 20px; color: var(--accent-2); display: flex; align-items: center; gap: 10px; }
-        .sidebar-header i { font-size: 24px; color: var(--text-muted); cursor: pointer; transition: 0.3s; padding: 5px; }
-        .sidebar-header i:hover { color: #ff5f56; transform: rotate(90deg); }
+        .sidebar-header i { font-size: 24px; color: var(--text-muted); cursor: pointer; }
 
-        .step-item { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
-        .step-item:hover { border-color: var(--accent-1); background: rgba(139, 92, 246, 0.15); transform: translateY(-2px); }
+        .step-item { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
         .step-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #fff; margin-bottom: 15px; }
         .step-item h4 { font-size: 17px; color: #fff; margin-bottom: 10px; }
         .step-item p { font-size: 14px; color: #cbd5e1; line-height: 1.6; margin-bottom: 15px; }
-        .step-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2); text-decoration: none; font-size: 14px; font-weight: 600; transition: 0.3s; }
-        .step-link:hover { color: #fff; }
+        .step-link { display: inline-flex; align-items: center; gap: 8px; color: var(--accent-2); text-decoration: none; font-size: 14px; font-weight: 600; }
 
         /* ================= الشات بوت ================= */
-        .chatbot-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: white; cursor: pointer; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); z-index: 1000; transition: 0.3s; }
-        .chatbot-btn:hover { transform: scale(1.1); }
+        .chatbot-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: white; cursor: pointer; z-index: 1000; }
         [dir="ltr"] .chatbot-btn { right: auto; left: 30px; }
-        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; max-height: 75vh; background: rgba(15, 23, 42, 0.3); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; transform-origin: bottom right; animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        [dir="ltr"] .chat-widget { right: auto; left: 30px; transform-origin: bottom left; }
-        @keyframes scaleUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
-        .chat-header { background: rgba(0,0,0,0.3); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); font-weight: 700; font-size: 15px; }
+        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; background: rgba(15, 23, 42, 0.95); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+        [dir="ltr"] .chat-widget { right: auto; left: 30px; }
+        .chat-header { background: rgba(0,0,0,0.5); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); font-weight: 700; color: #fff;}
         .chat-body { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 15px; }
-        .msg { padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; max-width: 85%; box-shadow: 0 2px 5px rgba(0,0,0,0.2);}
+        .msg { padding: 12px 16px; border-radius: 18px; font-size: 14px; line-height: 1.5; max-width: 85%; }
         .msg.user { background: var(--accent-1); color: #fff; align-self: flex-start; border-top-right-radius: 4px; }
         .msg.ai { background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; align-self: flex-end; border-top-left-radius: 4px; }
         [dir="ltr"] .msg.user { align-self: flex-end; border-top-right-radius: 18px; border-top-left-radius: 4px; }
         [dir="ltr"] .msg.ai { align-self: flex-start; border-top-left-radius: 18px; border-top-right-radius: 4px; }
         .chat-input-area { padding: 15px; border-top: 1px solid var(--glass-border); background: rgba(0,0,0,0.5); display: flex; gap: 10px; }
-        .chat-input-area input { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 12px 15px; border-radius: 12px; color: #fff; outline: none; font-size: 14px; }
-        .chat-input-area button { width: 45px; height: 45px; border-radius: 12px; border: none; background: var(--accent-1); color: #fff; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; }
+        .chat-input-area input { flex: 1; background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.15); padding: 12px 15px; border-radius: 12px; color: #fff; }
+        .chat-input-area button { width: 45px; height: 45px; border-radius: 12px; border: none; background: var(--accent-1); color: #fff; cursor: pointer; }
 
         /* ================= الفوتر ================= */
-        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;}
+        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;}
         .glass-footer h3 { font-size: 22px; color: #fff; margin-bottom: 20px; }
         .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: center; }
-        .contact-info a { color: var(--text-muted); text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 8px 15px; border-radius: 50px; border: 1px solid transparent; }
-        .contact-info a:hover { color: #fff; border-color: var(--glass-border); background: rgba(255,255,255,0.05); transform: translateY(-3px);}
+        .contact-info a { color: var(--text-muted); text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 8px 15px; border-radius: 50px; }
+        .contact-info a:hover { color: #fff; background: rgba(255,255,255,0.05); }
         .contact-info a i { font-size: 18px; color: var(--accent-2); }
-        .contact-info a .fa-whatsapp { color: #25D366; }
 
-        /* ================= التجاوب ================= */
+        /* ================= ستايل التصدير للـ PDF لجعله احترافياً (أشكال وألوان واضحة) ================= */
+        .pdf-mode { background: #ffffff !important; color: #000000 !important; }
+        .pdf-mode .glass-card { background: #fff !important; border: none !important; box-shadow: none !important; color: #000 !important;}
+        .pdf-mode h2, .pdf-mode h3 { color: #1e3a8a !important; text-shadow: none !important; }
+        .pdf-mode h3 { background: #f1f5f9; padding: 10px; border-right: 5px solid #2563eb; border-radius: 5px; }
+        .pdf-mode p, .pdf-mode li { color: #334155 !important; text-shadow: none !important; }
+        .pdf-mode strong { color: #0f172a !important; }
+        .pdf-mode table { border: 1px solid #cbd5e1; background: #fff; }
+        .pdf-mode th { background: #1e3a8a !important; color: #fff !important; padding: 12px; }
+        .pdf-mode td { border: 1px solid #cbd5e1 !important; color: #1e293b !important; padding: 10px; }
+        
         @media (max-width: 768px) {
-            .container { padding: 20px 15px; }
-            header { margin-bottom: 30px; }
             .logo-box { font-size: 26px; }
-            .glass-card { padding: 25px 15px; border-radius: 20px;}
-            .form-header h1 { font-size: 26px; }
-            .action-grid { grid-template-columns: 1fr; }
-            .sidebar { width: 85vw; padding: 20px; }
-            [dir="rtl"] .sidebar { right: -85vw; }
-            [dir="ltr"] .sidebar { left: -85vw; }
+            .sidebar { width: 85vw; }
+            [dir="rtl"] .sidebar { right: -85vw; } [dir="ltr"] .sidebar { left: -85vw; }
             .chat-widget { width: 90vw; height: 65vh; bottom: 90px; right: 5vw; left: 5vw; }
-            [dir="ltr"] .chat-widget { left: 5vw; }
-            .chatbot-btn { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 22px; }
-            [dir="ltr"] .chatbot-btn { left: 20px; }
         }
     </style>
 </head>
@@ -244,12 +179,6 @@
     <div class="galaxy-wrapper">
         <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
         <div class="stars-layer1"></div><div class="stars-layer2"></div>
-        <div class="shooting-stars">
-            <div class="star-wrapper sw-1"><div class="shooting-star"></div></div>
-            <div class="star-wrapper sw-2"><div class="shooting-star"></div></div>
-            <div class="star-wrapper sw-3"><div class="shooting-star"></div></div>
-            <div class="star-wrapper sw-4"><div class="shooting-star"></div></div>
-        </div>
     </div>
 
     <div class="main-content-wrapper">
@@ -274,7 +203,14 @@
             </div>
 
             <div class="sidebar-content">
-                <!-- الروابط الجديدة NESDA و ASF -->
+                <!-- تم رفع Startup.dz لأعلى القائمة كما طلبت -->
+                <div class="step-item" style="border-color: var(--accent-1); background: rgba(139, 92, 246, 0.15);">
+                    <div class="step-icon"><i class="fa-solid fa-award"></i></div>
+                    <h4 id="side-lab-title">منصة علامة لابل (Startup DZ)</h4>
+                    <p id="side-lab-desc">المنصة الرسمية لوزارة اقتصاد المعرفة والشركات الناشئة للحصول على علامة "لابل مشروع مبتكر".</p>
+                    <a href="https://startup.dz/" target="_blank" class="step-link">Startup.dz <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </div>
+
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-handshake-angle"></i></div>
                     <h4 id="side-nesda-title">وكالة (NESDA)</h4>
@@ -291,33 +227,15 @@
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-globe"></i></div>
                     <h4 id="side-dom-title">شراء دومين واسطة استضافة</h4>
-                    <p id="side-dom-desc">لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة ومناسبة للشركات الناشئة.</p>
+                    <p id="side-dom-desc">لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.</p>
                     <a href="https://www.namecheap.com/" target="_blank" class="step-link">Namecheap <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
                     <a href="https://www.hostinger.com/" target="_blank" class="step-link" style="margin-top:5px;">Hostinger <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
-                <div class="step-item">
-                    <div class="step-icon"><i class="fa-solid fa-code"></i></div>
-                    <h4 id="side-dev-title">مؤسسات تطوير وتطبيقات جزائرية</h4>
-                    <p id="side-dev-desc">لبناء الـ MVP الخاص بك، يمكنك الاعتماد على وكالات البرمجة والتطوير المحلية الموثوقة أو منصات العمل الحر.</p>
-                    <a href="https://mawthouq.com/" target="_blank" class="step-link">Mawthouq (للمستقلين) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-                <div class="step-item">
-                    <div class="step-icon"><i class="fa-solid fa-seedling"></i></div>
-                    <h4 id="side-inc-title">حاضنات ومسرعات أعمال</h4>
-                    <p id="side-inc-desc">للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.</p>
-                    <a href="https://www.aventure.dz/" target="_blank" class="step-link">Algeria Venture <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
-                    <a href="https://sylabs-dz.com/" target="_blank" class="step-link" style="margin-top:5px;">Sylabs <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
-                <div class="step-item">
-                    <div class="step-icon"><i class="fa-solid fa-award"></i></div>
-                    <h4 id="side-lab-title">منصة علامة لابل (Startup DZ)</h4>
-                    <p id="side-lab-desc">المنصة الرسمية لوزارة اقتصاد المعرفة والشركات الناشئة للحصول على علامة "لابل مشروع مبتكر".</p>
-                    <a href="https://startup.dz/" target="_blank" class="step-link">Startup.dz <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-                </div>
+                
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
                     <h4 id="side-ip-title">المعهد الوطني للملكية الصناعية</h4>
-                    <p id="side-ip-desc">قم بحماية اسم مشروعك، علامتك التجارية، وفكرتك المبتكرة عبر تسجيلها رسمياً.</p>
+                    <p id="side-ip-desc">قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً.</p>
                     <a href="https://inapi.org/" target="_blank" class="step-link">INAPI.org <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                 </div>
             </div>
@@ -327,27 +245,25 @@
             <header>
                 <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
                 <div class="header-actions">
-                    <div class="menu-btn" onclick="openSidebar()">
-                        <i class="fa-solid fa-bars"></i>
-                    </div>
+                    <div class="menu-btn" onclick="openSidebar()"><i class="fa-solid fa-bars"></i></div>
                 </div>
             </header>
 
             <div class="glass-card" id="form-section">
                 <div class="form-header">
                     <h1 id="lbl-title">أطلق مشروعك</h1>
-                    <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم لاكتشاف الفرص التنافسية الخفية وهندسة اختراق السوق.</p>
+                    <p id="lbl-subtitle">دراسة جدوى ذكية تشمل السوق الجزائري، تحليل مالي، وخطط تنفيذية فورية.</p>
                 </div>
 
                 <div class="input-group">
                     <label id="lbl-name">اسم المشروع / الفكرة</label>
                     <i class="fa-solid fa-signature"></i>
-                    <input type="text" id="proj-name" placeholder="مثال: NexusTech">
+                    <input type="text" id="proj-name" placeholder="مثال: تطبيق توصيل سريع">
                 </div>
                 <div class="input-group">
                     <label id="lbl-field">مجال أو سوق المشروع</label>
                     <i class="fa-solid fa-briefcase"></i>
-                    <input type="text" id="proj-field" placeholder="مثال: الذكاء الاصطناعي في الرعاية الصحية">
+                    <input type="text" id="proj-field" placeholder="مثال: التجارة الإلكترونية والخدمات اللوجستية">
                 </div>
                 <div class="input-group">
                     <label id="lbl-desc">وصف دقيق للمشكلة والحل</label>
@@ -356,24 +272,24 @@
                 </div>
                 
                 <button class="btn-premium" id="btn-generate" onclick="generateProject()">
-                    <i class="fa-solid fa-radar"></i> <span id="lbl-btn">بدء التحليل الاستخباراتي العميق</span>
+                    <i class="fa-solid fa-rocket"></i> <span id="lbl-btn">بدء التخطيط الشامل للمشروع</span>
                 </button>
             </div>
 
             <div class="loading-state" id="loader">
                 <div class="orb-loader"><i class="fa-solid fa-microchip"></i></div>
-                <h3 id="lbl-loading">جاري تحليل بيئة العمل... بناء خريطة الاختراق... كشف الثغرات التنافسية وهندسة الأرباح...</h3>
+                <h3 id="lbl-loading">جاري تحليل السوق الجزائري... صياغة دراسة الجدوى... بناء الخطة المالية واستراتيجيات اختراق المنافسين...</h3>
             </div>
 
             <div id="results-container" class="glass-card">
                 <div id="printable-area">
-                    <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">خريطة الطريق للسيطرة على السوق</h2>
+                    <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; color: var(--accent-2);">الدراسة الاستراتيجية الشاملة للمشروع</h2>
                     <div id="ai-content"></div> 
                 </div>
                 
                 <div class="action-grid">
-                    <button class="btn-outline" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> <span id="btn-pdf">تصدير التقرير PDF</span></button>
-                    <button class="btn-outline" onclick="downloadPPT()"><i class="fa-solid fa-file-powerpoint"></i> <span id="btn-ppt">تصدير عرض تقديمي</span></button>
+                    <button class="btn-outline" onclick="downloadPDF()"><i class="fa-solid fa-file-pdf"></i> <span id="btn-pdf">تصدير التقرير PDF (احترافي)</span></button>
+                    <button class="btn-outline" onclick="downloadPPT()"><i class="fa-solid fa-file-powerpoint"></i> <span id="btn-ppt">تصدير عرض تقديمي PPT</span></button>
                 </div>
             </div>
         </div>
@@ -381,11 +297,11 @@
         <div class="chatbot-btn" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
         <div class="chat-widget" id="chat-window">
             <div class="chat-header">
-                <span id="chat-title"><i class="fa-solid fa-headset"></i> المساعد الذكي الاستراتيجي</span>
-                <i class="fa-solid fa-times" style="cursor:pointer; color: var(--text-muted);" onclick="toggleChat()"></i>
+                <span id="chat-title"><i class="fa-solid fa-headset"></i> المساعد الذكي للاستثمار</span>
+                <i class="fa-solid fa-times" style="cursor:pointer;" onclick="toggleChat()"></i>
             </div>
             <div class="chat-body" id="chat-messages">
-                <div class="msg ai" id="chat-welcome">أهلاً بك! أنا خبير في تحليل الأسواق. كيف يمكنني إفادتك بخصوص مشروعك؟</div>
+                <div class="msg ai" id="chat-welcome">مرحباً! أنا خبير دراسات الجدوى. اسألني عن التفاصيل المالية، التسويق، أو إجراءات التأسيس في الجزائر.</div>
             </div>
             <div class="chat-input-area">
                 <input type="text" id="chat-input-field" placeholder="اكتب استفسارك..." onkeypress="handleChatEnter(event)">
@@ -394,76 +310,64 @@
         </div>
 
         <footer class="glass-footer">
-            <div class="custom-dropdown" id="langDropdownFooter" onclick="toggleDropdown('langDropdownFooter', event)">
-                <div class="dropdown-selected">
-                    <span class="selected-flag">🇸🇦</span> <span class="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
-                </div>
-                <div class="dropdown-options" style="top: auto; bottom: 120%;">
-                    <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية', event)"><span>🇸🇦</span> العربية</div>
-                    <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English', event)"><span>🇺🇸</span> English</div>
-                    <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français', event)"><span>🇫🇷</span> Français</div>
-                </div>
-            </div>
-
             <h3 id="contact-title">تواصل معنا</h3>
             <div class="contact-info">
                 <a href="mailto:krelouf@yahoo.com"><i class="fa-solid fa-envelope"></i> krelouf@yahoo.com</a>
                 <a href="https://wa.me/213559293773" target="_blank"><i class="fa-brands fa-whatsapp"></i> +213 559 29 37 73</a>
             </div>
         </footer>
-
     </div> 
 
     <script>
-        // مفتاح API الصحيح
-        const GROQ_API_KEY = "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"; 
+        // ==========================================
+        //  مفتاح API الخاص بك يوجد في هذا السطر 👇
+        // ==========================================
+        const GROQ_API_KEY = "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"; 
+        
         const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
         const dict = {
             ar: {
-                title: "أطلق مشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم لاكتشاف الفرص التنافسية الخفية وهندسة اختراق السوق.",
-                name: "اسم المشروع / الفكرة", phName: "مثال: NexusTech", field: "مجال أو سوق المشروع", phField: "مثال: الذكاء الاصطناعي في الرعاية الصحية",
-                desc: "وصف دقيق للمشكلة والحل", phDesc: "اشرح بدقة المشكلة التي تحلها، ولمن موجه هذا المشروع...",
-                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري تحليل بيئة العمل... بناء خريطة الاختراق... كشف الثغرات التنافسية وهندسة الأرباح...",
-                reportTitle: "خريطة الطريق للسيطرة على السوق", pdf: "تصدير التقرير PDF", ppt: "تصدير عرض تقديمي",
-                chatTitle: "المستشار الاستراتيجي", chatWelcome: "أنا هنا لتفكيك العوائق وتصميم استراتيجيات نمو قاسية. اسألني عن التسعير أو اختراق المنافسين.", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
-                sideTitle: "الخطوة القادمة", sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.",
-                sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
-                sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
-                sideLab: "منصة علامة لابل (Startup DZ)", sideLabDesc: "المنصة الرسمية للحصول على علامة مشروع مبتكر والاستفادة من الامتيازات.",
-                sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI.",
-                sideNesda: "وكالة (NESDA)", sideNesdaDesc: "الوكالة الوطنية لدعم وتنمية المقاولاتية، مختصة في تمويل ومرافقة أصحاب المشاريع المصغرة.",
-                sideAsf: "صندوق تمويل الشركات الناشئة (ASF)", sideAsfDesc: "الصندوق الجزائري للاستثمار، صندوق حكومي مخصص لتمويل الشركات التي تمتلك علامة لابل."
+                title: "أطلق مشروعك", sub: "دراسة جدوى ذكية تشمل السوق الجزائري، تحليل مالي، وخطط تنفيذية فورية.",
+                name: "اسم المشروع / الفكرة", phName: "مثال: منصة تعليمية", field: "مجال أو سوق المشروع", phField: "مثال: تكنولوجيا التعليم (EdTech)",
+                desc: "وصف دقيق للمشكلة والحل", phDesc: "اشرح المشكلة، الحل المقترح، والجمهور المستهدف...",
+                btnGen: "بدء التخطيط الشامل للمشروع", loading: "جاري تحليل السوق... بناء الـ BMC... وتجهيز الخطة المالية بالدينار الجزائري...",
+                reportTitle: "الدراسة الاستراتيجية الشاملة للمشروع", pdf: "تصدير التقرير PDF (احترافي)", ppt: "تصدير عرض تقديمي PPT",
+                chatTitle: "المساعد الذكي للاستثمار", chatWelcome: "مرحباً! أنا مستشارك الخاص. اسألني عن تفاصيل التمويل، المنافسين، أو السوق.", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ: ",
+                sideTitle: "الخطوة القادمة", 
+                sideLab: "منصة علامة لابل (Startup DZ)", sideLabDesc: "المنصة الرسمية للحصول على علامة مشروع مبتكر.",
+                sideNesda: "وكالة (NESDA)", sideNesdaDesc: "الوكالة الوطنية لدعم وتنمية المقاولاتية وتمويل المشاريع.",
+                sideAsf: "صندوق تمويل الشركات (ASF)", sideAsfDesc: "الصندوق الجزائري المخصص لتمويل الشركات الناشئة.",
+                sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز نطاق مشروعك وبدء استضافته عالمياً.",
+                sideIp: "حماية الملكية (INAPI)", sideIpDesc: "حماية اسمك وعلامتك التجارية رسمياً في الجزائر."
             },
             en: {
-                title: "Launch Your Project", sub: "Enter your idea details for an advanced strategic analysis to discover hidden competitive edges and engineer market hacking.",
-                name: "Project Name", phName: "e.g., NexusTech", field: "Market / Industry", phField: "e.g., AI in Healthcare",
-                desc: "Precise Problem & Solution", phDesc: "Precisely explain the problem you're solving and your target audience...",
-                btnGen: "Start Deep Intelligence Analysis", loading: "Analyzing market environment... building hack roadmap... exposing competitive gaps and engineering profits...",
-                reportTitle: "Roadmap to Market Domination", pdf: "Export PDF Report", ppt: "Export Presentation",
-                chatTitle: "Strategic Consultant", chatWelcome: "I am here to dismantle barriers and design ruthless growth strategies. Ask me anything.", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
-                sideTitle: "The Next Step", sideDom: "Domain & Hosting", sideDomDesc: "To book your suggested domain, we recommend these reliable global platforms.",
-                sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
-                sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
-                sideLab: "Startup DZ (Label)", sideLabDesc: "The official platform to get the Innovative Project Label and benefits.",
-                sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially.",
-                sideNesda: "NESDA Agency", sideNesdaDesc: "National Agency for Support and Development of Entrepreneurship for micro-projects.",
-                sideAsf: "Algerian Startup Fund (ASF)", sideAsfDesc: "The state investment fund dedicated to financing startups with the Label."
+                title: "Launch Your Project", sub: "Smart feasibility study including the Algerian market, financial analysis, and execution plans.",
+                name: "Project Name", phName: "e.g., EdTech Platform", field: "Industry", phField: "e.g., Education Technology",
+                desc: "Problem & Solution", phDesc: "Explain the problem, your solution, and target audience...",
+                btnGen: "Start Comprehensive Planning", loading: "Analyzing market... Building BMC... Preparing Financials in DZD...",
+                reportTitle: "Comprehensive Strategic Project Study", pdf: "Export Professional PDF", ppt: "Export PPT Presentation",
+                chatTitle: "Investment Assistant", chatWelcome: "Hello! I am your consultant. Ask me about funding or market details.", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
+                sideTitle: "Next Steps", 
+                sideLab: "Startup DZ (Label)", sideLabDesc: "Official platform to get the Innovative Project Label.",
+                sideNesda: "NESDA Agency", sideNesdaDesc: "National Agency for Entrepreneurship Support.",
+                sideAsf: "Algerian Startup Fund", sideAsfDesc: "State investment fund for startups.",
+                sideDom: "Domain & Hosting", sideDomDesc: "Book your domain and host your project.",
+                sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand officially in Algeria."
             },
             fr: {
-                title: "Lancez Votre Projet", sub: "Entrez les détails pour une analyse stratégique approfondie et découvrez vos avantages concurrentiels cachés.",
-                name: "Nom du Projet", phName: "ex: NexusTech", field: "Marché / Secteur", phField: "ex: IA dans la santé",
-                desc: "Problème et Solution Précis", phDesc: "Expliquez précisément le problème que vous résolvez et votre cible...",
-                btnGen: "Démarrer l'Analyse Stratégique", loading: "Analyse de l'environnement... construction de la feuille de route... exposition des failles concurrentielles...",
-                reportTitle: "Feuille de Route pour Dominer le Marché", pdf: "Exporter le Rapport PDF", ppt: "Exporter la Présentation",
-                chatTitle: "Consultant Stratégique", chatWelcome: "Je suis là pour démanteler les obstacles et concevoir des stratégies de croissance redoutables. Posez votre question.", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
-                sideTitle: "L'Étape Suivante", sideDom: "Domaine et Hébergement", sideDomDesc: "Pour réserver votre nom de domaine, nous recommandons ces plateformes mondiales.",
-                sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
-                sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
-                sideLab: "Label Startup DZ", sideLabDesc: "La plateforme officielle pour obtenir le label de projet innovant et ses avantages.",
-                sideIp: "INAPI (Propriété Intellectuelle)", sideIpDesc: "Protégez votre nom de marque et votre idée en l'enregistrant officiellement.",
-                sideNesda: "Agence NESDA", sideNesdaDesc: "Agence Nationale d'Appui et de Développement de l'Entrepreneuriat pour les micro-projets.",
-                sideAsf: "Algerian Startup Fund (ASF)", sideAsfDesc: "Le fonds d'investissement de l'État dédié au financement des startups labellisées."
+                title: "Lancez Votre Projet", sub: "Étude de faisabilité intelligente incluant le marché algérien, analyse financière et plans d'exécution.",
+                name: "Nom du Projet", phName: "ex: Plateforme EdTech", field: "Secteur", phField: "ex: Technologies de l'éducation",
+                desc: "Problème et Solution", phDesc: "Expliquez le problème, la solution et la cible...",
+                btnGen: "Lancer la Planification Globale", loading: "Analyse du marché... Création du BMC... Préparation financière en DZD...",
+                reportTitle: "Étude Stratégique Globale du Projet", pdf: "Exporter en PDF Pro", ppt: "Exporter en Présentation PPT",
+                chatTitle: "Assistant d'Investissement", chatWelcome: "Bonjour ! Demandez-moi des détails sur le financement ou le marché.", chatInput: "Votre question...", contact: "Contactez-nous", aiError: "Erreur: ",
+                sideTitle: "Étapes Suivantes", 
+                sideLab: "Label Startup DZ", sideLabDesc: "Plateforme officielle pour le label de projet innovant.",
+                sideNesda: "Agence NESDA", sideNesdaDesc: "Agence Nationale d'Appui à l'Entrepreneuriat.",
+                sideAsf: "Fonds de Startups (ASF)", sideAsfDesc: "Fonds d'investissement de l'État pour les startups.",
+                sideDom: "Domaine et Hébergement", sideDomDesc: "Réservez votre domaine et hébergez votre site.",
+                sideIp: "INAPI (Propriété Intellectuelle)", sideIpDesc: "Protégez votre marque officiellement en Algérie."
             }
         };
 
@@ -471,148 +375,111 @@
 
         function toggleDropdown(id, event) { 
             event.stopPropagation();
-            document.querySelectorAll('.custom-dropdown').forEach(el => {
-                if(el.id !== id) el.classList.remove('open');
-            });
+            document.querySelectorAll('.custom-dropdown').forEach(el => { if(el.id !== id) el.classList.remove('open'); });
             document.getElementById(id).classList.toggle('open'); 
         }
 
-        document.addEventListener('click', function(e) { 
-            document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
-        });
-        
+        document.addEventListener('click', () => { document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open')); });
         function openSidebar() { document.getElementById('mainSidebar').classList.add('active'); document.getElementById('sidebarOverlay').classList.add('active'); }
         function closeSidebar() { document.getElementById('mainSidebar').classList.remove('active'); document.getElementById('sidebarOverlay').classList.remove('active'); }
 
         function selectLanguage(code, flag, name, event) {
-            event.stopPropagation();
-            currentLang = code;
-            
+            event.stopPropagation(); currentLang = code;
             document.querySelectorAll('.selected-flag').forEach(el => el.innerText = flag); 
             document.querySelectorAll('.selected-lang').forEach(el => el.innerText = name);
             document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
-
             const ui = dict[currentLang];
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr'; document.documentElement.lang = currentLang;
             
-            document.getElementById('lbl-title').innerText = ui.title; document.getElementById('lbl-subtitle').innerText = ui.sub;
-            document.getElementById('lbl-name').innerText = ui.name; document.getElementById('proj-name').placeholder = ui.phName;
-            document.getElementById('lbl-field').innerText = ui.field; document.getElementById('proj-field').placeholder = ui.phField;
-            document.getElementById('lbl-desc').innerText = ui.desc; document.getElementById('proj-desc').placeholder = ui.phDesc;
-            document.getElementById('lbl-btn').innerText = ui.btnGen; document.getElementById('lbl-loading').innerText = ui.loading;
-            document.getElementById('res-title').innerText = ui.reportTitle; 
-            document.getElementById('btn-pdf').innerText = ui.pdf; document.getElementById('btn-ppt').innerText = ui.ppt;
-            document.getElementById('chat-title').innerHTML = `<i class="fa-solid fa-headset"></i> ${ui.chatTitle}`; document.getElementById('chat-welcome').innerText = ui.chatWelcome;
-            document.getElementById('chat-input-field').placeholder = ui.chatInput; document.getElementById('contact-title').innerText = ui.contact;
+            ['title','subtitle','name','field','desc','btnGen','loading','reportTitle','pdf','ppt','contact','sideTitle','sideLabTitle','sideLabDesc','sideNesdaTitle','sideNesdaDesc','sideAsfTitle','sideAsfDesc','sideDomTitle','sideDomDesc','sideIpTitle','sideIpDesc'].forEach(key => {
+                const elMap = {
+                    title:'lbl-title', subtitle:'lbl-subtitle', name:'lbl-name', field:'lbl-field', desc:'lbl-desc', btnGen:'lbl-btn', loading:'lbl-loading', reportTitle:'res-title', pdf:'btn-pdf', ppt:'btn-ppt', contact:'contact-title',
+                    sideTitle:'side-title', sideLabTitle:'side-lab-title', sideLabDesc:'side-lab-desc', sideNesdaTitle:'side-nesda-title', sideNesdaDesc:'side-nesda-desc', sideAsfTitle:'side-asf-title', sideAsfDesc:'side-asf-desc', sideDomTitle:'side-dom-title', sideDomDesc:'side-dom-desc', sideIpTitle:'side-ip-title', sideIpDesc:'side-ip-desc'
+                };
+                if(ui[key] && document.getElementById(elMap[key])) {
+                    if(key==='sideTitle') document.getElementById(elMap[key]).innerHTML = `<i class="fa-solid fa-rocket"></i> ${ui[key]}`;
+                    else document.getElementById(elMap[key]).innerText = ui[key];
+                }
+            });
             
-            document.getElementById('side-title').innerHTML = `<i class="fa-solid fa-rocket"></i> ${ui.sideTitle}`;
-            
-            // تحديث نصوص القائمة الجانبية (بما فيها NESDA و ASF)
-            document.getElementById('side-nesda-title').innerText = ui.sideNesda; document.getElementById('side-nesda-desc').innerText = ui.sideNesdaDesc;
-            document.getElementById('side-asf-title').innerText = ui.sideAsf; document.getElementById('side-asf-desc').innerText = ui.sideAsfDesc;
-            document.getElementById('side-dom-title').innerText = ui.sideDom; document.getElementById('side-dom-desc').innerText = ui.sideDomDesc;
-            document.getElementById('side-dev-title').innerText = ui.sideDev; document.getElementById('side-dev-desc').innerText = ui.sideDevDesc;
-            document.getElementById('side-inc-title').innerText = ui.sideInc; document.getElementById('side-inc-desc').innerText = ui.sideIncDesc;
-            document.getElementById('side-lab-title').innerText = ui.sideLab; document.getElementById('side-lab-desc').innerText = ui.sideLabDesc;
-            document.getElementById('side-ip-title').innerText = ui.sideIp; document.getElementById('side-ip-desc').innerText = ui.sideIpDesc;
-
-            document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
+            document.getElementById('proj-name').placeholder = ui.phName; document.getElementById('proj-field').placeholder = ui.phField; document.getElementById('proj-desc').placeholder = ui.phDesc;
+            document.getElementById('chat-title').innerHTML = `<i class="fa-solid fa-headset"></i> ${ui.chatTitle}`; document.getElementById('chat-welcome').innerText = ui.chatWelcome; document.getElementById('chat-input-field').placeholder = ui.chatInput;
         }
 
         async function fetchAI(prompt) {
             try {
                 const response = await fetch(GROQ_URL, {
-                    method: "POST",
-                    headers: { 
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${GROQ_API_KEY}`
-                    },
-                    body: JSON.stringify({
-                        // تم التحديث إلى النموذج الجديد والأكثر تطوراً من Groq
-                        model: "llama-3.3-70b-versatile", 
-                        messages: [{ role: "user", content: prompt }]
-                    })
+                    method: "POST", headers: { "Content-Type": "application/json", "Authorization": `Bearer ${GROQ_API_KEY}` },
+                    body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages: [{ role: "user", content: prompt }] })
                 });
-
                 const data = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(data.error?.message || "حدث خطأ غير معروف في السيرفر.");
-                }
-
-                if (data.choices && data.choices.length > 0 && data.choices[0].message) {
-                    return data.choices[0].message.content;
-                } else {
-                    throw new Error("لم يتم الحصول على نتيجة من الذكاء الاصطناعي.");
-                }
-            } catch (error) {
-                console.error("API Error:", error);
-                throw error;
-            }
+                if (!response.ok) throw new Error(data.error?.message || "Server Error");
+                return data.choices[0].message.content;
+            } catch (error) { throw error; }
         }
 
         async function generateProject() {
-            const name = document.getElementById('proj-name').value;
-            const field = document.getElementById('proj-field').value;
-            const desc = document.getElementById('proj-desc').value;
+            const name = document.getElementById('proj-name').value; const field = document.getElementById('proj-field').value; const desc = document.getElementById('proj-desc').value;
             if(!name || !field || !desc) { alert(currentLang === 'ar' ? "يرجى ملء جميع الحقول." : "Please fill all fields."); return; }
-
             document.getElementById('form-section').style.display = 'none'; document.getElementById('loader').style.display = 'block';
 
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
 
+            // برومبت معدل تماماً لتلبية شروطك (الجزائر، دج، تفصيل، SWOT، BMC)
             const prompt = `
-            You are an elite Venture Capitalist (VC), a ruthless Silicon Valley Growth Hacker, and a Tier-1 Strategist. 
-            You despise generic, beginner-level advice like "use social media", "improve customer service", or "run ads". If you provide cliché marketing fluff, you fail your mission. 
-            Your goal is to tear down the user's idea and rebuild it into an invincible, hyper-profitable, monopoly-seeking machine. Give actionable, contrarian, and brutal truths.
-
-            Project Data:
-            - Name: "${name}"
-            - Industry/Market: "${field}"
-            - Problem & Solution: "${desc}"
-
-            STRICT MANDATES:
-            1. (Contrarian Moat): What is the "unfair advantage" that competitors can't copy? Think network effects, proprietary data, or psychological lock-ins.
-            2. (Elite Monetization): Do NOT suggest standard SaaS or basic subscriptions. Give me a sneaky, highly-profitable pricing engineering model.
-            3. (Guerrilla Growth): I want ONE hyper-specific, zero-budget, ruthless tactic to acquire the first 100 paying customers. Do NOT mention Facebook ads, SEO, or influencers. Tell me exactly whose audience to hijack and how.
-            4. (The Pre-Mortem): Exactly why will this business be dead in 6 months? Give me the brutal operational or market reality, and the exact antidote.
-
-            CRITICAL FORMATTING INSTRUCTIONS:
-            - Output the ENTIRE response STRICTLY in ${langStr}.
-            - Wrap the response ONLY in the exact HTML tags below, starting with <analysis> and ending with </analysis>.
-            - DO NOT output markdown blocks like \`\`\`html.
+            You are a master Business Consultant and Financial Analyst specializing in the Algerian market.
+            I need a comprehensive, highly detailed feasibility and strategic plan for this project.
+            Project Name: "${name}" | Industry: "${field}" | Concept: "${desc}"
+            
+            Requirements:
+            1. Provide deep, specific details, not generic advice.
+            2. For competitors, YOU MUST mention real (or highly plausible) competitor names operating in ALGERIA (e.g., Yassir, Ouedkniss, Jumia DZ, local agencies, etc.).
+            3. The financial plan MUST use Algerian Dinar (DZD / دج) and provide realistic estimations.
+            4. Output strictly in ${langStr}. Format using the exact HTML structure below. DO NOT use markdown like \`\`\`html.
 
             <analysis>
-            <h3>[Translate to ${langStr}: 1. التشخيص القاسي للواقع (The Brutal Reality)]</h3>
-            <p>[Provide a high-level, no-nonsense diagnostic of the actual market landscape...]</p>
+            <h3>[Translate: 1. إيجابيات الفكرة ونقاط القوة]</h3>
+            <ul><li><strong>[Point 1]:</strong> [Detailed explanation]</li><li><strong>[Point 2]:</strong> [Detailed explanation]</li></ul>
 
-            <h3>[Translate to ${langStr}: 2. الخندق التنافسي والحقيقة المعاكسة (The Contrarian Moat)]</h3>
-            <ul>
-                <li><strong>[The Industry Lie]:</strong> [What everyone else is doing wrong]</li>
-                <li><strong>[The Unfair Advantage]:</strong> [How to build an impenetrable defense]</li>
-            </ul>
+            <h3>[Translate: 2. سلبيات الفكرة والتحديات التشغيلية]</h3>
+            <ul><li><strong>[Point 1]:</strong> [Detailed explanation of a hard challenge in Algeria]</li><li><strong>[Point 2]:</strong> [Detailed explanation]</li></ul>
 
-            <h3>[Translate to ${langStr}: 3. تفكيك المنافسين واستغلال نقاط الضعف (Competitor Takedown)]</h3>
+            <h3>[Translate: 3. التحليل الرباعي (SWOT Analysis)]</h3>
             <table class="table-responsive">
-                <tr><th>[Competitor Archetype/Name]</th><th>[Their Perceived Strength]</th><th>[Their Fatal Flaw]</th><th>[Our Sniper Attack]</th></tr>
-                <tr><td>[Specific Competitor 1]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
-                <tr><td>[Specific Competitor 2]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
+                <tr><th>[Strengths / نقاط القوة]</th><th>[Weaknesses / نقاط الضعف]</th></tr>
+                <tr><td>[List...]</td><td>[List...]</td></tr>
+                <tr><th>[Opportunities / الفرص]</th><th>[Threats / التهديدات]</th></tr>
+                <tr><td>[List...]</td><td>[List...]</td></tr>
             </table>
 
-            <h3>[Translate to ${langStr}: 4. هندسة الأرباح والتسعير الخفي (Elite Monetization)]</h3>
-            <p>[Explain a highly psychological, unconventional way to charge money...]</p>
+            <h3>[Translate: 4. نموذج العمل التجاري (Business Model Canvas - BMC)]</h3>
+            <table class="table-responsive">
+                <tr><th>[شرائح العملاء]</th><th>[القيمة المقدمة]</th><th>[القنوات]</th></tr>
+                <tr><td>[Details]</td><td>[Details]</td><td>[Details]</td></tr>
+                <tr><th>[العلاقات مع العملاء]</th><th>[مصادر الإيرادات]</th><th>[الأنشطة الرئيسية]</th></tr>
+                <tr><td>[Details]</td><td>[Details]</td><td>[Details]</td></tr>
+                <tr><th>[الموارد الرئيسية]</th><th>[الشركاء الرئيسيون]</th><th>[هيكل التكاليف]</th></tr>
+                <tr><td>[Details]</td><td>[Details]</td><td>[Details]</td></tr>
+            </table>
 
-            <h3>[Translate to ${langStr}: 5. اختراق النمو السري لـ 100 عميل (Guerrilla Acquisition Hack)]</h3>
-            <ul>
-                <li><strong>[The Hijack Strategy]:</strong> [A sneaky, zero-budget tactic to steal or acquire 100 users]</li>
-                <li><strong>[Execution Steps]:</strong> [Step 1, Step 2, Step 3]</li>
-            </ul>
+            <h3>[Translate: 5. دراسة المنافسين في السوق الجزائري]</h3>
+            <table class="table-responsive">
+                <tr><th>[اسم المنافس في الجزائر]</th><th>[نقاط قوته]</th><th>[نقطة ضعفه وكيف نتفوق عليه]</th></tr>
+                <tr><td>[Real Algerian Competitor 1]</td><td>[Details]</td><td>[Details]</td></tr>
+                <tr><td>[Real Algerian Competitor 2]</td><td>[Details]</td><td>[Details]</td></tr>
+            </table>
 
-            <h3>[Translate to ${langStr}: 6. التشريح الاستباقي للفشل (The Pre-Mortem)]</h3>
-            <ul>
-                <li><strong>[Why this will die in 6 months]:</strong> [The brutal truth]</li>
-                <li><strong>[The Antidote]:</strong> [How to survive it]</li>
-            </ul>
+            <h3>[Translate: 6. التوصيات الاستراتيجية للتنفيذ]</h3>
+            <ul><li><strong>[Tactic 1]:</strong> [Highly specific actionable advice]</li></ul>
+
+            <h3>[Translate: 7. النموذج المالي والخطة المالية (بالدينار الجزائري - دج)]</h3>
+            <table class="table-responsive">
+                <tr><th>[البند]</th><th>[التكلفة التقديرية (دج)]</th><th>[ملاحظات]</th></tr>
+                <tr><td>[تطوير المنتج / التأسيس]</td><td>[X,XXX,XXX دج]</td><td>[Details]</td></tr>
+                <tr><td>[ميزانية التسويق والإطلاق]</td><td>[X,XXX,XXX دج]</td><td>[Details]</td></tr>
+                <tr><td>[التكاليف التشغيلية (أول 6 أشهر)]</td><td>[X,XXX,XXX دج]</td><td>[Details]</td></tr>
+                <tr><td>[توقعات الإيرادات (السنة الأولى)]</td><td>[X,XXX,XXX دج]</td><td>[Details]</td></tr>
+            </table>
             </analysis>
             `;
 
@@ -620,68 +487,98 @@
                 const textResp = await fetchAI(prompt);
                 let cleanText = textResp.replace(/```html/gi, '').replace(/```/gi, '');
                 const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
-                let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>Error parsing the advanced analysis. Please try again.</p>";
+                let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>حدث خطأ في قراءة التحليل.</p>";
                 
                 analysisHtml = analysisHtml.replace(/<table/gi, '<div class="table-responsive"><table').replace(/<\/table>/gi, '</table></div>');
-
                 document.getElementById('ai-content').innerHTML = analysisHtml;
                 
-                const icons = ['fa-bolt', 'fa-shield-halved', 'fa-crosshairs', 'fa-sack-dollar', 'fa-user-ninja', 'fa-skull'];
+                // إضافة أيقونات للعناوين
+                const icons = ['fa-thumbs-up', 'fa-triangle-exclamation', 'fa-border-all', 'fa-table', 'fa-user-secret', 'fa-lightbulb', 'fa-money-bill-wave'];
                 document.getElementById('ai-content').querySelectorAll('h3').forEach((h, index) => {
-                    const iconClass = icons[index] || 'fa-radar';
-                    h.innerHTML = `<i class="fa-solid ${iconClass}"></i> ` + h.innerHTML;
+                    const iconClass = icons[index] || 'fa-chart-pie'; h.innerHTML = `<i class="fa-solid ${iconClass}"></i> ` + h.innerHTML;
                 });
 
-                document.getElementById('loader').style.display = 'none'; 
-                document.getElementById('results-container').style.display = 'block';
+                document.getElementById('loader').style.display = 'none'; document.getElementById('results-container').style.display = 'block';
             } catch (err) { 
                 alert(dict[currentLang].aiError + err.message); 
-                document.getElementById('loader').style.display = 'none'; 
-                document.getElementById('form-section').style.display = 'block'; 
+                document.getElementById('loader').style.display = 'none'; document.getElementById('form-section').style.display = 'block'; 
             }
         }
 
+        // دالة التصدير الاحترافي PDF (إضافة class مؤقت يغير التصميم لألوان رسمية للطباعة)
         function downloadPDF() {
             const element = document.getElementById('printable-area');
-            const opt = { margin: 15, filename: `Launch_Strategy_${document.getElementById('proj-name').value}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
-            const tables = element.querySelectorAll('table'); tables.forEach(t => t.style.border = "1px solid #555");
-            html2pdf().set(opt).from(element).save().then(()=>{ tables.forEach(t => t.style.border = "none"); });
+            document.body.classList.add('pdf-mode'); // تفعيل وضع الطباعة الاحترافي
+            
+            const opt = { margin: 10, filename: `Business_Plan_${document.getElementById('proj-name').value}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
+            
+            html2pdf().set(opt).from(element).save().then(()=>{ 
+                document.body.classList.remove('pdf-mode'); // إزالة الوضع بعد التصدير
+            });
         }
 
+        // دالة تصدير PowerPoint متقدمة (ترسم أشكال وتقرأ الجداول)
         async function downloadPPT() {
             let pptx = new PptxGenJS();
             pptx.layout = 'LAYOUT_16x9';
             
+            // شريحة الغلاف بشكل احترافي
             let slide = pptx.addSlide();
-            slide.background = { color: "030305" };
-            slide.addText(`Roadmap to Market Domination`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
-            slide.addText(`${document.getElementById('proj-name').value}`, { x:0.5, y:2.5, w:'90%', h:2, fontSize:44, color:'ffffff', bold:true, align:'center', fontFace: 'Arial' });
+            slide.background = { color: "1e293b" };
+            slide.addShape(pptx.ShapeType.rect, { x: 0, y: 0, w: "100%", h: "20%", fill: { color: "06b6d4" } });
+            slide.addText(`دراسة الجدوى وخطة العمل`, { x: 0, y: 0.5, w: "100%", h: 1, fontSize: 32, color: "ffffff", bold: true, align: "center" });
+            slide.addText(`${document.getElementById('proj-name').value}`, { x: 0, y: 3, w: "100%", h: 1.5, fontSize: 48, color: "8b5cf6", bold: true, align: "center" });
+            slide.addText(`Market Analysis & Strategic Plan`, { x: 0, y: 4.5, w: "100%", h: 1, fontSize: 20, color: "cbd5e1", align: "center" });
 
             const contentDiv = document.getElementById('ai-content');
             const sections = contentDiv.querySelectorAll('h3');
             
             sections.forEach(sec => {
                 let s = pptx.addSlide();
-                s.background = { color: "0a0a0f" };
+                s.background = { color: "f8fafc" };
                 
+                // إضافة شريط عنوان (شكل هندسي)
+                s.addShape(pptx.ShapeType.rect, { x: 0, y: 0, w: "100%", h: 1, fill: { color: "1e3a8a" } });
                 let titleText = sec.innerText.trim();
-                s.addText(titleText, { x:0.5, y:0.5, w:'90%', h:1, fontSize:22, color:'8b5cf6', bold:true, align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial' });
+                s.addText(titleText, { x: 0.5, y: 0.2, w: '90%', h: 0.6, fontSize: 24, color: 'ffffff', bold: true, align: document.documentElement.dir==='rtl'?'right':'left' });
 
                 let nextElement = sec.nextElementSibling;
-                let slideContent = "";
                 
-                while(nextElement && nextElement.tagName !== 'H3') {
-                    if(nextElement.tagName === 'DIV' && nextElement.classList.contains('table-responsive')) { slideContent += "[بيانات معقدة - يرجى الرجوع لملف PDF للتفاصيل الكاملة للجدول]\n"; }
-                    else { slideContent += nextElement.innerText + "\n\n"; }
-                    nextElement = nextElement.nextElementSibling;
-                }
-
-                if(slideContent.trim() !== "") {
-                    s.addText(slideContent.substring(0, 1000), { x:0.5, y:1.5, w:'90%', h:'75%', fontSize:14, color:'e2e8f0', align: document.documentElement.dir==='rtl' ? 'right':'left', fontFace: 'Arial', valign: 'top' });
+                // إذا كان المحتوى جدولاً، قم برسمه كجدول حقيقي في الباوربوينت
+                if(nextElement && nextElement.tagName === 'DIV' && nextElement.classList.contains('table-responsive')) {
+                    let htmlTable = nextElement.querySelector('table');
+                    if(htmlTable) {
+                        let pptTable = [];
+                        let rows = htmlTable.querySelectorAll('tr');
+                        rows.forEach((row, rIndex) => {
+                            let pptRow = [];
+                            let cells = row.querySelectorAll('th, td');
+                            cells.forEach(cell => {
+                                let isHeader = cell.tagName === 'TH' || rIndex === 0;
+                                pptRow.push({ 
+                                    text: cell.innerText, 
+                                    options: { fill: isHeader ? "2563eb" : "ffffff", color: isHeader ? "ffffff" : "000000", fontSize: 14, align: "center", border: { pt: 1, color: "cbd5e1" } }
+                                });
+                            });
+                            pptTable.push(pptRow);
+                        });
+                        s.addTable(pptTable, { x: 0.5, y: 1.5, w: 9, autoPage: true });
+                    }
+                } 
+                // إذا كان نصاً أو قائمة
+                else {
+                    let slideContent = "";
+                    while(nextElement && nextElement.tagName !== 'H3') {
+                        slideContent += nextElement.innerText + "\n\n";
+                        nextElement = nextElement.nextElementSibling;
+                    }
+                    if(slideContent.trim() !== "") {
+                        s.addText(slideContent.substring(0, 1500), { x: 0.5, y: 1.5, w: 9, h: 5.5, fontSize: 16, color: '334155', align: document.documentElement.dir==='rtl'?'right':'left', valign: 'top' });
+                    }
                 }
             });
 
-            pptx.writeFile({ fileName: `Strategy_${document.getElementById('proj-name').value}.pptx` });
+            pptx.writeFile({ fileName: `Business_Plan_${document.getElementById('proj-name').value}.pptx` });
         }
 
         function toggleChat() { document.getElementById('chat-window').style.display = document.getElementById('chat-window').style.display === 'flex' ? 'none' : 'flex'; }
@@ -690,14 +587,11 @@
         async function sendChatMessage() {
             const input = document.getElementById('chat-input-field'); const msg = input.value.trim(); if(!msg) return;
             const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
-            const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
             try {
-                const reply = await fetchAI(`You are an elite, no-nonsense VC and Growth Hacker. Do not give generic advice. Answer directly, ruthlessly, and with highly tactical value in strictly ${langStr}. User asks: "${msg}"`);
-                const cleanReply = reply.replace(/\*\*/g, '').replace(/\*/g, '<br>• ');
-                chatBox.innerHTML += `<div class="msg ai">${cleanReply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
+                const reply = await fetchAI(`You are an Algerian business consultant. Answer practically and professionally in ${currentLang === 'ar' ? 'Arabic' : 'English'}. User: "${msg}"`);
+                chatBox.innerHTML += `<div class="msg ai">${reply.replace(/\*\*/g, '').replace(/\*/g, '<br>• ')}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
             } catch (err) { 
-                chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56; border-right:3px solid #ff5f56; border-left:none;"><i class="fa-solid fa-circle-exclamation"></i> خطأ: ${err.message}</div>`; 
-                chatBox.scrollTop = chatBox.scrollHeight;
+                chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56;">خطأ: ${err.message}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
             }
         }
     </script>
