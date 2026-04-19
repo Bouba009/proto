@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Protoptimal | Premium AI Project Builder</title>
+    <title>Protoptimal | Launch Your Project</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -17,7 +17,6 @@
             --bg-deep: #020617; 
             --accent-1: #8b5cf6; 
             --accent-2: #06b6d4;
-            /* تم تقليل الشفافية لزيادة وضوح الخلفية والمجرة */
             --glass-bg: rgba(15, 23, 42, 0.15); 
             --glass-border: rgba(255, 255, 255, 0.05);
             --text-main: #f8fafc; 
@@ -85,7 +84,6 @@
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
         
-        /* تعديل الهيدر ليصبح اللوجو في المنتصف */
         header { position: relative; display: flex; justify-content: flex-end; align-items: center; margin-bottom: 50px; min-height: 50px; }
         [dir="ltr"] header { justify-content: flex-end; }
         
@@ -95,7 +93,6 @@
         .menu-btn { font-size: 22px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--glass-border); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
         .menu-btn:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); border-color: var(--accent-1); }
 
-        /* ستايل قائمة اللغات */
         .custom-dropdown { position: relative; user-select: none; z-index: 100; margin-bottom: 25px; width: fit-content;}
         .dropdown-selected { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; border-radius: 50px; padding: 10px 18px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: all 0.3s; }
         .dropdown-selected:hover { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
@@ -107,10 +104,10 @@
         .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600; font-size: 14px; }
         .dropdown-option:hover { background: rgba(139, 92, 246, 0.3); color: var(--accent-2); }
 
-        /* ================= نافذة الإدخال الزجاجية (شفافة أكثر) ================= */
+        /* ================= نافذة الإدخال الزجاجية ================= */
         .glass-card { 
             background: var(--glass-bg); 
-            backdrop-filter: blur(3px); /* تقليل الغشاوة لرؤية النجوم */
+            backdrop-filter: blur(3px); 
             -webkit-backdrop-filter: blur(3px);
             border: 1px solid var(--glass-border); 
             border-radius: 24px; 
@@ -129,7 +126,7 @@
         
         .input-group input, .input-group textarea { 
             width: 100%; padding: 16px 50px 16px 20px; 
-            background: rgba(0,0,0,0.2); /* شفافة أكثر */
+            background: rgba(0,0,0,0.2); 
             border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; 
         }
@@ -175,7 +172,7 @@
         .btn-outline { padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn-outline:hover { background: rgba(139, 92, 246, 0.3); border-color: var(--accent-2); box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: translateY(-2px);}
 
-        /* ================= القائمة الجانبية (شفافة) ================= */
+        /* ================= القائمة الجانبية ================= */
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
         
@@ -225,7 +222,7 @@
         .contact-info a i { font-size: 18px; color: var(--accent-2); }
         .contact-info a .fa-whatsapp { color: #25D366; }
 
-        /* ================= التجاوب مع شاشات الهاتف ================= */
+        /* ================= التجاوب ================= */
         @media (max-width: 768px) {
             .container { padding: 20px 15px; }
             header { margin-bottom: 30px; }
@@ -233,11 +230,9 @@
             .glass-card { padding: 25px 15px; border-radius: 20px;}
             .form-header h1 { font-size: 26px; }
             .action-grid { grid-template-columns: 1fr; }
-            
             .sidebar { width: 85vw; padding: 20px; }
             [dir="rtl"] .sidebar { right: -85vw; }
             [dir="ltr"] .sidebar { left: -85vw; }
-            
             .chat-widget { width: 90vw; height: 65vh; bottom: 90px; right: 5vw; left: 5vw; }
             [dir="ltr"] .chat-widget { left: 5vw; }
             .chatbot-btn { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 22px; }
@@ -247,7 +242,6 @@
 </head>
 <body>
 
-    <!-- الخلفية الفضائية والشهب تنطلق من اللوجو -->
     <div class="galaxy-wrapper">
         <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
         <div class="stars-layer1"></div><div class="stars-layer2"></div>
@@ -262,7 +256,6 @@
     <div class="main-content-wrapper">
         <div class="top-dev-bar">by developer: <span>krelouf Aboubakr</span></div>
 
-        <!-- القائمة الجانبية -->
         <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
         <div class="sidebar" id="mainSidebar">
             <div class="sidebar-header">
@@ -270,7 +263,6 @@
                 <i class="fa-solid fa-times" onclick="closeSidebar()"></i>
             </div>
             
-            <!-- اختيار اللغة في أعلى القائمة الجانبية -->
             <div class="custom-dropdown" id="langDropdownSidebar" onclick="toggleDropdown('langDropdownSidebar', event)">
                 <div class="dropdown-selected">
                     <span class="selected-flag">🇸🇦</span> <span class="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
@@ -320,9 +312,7 @@
 
         <div class="container">
             <header>
-                <!-- اللوجو في منتصف الهيدر -->
                 <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
-                
                 <div class="header-actions">
                     <div class="menu-btn" onclick="openSidebar()">
                         <i class="fa-solid fa-bars"></i>
@@ -332,8 +322,8 @@
 
             <div class="glass-card" id="form-section">
                 <div class="form-header">
-                    <h1 id="lbl-title">استخبارات السوق العميقة لمشروعك</h1>
-                    <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم (Market Intelligence) لاكتشاف الفرص التنافسية الخفية.</p>
+                    <h1 id="lbl-title">أطلق مشروعك</h1>
+                    <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم لاكتشاف الفرص التنافسية الخفية وهندسة اختراق السوق.</p>
                 </div>
 
                 <div class="input-group">
@@ -359,12 +349,12 @@
 
             <div class="loading-state" id="loader">
                 <div class="orb-loader"><i class="fa-solid fa-microchip"></i></div>
-                <h3 id="lbl-loading">جاري تحليل بيانات السوق وربط الخيوط... يتم الآن فك شفرة المنافسين واستخراج استراتيجية المحيط الأزرق...</h3>
+                <h3 id="lbl-loading">جاري تحليل بيئة العمل... بناء خريطة الاختراق... كشف الثغرات التنافسية وهندسة الأرباح...</h3>
             </div>
 
             <div id="results-container" class="glass-card">
                 <div id="printable-area">
-                    <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">تقرير استخبارات السوق والتحليل الاستراتيجي</h2>
+                    <h2 id="res-title" style="text-align: center; margin-bottom: 30px; font-weight: 900; font-size: 28px; background: linear-gradient(90deg, var(--accent-1), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">خريطة الطريق للسيطرة على السوق</h2>
                     <div id="ai-content"></div> 
                 </div>
                 
@@ -391,7 +381,6 @@
         </div>
 
         <footer class="glass-footer">
-            <!-- اختيار اللغة في أسفل الفوتر -->
             <div class="custom-dropdown" id="langDropdownFooter" onclick="toggleDropdown('langDropdownFooter', event)">
                 <div class="dropdown-selected">
                     <span class="selected-flag">🇸🇦</span> <span class="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
@@ -413,18 +402,18 @@
     </div> 
 
     <script>
-        // إعدادات Groq API الجديدة
-        const GROQ_API_KEY = "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"; 
+        // إعدادات Groq API الجديدة المطلوبة
+        const GROQ_API_KEY = "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"; 
         const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
         const dict = {
             ar: {
-                title: "استخبارات السوق العميقة لمشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم (Market Intelligence) لاكتشاف الفرص التنافسية الخفية.",
+                title: "أطلق مشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم لاكتشاف الفرص التنافسية الخفية وهندسة اختراق السوق.",
                 name: "اسم المشروع / الفكرة", phName: "مثال: NexusTech", field: "مجال أو سوق المشروع", phField: "مثال: الذكاء الاصطناعي في الرعاية الصحية",
                 desc: "وصف دقيق للمشكلة والحل", phDesc: "اشرح بدقة المشكلة التي تحلها، ولمن موجه هذا المشروع...",
-                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري تحليل بيانات السوق وربط الخيوط... يتم الآن فك شفرة المنافسين واستخراج استراتيجية المحيط الأزرق...",
-                reportTitle: "تقرير استخبارات السوق والتحليل الاستراتيجي", pdf: "تصدير التقرير PDF", ppt: "تصدير عرض تقديمي",
-                chatTitle: "المستشار الاستراتيجي", chatWelcome: "أهلاً بك! أنا كبير محللي الاستراتيجيات. اسألني عن التسعير، المنافسين، أو استراتيجيات النمو.", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
+                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري تحليل بيئة العمل... بناء خريطة الاختراق... كشف الثغرات التنافسية وهندسة الأرباح...",
+                reportTitle: "خريطة الطريق للسيطرة على السوق", pdf: "تصدير التقرير PDF", ppt: "تصدير عرض تقديمي",
+                chatTitle: "المستشار الاستراتيجي", chatWelcome: "أنا هنا لتفكيك العوائق وتصميم استراتيجيات نمو قاسية. اسألني عن التسعير أو اختراق المنافسين.", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
                 sideTitle: "الخطوة القادمة", sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.",
                 sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
                 sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
@@ -432,12 +421,12 @@
                 sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI."
             },
             en: {
-                title: "Deep Market Intelligence", sub: "Enter your idea details for an advanced strategic analysis (Market Intelligence) to discover hidden competitive edges.",
+                title: "Launch Your Project", sub: "Enter your idea details for an advanced strategic analysis to discover hidden competitive edges and engineer market hacking.",
                 name: "Project Name", phName: "e.g., NexusTech", field: "Market / Industry", phField: "e.g., AI in Healthcare",
                 desc: "Precise Problem & Solution", phDesc: "Precisely explain the problem you're solving and your target audience...",
-                btnGen: "Start Deep Intelligence Analysis", loading: "Analyzing market data & connecting the dots... Decoding competitors and extracting Blue Ocean strategies...",
-                reportTitle: "Market Intelligence & Strategic Report", pdf: "Export PDF Report", ppt: "Export Presentation",
-                chatTitle: "Strategic Consultant", chatWelcome: "Welcome! I am the Chief Strategy Analyst. Ask me about pricing, competitors, or growth hacks.", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
+                btnGen: "Start Deep Intelligence Analysis", loading: "Analyzing market environment... building hack roadmap... exposing competitive gaps and engineering profits...",
+                reportTitle: "Roadmap to Market Domination", pdf: "Export PDF Report", ppt: "Export Presentation",
+                chatTitle: "Strategic Consultant", chatWelcome: "I am here to dismantle barriers and design ruthless growth strategies. Ask me anything.", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
                 sideTitle: "The Next Step", sideDom: "Domain & Hosting", sideDomDesc: "To book your suggested domain, we recommend these reliable global platforms.",
                 sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
                 sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
@@ -445,12 +434,12 @@
                 sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially."
             },
             fr: {
-                title: "Intelligence Stratégique Avancée", sub: "Entrez les détails pour une analyse stratégique approfondie et découvrez vos avantages concurrentiels cachés.",
+                title: "Lancez Votre Projet", sub: "Entrez les détails pour une analyse stratégique approfondie et découvrez vos avantages concurrentiels cachés.",
                 name: "Nom du Projet", phName: "ex: NexusTech", field: "Marché / Secteur", phField: "ex: IA dans la santé",
                 desc: "Problème et Solution Précis", phDesc: "Expliquez précisément le problème que vous résolvez et votre cible...",
-                btnGen: "Démarrer l'Analyse Stratégique", loading: "Analyse des données et connexion des points... Décodage des concurrents et extraction de la stratégie Océan Bleu...",
-                reportTitle: "Rapport d'Intelligence Stratégique", pdf: "Exporter le Rapport PDF", ppt: "Exporter la Présentation",
-                chatTitle: "Consultant Stratégique", chatWelcome: "Bienvenue ! Je suis le Chef Analyste. Posez-moi des questions sur les prix, les concurrents ou la croissance.", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
+                btnGen: "Démarrer l'Analyse Stratégique", loading: "Analyse de l'environnement... construction de la feuille de route... exposition des failles concurrentielles...",
+                reportTitle: "Feuille de Route pour Dominer le Marché", pdf: "Exporter le Rapport PDF", ppt: "Exporter la Présentation",
+                chatTitle: "Consultant Stratégique", chatWelcome: "Je suis là pour démanteler les obstacles et concevoir des stratégies de croissance redoutables. Posez votre question.", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
                 sideTitle: "L'Étape Suivante", sideDom: "Domaine et Hébergement", sideDomDesc: "Pour réserver votre nom de domaine, nous recommandons ces plateformes mondiales.",
                 sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
                 sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
@@ -461,7 +450,6 @@
 
         let currentLang = 'ar';
 
-        // دوال القوائم المنسدلة للغات
         function toggleDropdown(id, event) { 
             event.stopPropagation();
             document.querySelectorAll('.custom-dropdown').forEach(el => {
@@ -481,7 +469,6 @@
             event.stopPropagation();
             currentLang = code;
             
-            // تحديث كلا القائمتين (في القائمة الجانبية والفوتر)
             document.querySelectorAll('.selected-flag').forEach(el => el.innerText = flag); 
             document.querySelectorAll('.selected-lang').forEach(el => el.innerText = name);
             document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
@@ -509,7 +496,6 @@
             document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
         }
 
-        // دالة الاتصال بـ Groq API بدلاً من Gemini
         async function fetchAI(prompt) {
             try {
                 const response = await fetch(GROQ_URL, {
@@ -519,7 +505,7 @@
                         "Authorization": `Bearer ${GROQ_API_KEY}`
                     },
                     body: JSON.stringify({
-                        model: "llama3-70b-8192", // نموذج لاما 3 عالي الأداء من Groq
+                        model: "llama3-70b-8192", 
                         messages: [{ role: "user", content: prompt }]
                     })
                 });
@@ -551,57 +537,58 @@
 
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
 
+            // برومبت قوي جداً وعنيف مخصص للـ VC والـ Growth Hackers
             const prompt = `
-            أنت الآن "كبير محللي الاستراتيجيات واستخبارات السوق" (Chief Strategy & Market Intelligence Analyst) في وكالة استشارات عالمية من الطراز الرفيع.
-            مهمتك هي تقديم تقرير استخباراتي عميق، شرس، ومبني على بيانات واقعية أو استنتاجات منطقية حادة حول هذا المشروع.
-            
-            بيانات المشروع:
-            - اسم المشروع: "${name}"
-            - القطاع/السوق: "${field}"
-            - المشكلة والحل: "${desc}"
+            You are an elite Venture Capitalist (VC), a ruthless Silicon Valley Growth Hacker, and a Tier-1 Strategist. 
+            You despise generic, beginner-level advice like "use social media", "improve customer service", or "run ads". If you provide cliché marketing fluff, you fail your mission. 
+            Your goal is to tear down the user's idea and rebuild it into an invincible, hyper-profitable, monopoly-seeking machine. Give actionable, contrarian, and brutal truths.
 
-            قواعد التحليل الصارمة (Strict Rules):
-            1. لا تعطني كلاماً تسويقياً فارغاً. أريد أرقاماً، نسباً مئوية متوقعة، وحقائق قاسية.
-            2. (التحليل النفسي العميق): استخرج الألم الخفي (Hidden Pain) للعميل.
-            3. (استخبارات المنافسين): اذكر أسماء منافسين حقيقيين، واكشف "نقطة ضعفهم القاتلة".
-            4. (استراتيجية المحيط الأزرق): أين توجد الأموال المخفية التي لا يراها أحد؟
-            5. (الاختراق الفيروسي): أعطني تكتيك مبتكر وقوي لجلب أول 1000 عميل مجاناً.
-            6. (الخطر القاتل): ما هو التهديد الحقيقي الذي سيفشل المشروع بسببه وكيف نتجنبه؟
+            Project Data:
+            - Name: "${name}"
+            - Industry/Market: "${field}"
+            - Problem & Solution: "${desc}"
+
+            STRICT MANDATES:
+            1. (Contrarian Moat): What is the "unfair advantage" that competitors can't copy? Think network effects, proprietary data, or psychological lock-ins.
+            2. (Elite Monetization): Do NOT suggest standard SaaS or basic subscriptions. Give me a sneaky, highly-profitable pricing engineering model.
+            3. (Guerrilla Growth): I want ONE hyper-specific, zero-budget, ruthless tactic to acquire the first 100 paying customers. Do NOT mention Facebook ads, SEO, or influencers. Tell me exactly whose audience to hijack and how.
+            4. (The Pre-Mortem): Exactly why will this business be dead in 6 months? Give me the brutal operational or market reality, and the exact antidote.
 
             CRITICAL FORMATTING INSTRUCTIONS:
-            - You MUST output the ENTIRE response STRICTLY in ${langStr}.
-            - You MUST wrap your response ONLY in the exact HTML tags below, starting with <analysis> and ending with </analysis>.
-            - Use <h3> for main sections, <h4> for sub-titles, <ul> for lists, and <table> for grids.
-            - DO NOT use markdown like \`\`\`html. Just raw HTML inside <analysis>.
+            - Output the ENTIRE response STRICTLY in ${langStr}.
+            - Wrap the response ONLY in the exact HTML tags below, starting with <analysis> and ending with </analysis>.
+            - DO NOT output markdown blocks like \`\`\`html.
 
             <analysis>
-            <h3>[Translate to ${langStr}: 1. التشخيص الاستراتيجي العميق]</h3>
-            <p>[Provide a ruthless, deep diagnostic...]</p>
+            <h3>[Translate to ${langStr}: 1. التشخيص القاسي للواقع (The Brutal Reality)]</h3>
+            <p>[Provide a high-level, no-nonsense diagnostic of the actual market landscape...]</p>
 
-            <h3>[Translate to ${langStr}: 2. التحليل السيكولوجي السري للعميل]</h3>
+            <h3>[Translate to ${langStr}: 2. الخندق التنافسي والحقيقة المعاكسة (The Contrarian Moat)]</h3>
             <ul>
-                <li><strong>[The Obvious Pain]:</strong> [Details]</li>
-                <li><strong>[The Hidden Psychological Trigger]:</strong> [Details]</li>
+                <li><strong>[The Industry Lie]:</strong> [What everyone else is doing wrong]</li>
+                <li><strong>[The Unfair Advantage]:</strong> [How to build an impenetrable defense]</li>
             </ul>
 
-            <h3>[Translate to ${langStr}: 3. تفكيك المنافسين (Competitive Takedown)]</h3>
+            <h3>[Translate to ${langStr}: 3. تفكيك المنافسين واستغلال نقاط الضعف (Competitor Takedown)]</h3>
             <table class="table-responsive">
-                <tr><th>[Competitor Profile]</th><th>[Their Core Strength]</th><th>[Their Fatal Weakness]</th><th>[Our Attack Strategy]</th></tr>
-                <tr><td>[Real Competitor 1]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
+                <tr><th>[Competitor Archetype/Name]</th><th>[Their Perceived Strength]</th><th>[Their Fatal Flaw]</th><th>[Our Sniper Attack]</th></tr>
+                <tr><td>[Specific Competitor 1]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
+                <tr><td>[Specific Competitor 2]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
             </table>
 
-            <h3>[Translate to ${langStr}: 4. استراتيجية "المحيط الأزرق"]</h3>
-            <p>[Explain exactly where the unexploited wealth is...]</p>
+            <h3>[Translate to ${langStr}: 4. هندسة الأرباح والتسعير الخفي (Elite Monetization)]</h3>
+            <p>[Explain a highly psychological, unconventional way to charge money...]</p>
 
-            <h3>[Translate to ${langStr}: 5. تكتيكات النمو والاختراق]</h3>
+            <h3>[Translate to ${langStr}: 5. اختراق النمو السري لـ 100 عميل (Guerrilla Acquisition Hack)]</h3>
             <ul>
-                <li><strong>[Tactic 1: The Zero-Budget Hack]:</strong> [Details]</li>
+                <li><strong>[The Hijack Strategy]:</strong> [A sneaky, zero-budget tactic to steal or acquire 100 users]</li>
+                <li><strong>[Execution Steps]:</strong> [Step 1, Step 2, Step 3]</li>
             </ul>
 
-            <h3>[Translate to ${langStr}: 6. خريطة النجاة]</h3>
+            <h3>[Translate to ${langStr}: 6. التشريح الاستباقي للفشل (The Pre-Mortem)]</h3>
             <ul>
-                <li><strong>[The #1 Project Killer]:</strong> [Details]</li>
-                <li><strong>[The Antidote]:</strong> [Details]</li>
+                <li><strong>[Why this will die in 6 months]:</strong> [The brutal truth]</li>
+                <li><strong>[The Antidote]:</strong> [How to survive it]</li>
             </ul>
             </analysis>
             `;
@@ -612,13 +599,11 @@
                 const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
                 let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>Error parsing the advanced analysis. Please try again.</p>";
                 
-                // تغليف الجداول بـ div لتصبح متجاوبة
                 analysisHtml = analysisHtml.replace(/<table/gi, '<div class="table-responsive"><table').replace(/<\/table>/gi, '</table></div>');
 
                 document.getElementById('ai-content').innerHTML = analysisHtml;
                 
-                // إضافة أيقونات ديناميكية
-                const icons = ['fa-bullseye', 'fa-brain', 'fa-skull-crossbones', 'fa-water', 'fa-rocket', 'fa-shield-virus'];
+                const icons = ['fa-bolt', 'fa-shield-halved', 'fa-crosshairs', 'fa-sack-dollar', 'fa-user-ninja', 'fa-skull'];
                 document.getElementById('ai-content').querySelectorAll('h3').forEach((h, index) => {
                     const iconClass = icons[index] || 'fa-radar';
                     h.innerHTML = `<i class="fa-solid ${iconClass}"></i> ` + h.innerHTML;
@@ -635,7 +620,7 @@
 
         function downloadPDF() {
             const element = document.getElementById('printable-area');
-            const opt = { margin: 15, filename: `Strategy_${document.getElementById('proj-name').value}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
+            const opt = { margin: 15, filename: `Launch_Strategy_${document.getElementById('proj-name').value}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
             const tables = element.querySelectorAll('table'); tables.forEach(t => t.style.border = "1px solid #555");
             html2pdf().set(opt).from(element).save().then(()=>{ tables.forEach(t => t.style.border = "none"); });
         }
@@ -646,7 +631,7 @@
             
             let slide = pptx.addSlide();
             slide.background = { color: "030305" };
-            slide.addText(`Market Intelligence & Strategy`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
+            slide.addText(`Roadmap to Market Domination`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
             slide.addText(`${document.getElementById('proj-name').value}`, { x:0.5, y:2.5, w:'90%', h:2, fontSize:44, color:'ffffff', bold:true, align:'center', fontFace: 'Arial' });
 
             const contentDiv = document.getElementById('ai-content');
@@ -684,8 +669,7 @@
             const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
             try {
-                // الاتصال بـ Groq بدلاً من جيميناي
-                const reply = await fetchAI(`You are an elite Market Strategy Consultant. Answer politely, directly, and provide deep strategic insights strictly in ${langStr}. User: "${msg}"`);
+                const reply = await fetchAI(`You are an elite, no-nonsense VC and Growth Hacker. Do not give generic advice. Answer directly, ruthlessly, and with highly tactical value in strictly ${langStr}. User asks: "${msg}"`);
                 const cleanReply = reply.replace(/\*\*/g, '').replace(/\*/g, '<br>• ');
                 chatBox.innerHTML += `<div class="msg ai">${cleanReply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
             } catch (err) { 
