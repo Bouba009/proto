@@ -17,9 +17,9 @@
             --bg-deep: #020617; 
             --accent-1: #8b5cf6; 
             --accent-2: #06b6d4;
-            /* لون زجاجي آمن يعمل على كل المتصفحات */
-            --glass-bg: rgba(15, 23, 42, 0.25); 
-            --glass-border: rgba(255, 255, 255, 0.1);
+            /* تم تقليل الشفافية لزيادة وضوح الخلفية والمجرة */
+            --glass-bg: rgba(15, 23, 42, 0.15); 
+            --glass-border: rgba(255, 255, 255, 0.05);
             --text-main: #f8fafc; 
             --text-muted: #94a3b8;
             --font-ar: 'Tajawal', sans-serif; 
@@ -37,12 +37,12 @@
         }
         [dir="ltr"] body, [dir="ltr"] input, [dir="ltr"] textarea, [dir="ltr"] button { font-family: var(--font-en); }
 
-        /* ================= الخلفية الفضائية (تم إصلاح الطبقات Z-index) ================= */
+        /* ================= الخلفية الفضائية ================= */
         .galaxy-wrapper { 
             position: fixed; 
             top: 0; left: 0; 
             width: 100vw; height: 100vh; 
-            z-index: 0; /* تم التعديل لضمان الظهور */
+            z-index: 0; 
             background: radial-gradient(ellipse at bottom, #0f172a 0%, #020617 100%); 
             overflow: hidden; 
             pointer-events: none;
@@ -51,56 +51,67 @@
         .stars-layer1 { animation: rotateLayer 150s linear infinite; background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,1), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.8), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,1), transparent); background-size: 400px 400px; }
         .stars-layer2 { animation: rotateLayer 200s linear infinite reverse; background-image: radial-gradient(1.5px 1.5px at 50px 150px, rgba(139, 92, 246, 0.9), transparent), radial-gradient(2px 2px at 200px 50px, rgba(6, 182, 212, 0.9), transparent); background-size: 300px 300px; }
         
-        .nebula-glow { position: absolute; top: 10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 12s ease-in-out infinite alternate; }
-        .nebula-glow-2 { position: absolute; bottom: 0%; right: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 15s ease-in-out infinite alternate-reverse; }
+        .nebula-glow { position: absolute; top: 10%; left: 20%; width: 60vw; height: 60vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 12s ease-in-out infinite alternate; }
+        .nebula-glow-2 { position: absolute; bottom: 0%; right: 10%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 60%); filter: blur(70px); animation: pulseNebula 15s ease-in-out infinite alternate-reverse; }
         
-        /* حركة الشهاب - تنطلق من أعلى */
-        .shooting-stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotateZ(45deg); z-index: 1; }
+        /* حركة الشهاب - تنطلق من منتصف الأعلى (من اللوجو) وتتفرع */
+        .shooting-stars { position: absolute; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 1; }
+        .star-wrapper { position: absolute; top: 60px; left: 50%; z-index: 1;}
+        .sw-1 { transform: rotate(45deg); }
+        .sw-2 { transform: rotate(70deg); }
+        .sw-3 { transform: rotate(120deg); }
+        .sw-4 { transform: rotate(150deg); }
+
         .shooting-star { position: absolute; height: 3px; background: linear-gradient(-45deg, #fff, rgba(0, 0, 255, 0)); border-radius: 999px; filter: drop-shadow(0 0 12px var(--accent-2)); animation: tail 3500ms ease-in-out infinite, shooting 3500ms ease-in-out infinite; }
         .shooting-star::before, .shooting-star::after { content: ''; position: absolute; top: calc(50% - 1.5px); right: 0; height: 3px; background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #fff, rgba(0, 0, 255, 0)); border-radius: 100%; animation: shining 3500ms ease-in-out infinite; }
         .shooting-star::before { transform: translateX(50%) rotateZ(45deg); } .shooting-star::after { transform: translateX(50%) rotateZ(-45deg); }
         
-        .shooting-star:nth-child(1) { top: -10%; left: 10%; animation-delay: 0ms; }
-        .shooting-star:nth-child(2) { top: -30%; left: 30%; animation-delay: 4500ms; }
-        .shooting-star:nth-child(3) { top: -20%; left: 60%; animation-delay: 8000ms; }
-        .shooting-star:nth-child(4) { top: 0%; left: 80%; animation-delay: 11000ms; }
+        .sw-1 .shooting-star { animation-delay: 0ms; }
+        .sw-2 .shooting-star { animation-delay: 4500ms; }
+        .sw-3 .shooting-star { animation-delay: 8000ms; }
+        .sw-4 .shooting-star { animation-delay: 11000ms; }
 
         @keyframes rotateLayer { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.7;} 100% { transform: scale(1.2); opacity: 1;} }
         @keyframes tail { 0% { width: 0; } 30% { width: 200px; } 100% { width: 0; } }
         @keyframes shining { 0% { width: 0; } 50% { width: 40px; } 100% { width: 0; } }
-        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(2500px); } }
+        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(1500px); } }
 
         /* ================= التصميم الأمامي والمحتوى ================= */
-        .main-content-wrapper { position: relative; z-index: 10; } /* لضمان ظهور المحتوى فوق الخلفية */
+        .main-content-wrapper { position: relative; z-index: 10; }
 
         .top-dev-bar { background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px; font-size: 12px; letter-spacing: 1px; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
         .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
 
         .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
-        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
         
-        .header-actions { display: flex; align-items: center; gap: 15px; }
-        .logo-box { font-size: 32px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
-        .menu-btn { font-size: 22px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--glass-border); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); }
+        /* تعديل الهيدر ليصبح اللوجو في المنتصف */
+        header { position: relative; display: flex; justify-content: flex-end; align-items: center; margin-bottom: 50px; min-height: 50px; }
+        [dir="ltr"] header { justify-content: flex-end; }
+        
+        .logo-box { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 38px; font-weight: 900; background: linear-gradient(135deg, #fff 0%, #a855f7 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; z-index: 20; text-shadow: 0 0 15px rgba(139, 92, 246, 0.3);}
+        
+        .header-actions { display: flex; align-items: center; gap: 15px; position: relative; z-index: 20;}
+        .menu-btn { font-size: 22px; color: #fff; cursor: pointer; transition: 0.3s; background: rgba(255,255,255,0.05); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--glass-border); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
         .menu-btn:hover { background: rgba(139, 92, 246, 0.2); color: var(--accent-2); border-color: var(--accent-1); }
 
-        .custom-dropdown { position: relative; user-select: none; z-index: 100; }
-        .dropdown-selected { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; border-radius: 50px; padding: 10px 18px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transition: all 0.3s; }
+        /* ستايل قائمة اللغات */
+        .custom-dropdown { position: relative; user-select: none; z-index: 100; margin-bottom: 25px; width: fit-content;}
+        .dropdown-selected { background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); color: #fff; border-radius: 50px; padding: 10px 18px; font-weight: 600; font-size: 14px; display: flex; align-items: center; gap: 8px; cursor: pointer; backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); transition: all 0.3s; }
         .dropdown-selected:hover { border-color: var(--accent-1); box-shadow: 0 0 15px rgba(139, 92, 246, 0.2); }
         .dropdown-selected i { transition: transform 0.3s; font-size: 12px; color: var(--accent-2); }
         .custom-dropdown.open .dropdown-selected i { transform: rotate(180deg); }
         .dropdown-options { position: absolute; top: 120%; width: 140px; background: rgba(15, 15, 25, 0.9); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); border: 1px solid var(--glass-border); border-radius: 15px; overflow: hidden; opacity: 0; visibility: hidden; transform: translateY(-15px); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        [dir="rtl"] .dropdown-options { left: 0; right: auto; } [dir="ltr"] .dropdown-options { right: 0; left: auto; }
+        [dir="rtl"] .dropdown-options { right: 0; } [dir="ltr"] .dropdown-options { left: 0; }
         .custom-dropdown.open .dropdown-options { opacity: 1; visibility: visible; transform: translateY(0); }
         .dropdown-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; cursor: pointer; transition: 0.2s; color: #fff; font-weight: 600; font-size: 14px; }
         .dropdown-option:hover { background: rgba(139, 92, 246, 0.3); color: var(--accent-2); }
 
-        /* ================= نافذة الإدخال الزجاجية (تم إصلاحها) ================= */
+        /* ================= نافذة الإدخال الزجاجية (شفافة أكثر) ================= */
         .glass-card { 
             background: var(--glass-bg); 
-            backdrop-filter: blur(8px); 
-            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(3px); /* تقليل الغشاوة لرؤية النجوم */
+            -webkit-backdrop-filter: blur(3px);
             border: 1px solid var(--glass-border); 
             border-radius: 24px; 
             padding: 40px; 
@@ -109,8 +120,8 @@
             overflow: hidden; 
         }
         .form-header { text-align: center; margin-bottom: 35px; }
-        .form-header h1 { font-size: 32px; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5); }
-        .form-header p { color: #cbd5e1; font-size: 16px; line-height: 1.5; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+        .form-header h1 { font-size: 32px; margin-bottom: 10px; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.8); }
+        .form-header p { color: #cbd5e1; font-size: 16px; line-height: 1.5; text-shadow: 0 1px 2px rgba(0,0,0,0.8); }
         .input-group { margin-bottom: 25px; position: relative; }
         .input-group i { position: absolute; top: 43px; right: 20px; color: #cbd5e1; font-size: 18px; }
         [dir="ltr"] .input-group i { right: auto; left: 20px; }
@@ -118,12 +129,12 @@
         
         .input-group input, .input-group textarea { 
             width: 100%; padding: 16px 50px 16px 20px; 
-            background: rgba(0,0,0,0.3); 
-            border: 1px solid rgba(255,255,255,0.15); 
+            background: rgba(0,0,0,0.2); /* شفافة أكثر */
+            border: 1px solid rgba(255,255,255,0.1); 
             border-radius: 16px; color: #fff; font-size: 15px; transition: all 0.3s; 
         }
         [dir="ltr"] .input-group input, [dir="ltr"] .input-group textarea { padding: 16px 20px 16px 50px; }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2); background: rgba(0,0,0,0.5); }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--accent-1); outline: none; box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2); background: rgba(0,0,0,0.4); }
         .input-group input::placeholder, .input-group textarea::placeholder { color: rgba(255,255,255,0.4); }
 
         .btn-premium { width: 100%; padding: 18px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border: none; border-radius: 16px; color: #fff; font-size: 18px; font-weight: 700; cursor: pointer; transition: all 0.4s; box-shadow: 0 10px 20px rgba(139, 92, 246, 0.3); display: flex; justify-content: center; align-items: center; gap: 10px; }
@@ -145,7 +156,7 @@
         #ai-content h3 i { color: var(--accent-1); font-size: 20px;}
         #ai-content h4 { font-size: 18px; color: #fff; margin-top: 20px; margin-bottom: 10px; }
         
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.4);}
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2);}
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
         th, td { padding: 16px; border-bottom: 1px solid var(--glass-border); border-left: 1px solid rgba(255,255,255,0.05); text-align: right; font-size: 15px; line-height: 1.6; }
         [dir="ltr"] th, [dir="ltr"] td { text-align: left; border-left: none; border-right: 1px solid rgba(255,255,255,0.05); }
@@ -161,25 +172,25 @@
         strong { color: #fff; background: rgba(139, 92, 246, 0.3); padding: 2px 6px; border-radius: 4px;}
 
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
-        .btn-outline { padding: 16px; background: rgba(0,0,0,0.5); border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-outline { padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn-outline:hover { background: rgba(139, 92, 246, 0.3); border-color: var(--accent-2); box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: translateY(-2px);}
 
-        /* ================= القائمة الجانبية (Sidebar) ================= */
+        /* ================= القائمة الجانبية (شفافة) ================= */
         .sidebar-overlay { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.5); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); z-index: 2000; opacity: 0; visibility: hidden; transition: 0.3s; }
         .sidebar-overlay.active { opacity: 1; visibility: visible; }
         
-        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
+        .sidebar { position: fixed; top: 0; width: 350px; height: 100vh; background: rgba(15, 23, 42, 0.25); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-left: 1px solid var(--glass-border); z-index: 2001; transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; padding: 30px; box-shadow: -10px 0 40px rgba(0,0,0,0.5); }
         [dir="rtl"] .sidebar { right: -360px; border-left: none; border-right: 1px solid var(--glass-border); }
         [dir="ltr"] .sidebar { left: -360px; border-left: 1px solid var(--glass-border); border-right: none; }
         [dir="rtl"] .sidebar.active { right: 0; }
         [dir="ltr"] .sidebar.active { left: 0; }
 
-        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .sidebar-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
         .sidebar-header h2 { font-size: 20px; color: var(--accent-2); display: flex; align-items: center; gap: 10px; }
         .sidebar-header i { font-size: 24px; color: var(--text-muted); cursor: pointer; transition: 0.3s; padding: 5px; }
         .sidebar-header i:hover { color: #ff5f56; transform: rotate(90deg); }
 
-        .step-item { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
+        .step-item { background: rgba(0,0,0,0.2); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 20px; margin-bottom: 20px; transition: 0.3s; }
         .step-item:hover { border-color: var(--accent-1); background: rgba(139, 92, 246, 0.15); transform: translateY(-2px); }
         .step-icon { width: 40px; height: 40px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 18px; color: #fff; margin-bottom: 15px; }
         .step-item h4 { font-size: 17px; color: #fff; margin-bottom: 10px; }
@@ -191,7 +202,7 @@
         .chatbot-btn { position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px; background: linear-gradient(135deg, var(--accent-1), var(--accent-2)); border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 24px; color: white; cursor: pointer; box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4); z-index: 1000; transition: 0.3s; }
         .chatbot-btn:hover { transform: scale(1.1); }
         [dir="ltr"] .chatbot-btn { right: auto; left: 30px; }
-        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; max-height: 75vh; background: var(--glass-bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; transform-origin: bottom right; animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .chat-widget { position: fixed; bottom: 100px; right: 30px; width: 360px; height: 500px; max-height: 75vh; background: rgba(15, 23, 42, 0.3); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid var(--glass-border); border-radius: 24px; display: none; flex-direction: column; z-index: 1000; box-shadow: 0 20px 50px rgba(0,0,0,0.6); overflow: hidden; transform-origin: bottom right; animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         [dir="ltr"] .chat-widget { right: auto; left: 30px; transform-origin: bottom left; }
         @keyframes scaleUp { from { opacity: 0; transform: scale(0.8); } to { opacity: 1; transform: scale(1); } }
         .chat-header { background: rgba(0,0,0,0.3); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--glass-border); font-weight: 700; font-size: 15px; }
@@ -206,7 +217,7 @@
         .chat-input-area button { width: 45px; height: 45px; border-radius: 12px; border: none; background: var(--accent-1); color: #fff; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; }
 
         /* ================= الفوتر ================= */
-        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px); position: relative; z-index: 10;}
+        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); position: relative; z-index: 10; display: flex; flex-direction: column; align-items: center;}
         .glass-footer h3 { font-size: 22px; color: #fff; margin-bottom: 20px; }
         .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: center; }
         .contact-info a { color: var(--text-muted); text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 8px 15px; border-radius: 50px; border: 1px solid transparent; }
@@ -214,7 +225,7 @@
         .contact-info a i { font-size: 18px; color: var(--accent-2); }
         .contact-info a .fa-whatsapp { color: #25D366; }
 
-        /* ================= التجاوب مع شاشات الهاتف المحمول ================= */
+        /* ================= التجاوب مع شاشات الهاتف ================= */
         @media (max-width: 768px) {
             .container { padding: 20px 15px; }
             header { margin-bottom: 30px; }
@@ -236,19 +247,19 @@
 </head>
 <body>
 
-    <!-- الخلفية الفضائية والشهب -->
+    <!-- الخلفية الفضائية والشهب تنطلق من اللوجو -->
     <div class="galaxy-wrapper">
         <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
         <div class="stars-layer1"></div><div class="stars-layer2"></div>
         <div class="shooting-stars">
-            <div class="shooting-star"></div><div class="shooting-star"></div>
-            <div class="shooting-star"></div><div class="shooting-star"></div>
+            <div class="star-wrapper sw-1"><div class="shooting-star"></div></div>
+            <div class="star-wrapper sw-2"><div class="shooting-star"></div></div>
+            <div class="star-wrapper sw-3"><div class="shooting-star"></div></div>
+            <div class="star-wrapper sw-4"><div class="shooting-star"></div></div>
         </div>
     </div>
 
-    <!-- غلاف المحتوى للحفاظ عليه فوق الخلفية -->
     <div class="main-content-wrapper">
-        
         <div class="top-dev-bar">by developer: <span>krelouf Aboubakr</span></div>
 
         <!-- القائمة الجانبية -->
@@ -258,6 +269,19 @@
                 <h2 id="side-title"><i class="fa-solid fa-rocket"></i> الخطوة القادمة</h2>
                 <i class="fa-solid fa-times" onclick="closeSidebar()"></i>
             </div>
+            
+            <!-- اختيار اللغة في أعلى القائمة الجانبية -->
+            <div class="custom-dropdown" id="langDropdownSidebar" onclick="toggleDropdown('langDropdownSidebar', event)">
+                <div class="dropdown-selected">
+                    <span class="selected-flag">🇸🇦</span> <span class="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-options">
+                    <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية', event)"><span>🇸🇦</span> العربية</div>
+                    <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English', event)"><span>🇺🇸</span> English</div>
+                    <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français', event)"><span>🇫🇷</span> Français</div>
+                </div>
+            </div>
+
             <div class="sidebar-content">
                 <div class="step-item">
                     <div class="step-icon"><i class="fa-solid fa-globe"></i></div>
@@ -296,18 +320,10 @@
 
         <div class="container">
             <header>
+                <!-- اللوجو في منتصف الهيدر -->
                 <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
+                
                 <div class="header-actions">
-                    <div class="custom-dropdown" id="langDropdown">
-                        <div class="dropdown-selected" onclick="toggleDropdown()">
-                            <span id="selected-flag">🇸🇦</span> <span id="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
-                        </div>
-                        <div class="dropdown-options">
-                            <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية')"><span>🇸🇦</span> العربية</div>
-                            <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English')"><span>🇺🇸</span> English</div>
-                            <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français')"><span>🇫🇷</span> Français</div>
-                        </div>
-                    </div>
                     <div class="menu-btn" onclick="openSidebar()">
                         <i class="fa-solid fa-bars"></i>
                     </div>
@@ -375,6 +391,18 @@
         </div>
 
         <footer class="glass-footer">
+            <!-- اختيار اللغة في أسفل الفوتر -->
+            <div class="custom-dropdown" id="langDropdownFooter" onclick="toggleDropdown('langDropdownFooter', event)">
+                <div class="dropdown-selected">
+                    <span class="selected-flag">🇸🇦</span> <span class="selected-lang">العربية</span> <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="dropdown-options" style="top: auto; bottom: 120%;">
+                    <div class="dropdown-option" onclick="selectLanguage('ar', '🇸🇦', 'العربية', event)"><span>🇸🇦</span> العربية</div>
+                    <div class="dropdown-option" onclick="selectLanguage('en', '🇺🇸', 'English', event)"><span>🇺🇸</span> English</div>
+                    <div class="dropdown-option" onclick="selectLanguage('fr', '🇫🇷', 'Français', event)"><span>🇫🇷</span> Français</div>
+                </div>
+            </div>
+
             <h3 id="contact-title">تواصل معنا</h3>
             <div class="contact-info">
                 <a href="mailto:krelouf@yahoo.com"><i class="fa-solid fa-envelope"></i> krelouf@yahoo.com</a>
@@ -382,11 +410,12 @@
             </div>
         </footer>
 
-    </div> <!-- نهاية main-content-wrapper -->
+    </div> 
 
     <script>
-        const GEMINI_API_KEY = "AIzaSyA5axVEHdvxiZ8PBXWXA6womwO5PKaerME"; 
-        const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${GEMINI_API_KEY}`;
+        // إعدادات Groq API الجديدة
+        const GROQ_API_KEY = "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"; 
+        const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
 
         const dict = {
             ar: {
@@ -432,16 +461,31 @@
 
         let currentLang = 'ar';
 
-        function toggleDropdown() { document.getElementById('langDropdown').classList.toggle('open'); }
-        document.addEventListener('click', function(e) { const d = document.getElementById('langDropdown'); if (!d.contains(e.target)) d.classList.remove('open'); });
+        // دوال القوائم المنسدلة للغات
+        function toggleDropdown(id, event) { 
+            event.stopPropagation();
+            document.querySelectorAll('.custom-dropdown').forEach(el => {
+                if(el.id !== id) el.classList.remove('open');
+            });
+            document.getElementById(id).classList.toggle('open'); 
+        }
+
+        document.addEventListener('click', function(e) { 
+            document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
+        });
         
         function openSidebar() { document.getElementById('mainSidebar').classList.add('active'); document.getElementById('sidebarOverlay').classList.add('active'); }
         function closeSidebar() { document.getElementById('mainSidebar').classList.remove('active'); document.getElementById('sidebarOverlay').classList.remove('active'); }
 
-        function selectLanguage(code, flag, name) {
+        function selectLanguage(code, flag, name, event) {
+            event.stopPropagation();
             currentLang = code;
-            document.getElementById('selected-flag').innerText = flag; document.getElementById('selected-lang').innerText = name;
-            document.getElementById('langDropdown').classList.remove('open');
+            
+            // تحديث كلا القائمتين (في القائمة الجانبية والفوتر)
+            document.querySelectorAll('.selected-flag').forEach(el => el.innerText = flag); 
+            document.querySelectorAll('.selected-lang').forEach(el => el.innerText = name);
+            document.querySelectorAll('.custom-dropdown').forEach(el => el.classList.remove('open'));
+
             const ui = dict[currentLang];
             document.documentElement.dir = (currentLang === 'ar') ? 'rtl' : 'ltr'; document.documentElement.lang = currentLang;
             
@@ -465,13 +509,18 @@
             document.querySelectorAll('.input-group i').forEach(i => { if(currentLang === 'ar') i.classList.replace('fa-align-left', 'fa-align-right'); else i.classList.replace('fa-align-right', 'fa-align-left'); });
         }
 
-        async function fetchGemini(prompt) {
+        // دالة الاتصال بـ Groq API بدلاً من Gemini
+        async function fetchAI(prompt) {
             try {
-                const response = await fetch(GEMINI_URL, {
+                const response = await fetch(GROQ_URL, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${GROQ_API_KEY}`
+                    },
                     body: JSON.stringify({
-                        contents: [{ parts: [{ text: prompt }] }]
+                        model: "llama3-70b-8192", // نموذج لاما 3 عالي الأداء من Groq
+                        messages: [{ role: "user", content: prompt }]
                     })
                 });
 
@@ -481,8 +530,8 @@
                     throw new Error(data.error?.message || "حدث خطأ غير معروف في السيرفر.");
                 }
 
-                if (data.candidates && data.candidates.length > 0 && data.candidates[0].content) {
-                    return data.candidates[0].content.parts[0].text;
+                if (data.choices && data.choices.length > 0 && data.choices[0].message) {
+                    return data.choices[0].message.content;
                 } else {
                     throw new Error("لم يتم الحصول على نتيجة من الذكاء الاصطناعي.");
                 }
@@ -558,7 +607,7 @@
             `;
 
             try {
-                const textResp = await fetchGemini(prompt);
+                const textResp = await fetchAI(prompt);
                 let cleanText = textResp.replace(/```html/gi, '').replace(/```/gi, '');
                 const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
                 let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>Error parsing the advanced analysis. Please try again.</p>";
@@ -635,7 +684,8 @@
             const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
             try {
-                const reply = await fetchGemini(`You are an elite Market Strategy Consultant. Answer politely, directly, and provide deep strategic insights strictly in ${langStr}. User: "${msg}"`);
+                // الاتصال بـ Groq بدلاً من جيميناي
+                const reply = await fetchAI(`You are an elite Market Strategy Consultant. Answer politely, directly, and provide deep strategic insights strictly in ${langStr}. User: "${msg}"`);
                 const cleanReply = reply.replace(/\*\*/g, '').replace(/\*/g, '<br>• ');
                 chatBox.innerHTML += `<div class="msg ai">${cleanReply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
             } catch (err) { 
