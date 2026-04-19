@@ -27,18 +27,32 @@
         .top-dev-bar { background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--glass-border); text-align: center; padding: 10px; font-size: 12px; letter-spacing: 1px; backdrop-filter: blur(10px); }
         .top-dev-bar span { font-weight: 700; background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-shadow: 0 0 10px rgba(139, 92, 246, 0.3); }
 
-        /* ================= الخلفية ================= */
-        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(circle at 50% 0%, #1a103c 0%, #030305 70%); overflow: hidden; }
-        .stars-layer1, .stars-layer2 { position: absolute; width: 200%; height: 200%; background: transparent; }
-        .stars-layer1 { animation: drift 120s linear infinite; background-image: radial-gradient(1px 1px at 20px 30px, rgba(255,255,255,0.8), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,0.9), transparent); background-size: 400px 400px; }
-        .stars-layer2 { animation: drift 180s linear infinite; background-image: radial-gradient(1px 1px at 50px 150px, rgba(139, 92, 246, 0.8), transparent), radial-gradient(1.5px 1.5px at 200px 50px, rgba(6, 182, 212, 0.8), transparent); background-size: 300px 300px; }
-        .nebula-glow { position: absolute; top: 20%; left: 30%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 60%); filter: blur(60px); animation: pulseNebula 15s ease-in-out infinite alternate; }
-        .nebula-glow-2 { position: absolute; bottom: 10%; right: 20%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.08) 0%, transparent 60%); filter: blur(60px); animation: pulseNebula 20s ease-in-out infinite alternate-reverse; }
-        @keyframes drift { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-        @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.5;} 100% { transform: scale(1.2); opacity: 1;} }
+        /* ================= الخلفية المتقدمة (جالاكسي وشهاب) ================= */
+        .galaxy-wrapper { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%); overflow: hidden; }
+        .stars-layer1, .stars-layer2 { position: absolute; width: 200%; height: 200%; top: -50%; left: -50%; background: transparent; }
+        .stars-layer1 { animation: rotateLayer 150s linear infinite; background-image: radial-gradient(1.5px 1.5px at 20px 30px, rgba(255,255,255,0.9), transparent), radial-gradient(1px 1px at 150px 80px, rgba(255,255,255,0.6), transparent), radial-gradient(2px 2px at 300px 200px, rgba(255,255,255,1), transparent); background-size: 400px 400px; }
+        .stars-layer2 { animation: rotateLayer 200s linear infinite reverse; background-image: radial-gradient(1px 1px at 50px 150px, rgba(139, 92, 246, 0.8), transparent), radial-gradient(1.5px 1.5px at 200px 50px, rgba(6, 182, 212, 0.8), transparent); background-size: 300px 300px; opacity: 0.7; }
+        .nebula-glow { position: absolute; top: 20%; left: 30%; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%); filter: blur(80px); animation: pulseNebula 15s ease-in-out infinite alternate; }
+        .nebula-glow-2 { position: absolute; bottom: 10%; right: 20%; width: 40vw; height: 40vw; background: radial-gradient(circle, rgba(6, 182, 212, 0.12) 0%, transparent 60%); filter: blur(80px); animation: pulseNebula 20s ease-in-out infinite alternate-reverse; }
+        
+        /* حركة الشهاب */
+        .shooting-stars { position: absolute; top: 0; left: 0; width: 100%; height: 100%; transform: rotateZ(45deg); pointer-events: none; }
+        .shooting-star { position: absolute; left: 50%; top: 50%; height: 2px; background: linear-gradient(-45deg, #06b6d4, rgba(0, 0, 255, 0)); border-radius: 999px; filter: drop-shadow(0 0 6px #8b5cf6); animation: tail 4000ms ease-in-out infinite, shooting 4000ms ease-in-out infinite; }
+        .shooting-star::before, .shooting-star::after { content: ''; position: absolute; top: calc(50% - 1px); right: 0; height: 2px; background: linear-gradient(-45deg, rgba(0, 0, 255, 0), #fff, rgba(0, 0, 255, 0)); border-radius: 100%; animation: shining 4000ms ease-in-out infinite; }
+        .shooting-star::before { transform: translateX(50%) rotateZ(45deg); } .shooting-star::after { transform: translateX(50%) rotateZ(-45deg); }
+        .shooting-star:nth-child(1) { top: calc(30%); left: calc(20%); animation-delay: 1000ms; }
+        .shooting-star:nth-child(2) { top: calc(60%); left: calc(40%); animation-delay: 3500ms; }
+        .shooting-star:nth-child(3) { top: calc(10%); left: calc(70%); animation-delay: 6000ms; }
+        .shooting-star:nth-child(4) { top: calc(80%); left: calc(10%); animation-delay: 8500ms; }
+
+        @keyframes rotateLayer { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        @keyframes pulseNebula { 0% { transform: scale(1); opacity: 0.5;} 100% { transform: scale(1.3); opacity: 1;} }
+        @keyframes tail { 0% { width: 0; } 30% { width: 150px; } 100% { width: 0; } }
+        @keyframes shining { 0% { width: 0; } 50% { width: 30px; } 100% { width: 0; } }
+        @keyframes shooting { 0% { transform: translateX(0); } 100% { transform: translateX(1000px); } }
 
         /* ================= التصميم العام ================= */
-        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 40px 20px; position: relative; z-index: 10; }
         header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 50px; }
         
         .header-actions { display: flex; align-items: center; gap: 15px; }
@@ -75,32 +89,38 @@
 
         /* ================= التحميل والنتائج ================= */
         .loading-state { display: none; text-align: center; padding: 60px 0; }
-        .orb-loader { width: 80px; height: 80px; margin: 0 auto 30px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, var(--accent-1), var(--accent-2)); animation: rotateOrb 2s linear infinite; position: relative; }
+        .orb-loader { width: 80px; height: 80px; margin: 0 auto 30px; border-radius: 50%; background: conic-gradient(from 0deg, transparent, var(--accent-1), var(--accent-2)); animation: rotateOrb 1.5s linear infinite; position: relative; }
         .orb-loader::after { content: ''; position: absolute; inset: 4px; background: var(--bg-deep); border-radius: 50%; }
         .orb-loader i { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; color: #fff; z-index: 10; }
         @keyframes rotateOrb { 100% { transform: rotate(360deg); } }
-        .loading-state h3 { font-size: 18px; font-weight: 400; background: linear-gradient(90deg, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: pulseText 2s infinite; line-height: 1.6; padding: 0 15px; }
+        .loading-state h3 { font-size: 18px; font-weight: 400; background: linear-gradient(90deg, #fff, var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: pulseText 2s infinite; line-height: 1.6; padding: 0 15px; }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         
         #results-container { display: none; animation: fadeIn 0.8s ease-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* تنسيق نتائج الذكاء الاصطناعي */
-        #ai-content h3 { font-size: 22px; color: var(--accent-2); margin-top: 35px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; line-height: 1.4; }
+        /* تنسيق نتائج الذكاء الاصطناعي (مُحسن) */
+        #ai-content h3 { font-size: 22px; color: var(--accent-2); margin-top: 40px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--glass-border); padding-bottom: 12px; line-height: 1.4; }
+        #ai-content h3 i { color: var(--accent-1); font-size: 20px;}
+        #ai-content h4 { font-size: 18px; color: #fff; margin-top: 20px; margin-bottom: 10px; }
         
-        /* جعل الجداول متجاوبة مع الهاتف */
-        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 20px; border-radius: 12px; border: 1px solid var(--glass-border); }
+        .table-responsive { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 25px; border-radius: 12px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.2);}
         table { width: 100%; border-collapse: collapse; min-width: 600px; }
-        th, td { padding: 15px; border-bottom: 1px solid var(--glass-border); text-align: right; font-size: 14.5px; line-height: 1.6; }
-        [dir="ltr"] th, [dir="ltr"] td { text-align: left; }
-        th { background: rgba(139, 92, 246, 0.15); font-weight: 700; color: #fff; }
-        td { background: rgba(0,0,0,0.3); color: #e2e8f0; }
+        th, td { padding: 16px; border-bottom: 1px solid var(--glass-border); border-left: 1px solid rgba(255,255,255,0.05); text-align: right; font-size: 15px; line-height: 1.6; }
+        [dir="ltr"] th, [dir="ltr"] td { text-align: left; border-left: none; border-right: 1px solid rgba(255,255,255,0.05); }
+        th { background: rgba(139, 92, 246, 0.15); font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px;}
+        td { color: #e2e8f0; }
+        tr:hover td { background: rgba(255,255,255,0.02); }
         
         ul, p { color: #cbd5e1; line-height: 1.9; margin-bottom: 15px; font-size: 15.5px;} 
-        ul { padding-inline-start: 25px; } li { margin-bottom: 10px; }
-        strong { color: #fff; }
+        ul { padding-inline-start: 25px; list-style-type: none; } 
+        li { margin-bottom: 12px; position: relative; padding-inline-start: 15px;}
+        li::before { content: "›"; position: absolute; left: 0; color: var(--accent-2); font-weight: bold; font-size: 18px; line-height: 1.6; }
+        [dir="rtl"] li::before { right: 0; left: auto; content: "‹"; }
+        strong { color: #fff; background: rgba(139, 92, 246, 0.2); padding: 2px 6px; border-radius: 4px;}
 
         .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 40px; }
-        .btn-outline { padding: 16px; background: transparent; border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        .btn-outline { padding: 16px; background: rgba(0,0,0,0.3); border: 1px solid var(--accent-1); border-radius: 16px; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; transition: all 0.3s; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .btn-outline:hover { background: rgba(139, 92, 246, 0.15); border-color: var(--accent-2); box-shadow: 0 0 20px rgba(139,92,246,0.3); transform: translateY(-2px);}
 
         /* ================= القائمة الجانبية (Sidebar) ================= */
@@ -145,7 +165,7 @@
         .chat-input-area button { width: 45px; height: 45px; border-radius: 12px; border: none; background: var(--accent-1); color: #fff; cursor: pointer; transition: 0.3s; display: flex; justify-content: center; align-items: center; }
 
         /* ================= الفوتر ================= */
-        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px); }
+        .glass-footer { margin-top: 60px; padding: 40px 20px; text-align: center; background: rgba(255,255,255,0.02); border-top: 1px solid var(--glass-border); backdrop-filter: blur(10px); position: relative; z-index: 10;}
         .glass-footer h3 { font-size: 22px; color: #fff; margin-bottom: 20px; }
         .contact-info { display: flex; flex-direction: column; gap: 10px; align-items: center; }
         .contact-info a { color: var(--text-muted); text-decoration: none; font-size: 15px; display: flex; align-items: center; gap: 10px; transition: 0.3s; padding: 8px 15px; border-radius: 50px; border: 1px solid transparent; }
@@ -166,22 +186,10 @@
             [dir="rtl"] .sidebar { right: -85vw; }
             [dir="ltr"] .sidebar { left: -85vw; }
             
-            /* تعديل الشات للهاتف */
             .chat-widget { width: 90vw; height: 65vh; bottom: 90px; right: 5vw; left: 5vw; }
             [dir="ltr"] .chat-widget { left: 5vw; }
             .chatbot-btn { bottom: 20px; right: 20px; width: 55px; height: 55px; font-size: 22px; }
             [dir="ltr"] .chatbot-btn { left: 20px; }
-        }
-
-        @media (max-width: 480px) {
-            header { flex-direction: column; gap: 15px; align-items: flex-start; }
-            .header-actions { width: 100%; justify-content: space-between; }
-            .input-group label { font-size: 14px; }
-            .input-group input, .input-group textarea { font-size: 14px; padding: 14px 40px 14px 15px; }
-            [dir="ltr"] .input-group input, [dir="ltr"] .input-group textarea { padding: 14px 15px 14px 40px; }
-            .btn-premium { font-size: 16px; padding: 15px; }
-            #res-title { font-size: 22px !important; }
-            #ai-content h3 { font-size: 18px; }
         }
     </style>
 </head>
@@ -189,12 +197,17 @@
 
     <div class="top-dev-bar">by developer: <span>krelouf Aboubakr</span></div>
 
+    <!-- تأثيرات الخلفية الفضائية المتقدمة -->
     <div class="galaxy-wrapper">
         <div class="nebula-glow"></div><div class="nebula-glow-2"></div>
         <div class="stars-layer1"></div><div class="stars-layer2"></div>
+        <div class="shooting-stars">
+            <div class="shooting-star"></div><div class="shooting-star"></div>
+            <div class="shooting-star"></div><div class="shooting-star"></div>
+        </div>
     </div>
 
-    <!-- ================= القائمة الجانبية (الخطوة القادمة) ================= -->
+    <!-- القائمة الجانبية -->
     <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
     <div class="sidebar" id="mainSidebar">
         <div class="sidebar-header">
@@ -202,7 +215,6 @@
             <i class="fa-solid fa-times" onclick="closeSidebar()"></i>
         </div>
         <div class="sidebar-content">
-            
             <div class="step-item">
                 <div class="step-icon"><i class="fa-solid fa-globe"></i></div>
                 <h4 id="side-dom-title">شراء دومين واسطة استضافة</h4>
@@ -210,14 +222,12 @@
                 <a href="https://www.namecheap.com/" target="_blank" class="step-link">Namecheap <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
                 <a href="https://www.hostinger.com/" target="_blank" class="step-link" style="margin-top:5px;">Hostinger <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-
             <div class="step-item">
                 <div class="step-icon"><i class="fa-solid fa-code"></i></div>
                 <h4 id="side-dev-title">مؤسسات تطوير وتطبيقات جزائرية</h4>
                 <p id="side-dev-desc">لبناء الـ MVP الخاص بك، يمكنك الاعتماد على وكالات البرمجة والتطوير المحلية الموثوقة أو منصات العمل الحر.</p>
                 <a href="https://mawthouq.com/" target="_blank" class="step-link">Mawthouq (للمستقلين) <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-
             <div class="step-item">
                 <div class="step-icon"><i class="fa-solid fa-seedling"></i></div>
                 <h4 id="side-inc-title">حاضنات ومسرعات أعمال</h4>
@@ -225,28 +235,24 @@
                 <a href="https://www.aventure.dz/" target="_blank" class="step-link">Algeria Venture <i class="fa-solid fa-arrow-up-right-from-square"></i></a><br>
                 <a href="https://sylabs-dz.com/" target="_blank" class="step-link" style="margin-top:5px;">Sylabs <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-
             <div class="step-item">
                 <div class="step-icon"><i class="fa-solid fa-award"></i></div>
                 <h4 id="side-lab-title">منصة علامة لابل (Startup DZ)</h4>
                 <p id="side-lab-desc">المنصة الرسمية لوزارة اقتصاد المعرفة والشركات الناشئة للحصول على علامة "لابل مشروع مبتكر".</p>
                 <a href="https://startup.dz/" target="_blank" class="step-link">Startup.dz <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-
             <div class="step-item">
                 <div class="step-icon"><i class="fa-solid fa-shield-halved"></i></div>
                 <h4 id="side-ip-title">المعهد الوطني للملكية الصناعية</h4>
                 <p id="side-ip-desc">قم بحماية اسم مشروعك، علامتك التجارية، وفكرتك المبتكرة عبر تسجيلها رسمياً.</p>
                 <a href="https://inapi.org/" target="_blank" class="step-link">INAPI.org <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
-
         </div>
     </div>
 
     <div class="container">
         <header>
             <div class="logo-box"><i class="fa-solid fa-cube"></i> Protoptimal</div>
-            
             <div class="header-actions">
                 <div class="custom-dropdown" id="langDropdown">
                     <div class="dropdown-selected" onclick="toggleDropdown()">
@@ -267,7 +273,7 @@
         <div class="glass-card" id="form-section">
             <div class="form-header">
                 <h1 id="lbl-title">استخبارات السوق العميقة لمشروعك</h1>
-                <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل OSINT متقدم لاكتشاف الفرص المخفية والمنافسة.</p>
+                <p id="lbl-subtitle">أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم (Market Intelligence) لاكتشاف الفرص التنافسية الخفية.</p>
             </div>
 
             <div class="input-group">
@@ -293,7 +299,7 @@
 
         <div class="loading-state" id="loader">
             <div class="orb-loader"><i class="fa-solid fa-microchip"></i></div>
-            <h3 id="lbl-loading">جاري إجراء تحليل OSINT واستخبارات السوق... استخراج الأسرار والأنماط المخفية...</h3>
+            <h3 id="lbl-loading">جاري تحليل بيانات السوق وربط الخيوط... يتم الآن فك شفرة المنافسين واستخراج استراتيجية المحيط الأزرق...</h3>
         </div>
 
         <div id="results-container" class="glass-card">
@@ -312,7 +318,7 @@
     <div class="chatbot-btn" onclick="toggleChat()"><i class="fa-solid fa-robot"></i></div>
     <div class="chat-widget" id="chat-window">
         <div class="chat-header">
-            <span id="chat-title"><i class="fa-solid fa-headset"></i> المساعد الذكي</span>
+            <span id="chat-title"><i class="fa-solid fa-headset"></i> المساعد الذكي الاستراتيجي</span>
             <i class="fa-solid fa-times" style="cursor:pointer; color: var(--text-muted);" onclick="toggleChat()"></i>
         </div>
         <div class="chat-body" id="chat-messages">
@@ -333,18 +339,19 @@
     </footer>
 
     <script>
-        const GROQ_API_KEY = "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"; 
+        // مفتاح API الجديد
+        const GROQ_API_KEY = "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"; 
         const GROQ_URL = "https://api.groq.com/openai/v1/chat/completions";
         const MODEL = "llama-3.3-70b-versatile"; 
 
         const dict = {
             ar: {
-                title: "استخبارات السوق العميقة لمشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل OSINT متقدم لاكتشاف الفرص المخفية والمنافسة.",
+                title: "استخبارات السوق العميقة لمشروعك", sub: "أدخل تفاصيل فكرتك، وسنقوم بتحليل استراتيجي متقدم (Market Intelligence) لاكتشاف الفرص التنافسية الخفية.",
                 name: "اسم المشروع / الفكرة", phName: "مثال: NexusTech", field: "مجال أو سوق المشروع", phField: "مثال: الذكاء الاصطناعي في الرعاية الصحية",
                 desc: "وصف دقيق للمشكلة والحل", phDesc: "اشرح بدقة المشكلة التي تحلها، ولمن موجه هذا المشروع...",
-                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري إجراء تحليل OSINT واستخبارات السوق... استخراج الأسرار والأنماط المخفية...",
+                btnGen: "بدء التحليل الاستخباراتي العميق", loading: "جاري تحليل بيانات السوق وربط الخيوط... يتم الآن فك شفرة المنافسين واستخراج استراتيجية المحيط الأزرق...",
                 reportTitle: "تقرير استخبارات السوق والتحليل الاستراتيجي", pdf: "تصدير التقرير PDF", ppt: "تصدير عرض تقديمي",
-                chatTitle: "المساعد الذكي", chatWelcome: "أهلاً بك! أنا خبير في تحليل الأسواق. كيف يمكنني إفادتك بخصوص مشروعك؟", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
+                chatTitle: "المستشار الاستراتيجي", chatWelcome: "أهلاً بك! أنا كبير محللي الاستراتيجيات. اسألني عن التسعير، المنافسين، أو استراتيجيات النمو.", chatInput: "اكتب استفسارك...", contact: "تواصل معنا", aiError: "حدث خطأ في الاتصال: ",
                 sideTitle: "الخطوة القادمة", sideDom: "شراء دومين واستضافة", sideDomDesc: "لحجز اسم النطاق المقترح وبدء استضافة موقعك، ننصح بمنصات عالمية موثوقة.",
                 sideDev: "مؤسسات تطوير جزائرية", sideDevDesc: "لبناء الـ MVP الخاص بك، ابحث عن مبرمجين أو وكالات محلية محترفة.",
                 sideInc: "حاضنات ومسرعات أعمال", sideIncDesc: "للحصول على التمويل، الإرشاد، ومساحات العمل، انضم إلى حاضنات الأعمال الرائدة.",
@@ -352,12 +359,12 @@
                 sideIp: "المعهد الوطني للملكية الصناعية", sideIpDesc: "قم بحماية اسم مشروعك، وعلامتك التجارية عبر تسجيلها رسمياً في INAPI."
             },
             en: {
-                title: "Deep Market Intelligence", sub: "Enter your idea details for an advanced OSINT analysis to discover hidden opportunities.",
+                title: "Deep Market Intelligence", sub: "Enter your idea details for an advanced strategic analysis (Market Intelligence) to discover hidden competitive edges.",
                 name: "Project Name", phName: "e.g., NexusTech", field: "Market / Industry", phField: "e.g., AI in Healthcare",
                 desc: "Precise Problem & Solution", phDesc: "Precisely explain the problem you're solving and your target audience...",
-                btnGen: "Start Deep Intelligence Analysis", loading: "Running OSINT & market intelligence... extracting hidden patterns and secrets...",
+                btnGen: "Start Deep Intelligence Analysis", loading: "Analyzing market data & connecting the dots... Decoding competitors and extracting Blue Ocean strategies...",
                 reportTitle: "Market Intelligence & Strategic Report", pdf: "Export PDF Report", ppt: "Export Presentation",
-                chatTitle: "Smart Analyst", chatWelcome: "Welcome! I am a market analysis expert. How can I assist you?", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
+                chatTitle: "Strategic Consultant", chatWelcome: "Welcome! I am the Chief Strategy Analyst. Ask me about pricing, competitors, or growth hacks.", chatInput: "Type your query...", contact: "Contact Us", aiError: "Error: ",
                 sideTitle: "The Next Step", sideDom: "Domain & Hosting", sideDomDesc: "To book your suggested domain, we recommend these reliable global platforms.",
                 sideDev: "Algerian Dev Agencies", sideDevDesc: "To build your MVP, rely on local professional agencies or freelancers.",
                 sideInc: "Incubators & Accelerators", sideIncDesc: "Get funding and mentorship by joining leading business incubators.",
@@ -365,12 +372,12 @@
                 sideIp: "INAPI (Intellectual Property)", sideIpDesc: "Protect your brand name and innovative idea by registering it officially."
             },
             fr: {
-                title: "Intelligence de Marché Approfondie", sub: "Entrez les détails pour une analyse OSINT avancée et découvrez les opportunités cachées.",
+                title: "Intelligence Stratégique Avancée", sub: "Entrez les détails pour une analyse stratégique approfondie et découvrez vos avantages concurrentiels cachés.",
                 name: "Nom du Projet", phName: "ex: NexusTech", field: "Marché / Secteur", phField: "ex: IA dans la santé",
                 desc: "Problème et Solution Précis", phDesc: "Expliquez précisément le problème que vous résolvez et votre cible...",
-                btnGen: "Démarrer l'Analyse Intel", loading: "Exécution de l'OSINT et intelligence de marché... extraction des secrets...",
+                btnGen: "Démarrer l'Analyse Stratégique", loading: "Analyse des données et connexion des points... Décodage des concurrents et extraction de la stratégie Océan Bleu...",
                 reportTitle: "Rapport d'Intelligence Stratégique", pdf: "Exporter le Rapport PDF", ppt: "Exporter la Présentation",
-                chatTitle: "Analyste Intelligent", chatWelcome: "Bienvenue ! Je suis expert en analyse de marché. Comment puis-je vous aider ?", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
+                chatTitle: "Consultant Stratégique", chatWelcome: "Bienvenue ! Je suis le Chef Analyste. Posez-moi des questions sur les prix, les concurrents ou la croissance.", chatInput: "Tapez votre message...", contact: "Contactez-nous", aiError: "Erreur: ",
                 sideTitle: "L'Étape Suivante", sideDom: "Domaine et Hébergement", sideDomDesc: "Pour réserver votre nom de domaine, nous recommandons ces plateformes mondiales.",
                 sideDev: "Agences Web Algériennes", sideDevDesc: "Pour créer votre MVP, faites appel à des agences ou freelances locaux.",
                 sideInc: "Incubateurs & Accélérateurs", sideIncDesc: "Obtenez financement et mentorat en rejoignant des incubateurs de premier plan.",
@@ -381,7 +388,6 @@
 
         let currentLang = 'ar';
 
-        /* وظائف القائمة الجانبية والمنسدلة */
         function toggleDropdown() { document.getElementById('langDropdown').classList.toggle('open'); }
         document.addEventListener('click', function(e) { const d = document.getElementById('langDropdown'); if (!d.contains(e.target)) d.classList.remove('open'); });
         
@@ -405,7 +411,6 @@
             document.getElementById('chat-title').innerHTML = `<i class="fa-solid fa-headset"></i> ${ui.chatTitle}`; document.getElementById('chat-welcome').innerText = ui.chatWelcome;
             document.getElementById('chat-input-field').placeholder = ui.chatInput; document.getElementById('contact-title').innerText = ui.contact;
             
-            // تحديث نصوص القائمة الجانبية
             document.getElementById('side-title').innerHTML = `<i class="fa-solid fa-rocket"></i> ${ui.sideTitle}`;
             document.getElementById('side-dom-title').innerText = ui.sideDom; document.getElementById('side-dom-desc').innerText = ui.sideDomDesc;
             document.getElementById('side-dev-title').innerText = ui.sideDev; document.getElementById('side-dev-desc').innerText = ui.sideDevDesc;
@@ -435,86 +440,80 @@
 
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
 
-            // البرومبت المدمج: يجمع بين طلب المستخدم (OSINT) ومتطلبات واجهة المستخدم (HTML هيكلي)
+            // البرومبت الاحترافي المطور (Masterpiece Prompt)
             const prompt = `
-            أنت خبير عالمي في البحث والتحليل المتقدم (OSINT + Market Intelligence).
+            أنت الآن "كبير محللي الاستراتيجيات واستخبارات السوق" (Chief Strategy & Market Intelligence Analyst) في وكالة استشارات عالمية من الطراز الرفيع (مثل McKinsey و Palantir).
+            مهمتك هي تقديم تقرير استخباراتي عميق، شرس، ومبني على بيانات واقعية أو استنتاجات منطقية حادة حول هذا المشروع.
             
-            المهمة: أعطني معلومات دقيقة، عميقة، ومفصلة حول هذا المشروع:
-            اسم المشروع: "${name}"
-            المجال: "${field}"
-            الوصف: "${desc}"
+            بيانات المشروع:
+            - اسم المشروع: "${name}"
+            - القطاع/السوق: "${field}"
+            - المشكلة والحل: "${desc}"
 
-            الشروط الاستخباراتية (OSINT Rules):
-            1. اعتمد فقط على معلومات واقعية أو منطقية مبنية على تحليل عميق.
-            2. أعطني تفاصيل لا يعرفها المبتدئون (Insights متقدمة جداً).
-            3. حلل الموضوع من عدة زوايا (تقنية، تجارية، نفسية، مستقبلية).
-            4. استخرج أنماط أو أسرار أو فرص غير واضحة للعامة.
-            5. إذا كانت المعلومات غير متوفرة مباشرة، قم بالاستنتاج الذكي بناءً على معطيات قريبة.
-            6. قدم أمثلة واقعية أو سيناريوهات تطبيقية.
-            7. اقترح كيف يمكن استغلال هذه المعلومات للحصول على ميزة تنافسية غير عادلة (Unfair Advantage).
+            قواعد التحليل الصارمة (Strict Rules):
+            1. لا تعطني كلاماً تسويقياً فارغاً. أريد أرقاماً، نسباً مئوية متوقعة، وحقائق قاسية.
+            2. (التحليل النفسي العميق): استخرج الألم الخفي (Hidden Pain) للعميل الذي لا يتحدث عنه أبداً.
+            3. (استخبارات المنافسين): اذكر أسماء منافسين حقيقيين أو محتملين بقوة، واكشف "نقطة ضعفهم القاتلة" (Achilles' Heel) وكيفية تدمير حصتهم.
+            4. (استراتيجية المحيط الأزرق): أين توجد الأموال المخفية (Hidden Money) التي لا يراها أحد في هذا القطاع؟
+            5. (الاختراق الفيروسي): أعطني تكتيك (Growth Hack) خبيث ومبتكر (ولكن قانوني) لجلب أول 1000 عميل مجاناً.
+            6. (الخطر القاتل): ما هو التهديد الحقيقي الذي سيفشل المشروع بسببه وكيف نلتف حوله؟
 
             CRITICAL FORMATTING INSTRUCTIONS:
             - You MUST output the ENTIRE response STRICTLY in ${langStr}.
             - You MUST wrap your response ONLY in the exact HTML tags below, starting with <analysis> and ending with </analysis>.
-            - DO NOT use markdown format (like \`\`\`html) around the output. Just raw HTML inside the <analysis> tag.
+            - Use <h3> for main sections, <h4> for sub-titles, <ul> for lists, and <table> for grids.
+            - DO NOT use markdown like \`\`\`html. Just raw HTML inside <analysis>.
 
             <analysis>
-            <h3>1. [Translate to ${langStr}: نظرة عامة مختصرة]</h3>
-            <p>[A deep, concise overview of the project's true potential and market positioning.]</p>
+            <h3>[Translate to ${langStr}: 1. التشخيص الاستراتيجي العميق]</h3>
+            <p>[Provide a ruthless, deep diagnostic of the market reality for this idea, including estimated market gaps.]</p>
 
-            <h3>2. [Translate to ${langStr}: معلومات عميقة (غير شائعة)]</h3>
+            <h3>[Translate to ${langStr}: 2. التحليل السيكولوجي السري للعميل]</h3>
             <ul>
-                <li>[Deep psychological insight about the target audience]</li>
-                <li>[Hidden technical or market dynamic]</li>
-                <li>[Future trend prediction relevant to this]</li>
+                <li><strong>[The Obvious Pain]:</strong> [Briefly describe what everyone knows]</li>
+                <li><strong>[The Hidden Psychological Trigger]:</strong> [Deep insight into what actually makes them buy/convert]</li>
             </ul>
 
-            <h3>3. [Translate to ${langStr}: تحليل احترافي (SWOT)]</h3>
-            <table>
-                <tr><th>[Strengths]</th><th>[Weaknesses]</th></tr>
-                <tr><td>[List 3 deep strengths]</td><td>[List 3 hidden weaknesses]</td></tr>
-                <tr><th>[Opportunities]</th><th>[Threats]</th></tr>
-                <tr><td>[List 3 blue-ocean opportunities]</td><td>[List 3 realistic market threats]</td></tr>
+            <h3>[Translate to ${langStr}: 3. تفكيك المنافسين (Competitive Takedown)]</h3>
+            <table class="table-responsive">
+                <tr><th>[Competitor Profile]</th><th>[Their Core Strength]</th><th>[Their Fatal Weakness]</th><th>[Our Attack Strategy]</th></tr>
+                <tr><td>[Real Competitor 1]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
+                <tr><td>[Real Competitor 2]</td><td>[Detail]</td><td>[Detail]</td><td>[Detail]</td></tr>
             </table>
 
-            <h3>4. [Translate to ${langStr}: أسرار وفرص مخفية]</h3>
+            <h3>[Translate to ${langStr}: 4. استراتيجية "المحيط الأزرق" (Blue Ocean)]</h3>
+            <p>[Explain exactly where the unexploited wealth/attention is in this sector that others are ignoring.]</p>
+
+            <h3>[Translate to ${langStr}: 5. تكتيكات النمو والاختراق (Growth Hacking)]</h3>
             <ul>
-                <li>[Secret/Pattern 1 and how to exploit it for competitive advantage]</li>
-                <li>[Secret/Pattern 2 and how to exploit it]</li>
+                <li><strong>[Tactic 1: The Zero-Budget 1000 Users Hack]:</strong> [Explain a brilliant, non-traditional marketing hack]</li>
+                <li><strong>[Tactic 2: Pricing Psychology]:</strong> [How to price this to make it irresistible]</li>
             </ul>
 
-            <h3>5. [Translate to ${langStr}: تحليل المنافسين الحقيقيين]</h3>
+            <h3>[Translate to ${langStr}: 6. خريطة النجاة (Risk Survival)]</h3>
             <ul>
-                <li><strong>[Real Competitor Name 1]:</strong> [Their strength] - [Their fatal weakness] - [How we beat them].</li>
-                <li><strong>[Real Competitor Name 2]:</strong> [Their strength] - [Their fatal weakness] - [How we beat them].</li>
-            </ul>
-
-            <h3>6. [Translate to ${langStr}: توصيات عملية قابلة للتطبيق]</h3>
-            <ul>
-                <li>[Specific feature the MVP must have based on psychological analysis]</li>
-                <li>[Exact growth hack or marketing tactic to acquire the first 100 users]</li>
-                <li>[Monetization strategy recommendation]</li>
+                <li><strong>[The #1 Project Killer]:</strong> [The most realistic reason this fails]</li>
+                <li><strong>[The Antidote]:</strong> [Exact strategic pivot to avoid it]</li>
             </ul>
             </analysis>
             `;
 
             try {
                 const textResp = await fetchGroq(prompt, 0.7);
-                
-                // تنظيف الرد من علامات الماركداون العشوائية التي قد يضيفها الذكاء الاصطناعي
                 let cleanText = textResp.replace(/```html/gi, '').replace(/```/gi, '');
                 const analysisMatch = cleanText.match(/<analysis>([\s\S]*?)<\/analysis>/i);
-
                 let analysisHtml = analysisMatch ? analysisMatch[1] : "<p>Error parsing the advanced analysis. Please try again.</p>";
                 
-                // تغليف الجداول بـ div لتصبح متجاوبة على الهاتف
+                // تغليف الجداول بـ div لتصبح متجاوبة
                 analysisHtml = analysisHtml.replace(/<table/gi, '<div class="table-responsive"><table').replace(/<\/table>/gi, '</table></div>');
 
                 document.getElementById('ai-content').innerHTML = analysisHtml;
                 
-                // إضافة أيقونات للعناوين
-                document.getElementById('ai-content').querySelectorAll('h3').forEach(h => {
-                    h.innerHTML = `<i class="fa-solid fa-radar"></i> ` + h.innerHTML;
+                // إضافة أيقونات ديناميكية
+                const icons = ['fa-bullseye', 'fa-brain', 'fa-skull-crossbones', 'fa-water', 'fa-rocket', 'fa-shield-virus'];
+                document.getElementById('ai-content').querySelectorAll('h3').forEach((h, index) => {
+                    const iconClass = icons[index] || 'fa-radar';
+                    h.innerHTML = `<i class="fa-solid ${iconClass}"></i> ` + h.innerHTML;
                 });
 
                 document.getElementById('loader').style.display = 'none'; 
@@ -528,8 +527,7 @@
 
         function downloadPDF() {
             const element = document.getElementById('printable-area');
-            const opt = { margin: 15, filename: 'Market_Intelligence_Report.pdf', image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
-            // تلوين حدود الجدول للطباعة
+            const opt = { margin: 15, filename: `Strategy_${document.getElementById('proj-name').value}.pdf`, image: { type: 'jpeg', quality: 1 }, html2canvas: { scale: 2, useCORS: true, backgroundColor: '#030305' }, jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }};
             const tables = element.querySelectorAll('table'); tables.forEach(t => t.style.border = "1px solid #555");
             html2pdf().set(opt).from(element).save().then(()=>{ tables.forEach(t => t.style.border = "none"); });
         }
@@ -540,7 +538,7 @@
             
             let slide = pptx.addSlide();
             slide.background = { color: "030305" };
-            slide.addText(`Market Intelligence Report`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
+            slide.addText(`Market Intelligence & Strategy`, { x:0.5, y:1.5, w:'90%', h:1, fontSize:24, color:'06b6d4', align:'center', fontFace: 'Arial' });
             slide.addText(`${document.getElementById('proj-name').value}`, { x:0.5, y:2.5, w:'90%', h:2, fontSize:44, color:'ffffff', bold:true, align:'center', fontFace: 'Arial' });
 
             const contentDiv = document.getElementById('ai-content');
@@ -557,7 +555,7 @@
                 let slideContent = "";
                 
                 while(nextElement && nextElement.tagName !== 'H3') {
-                    if(nextElement.tagName === 'DIV' && nextElement.classList.contains('table-responsive')) { slideContent += "[بيانات الجدول - يرجى الرجوع لملف PDF للتفاصيل الكاملة]\n"; }
+                    if(nextElement.tagName === 'DIV' && nextElement.classList.contains('table-responsive')) { slideContent += "[بيانات معقدة - يرجى الرجوع لملف PDF للتفاصيل الكاملة للجدول]\n"; }
                     else { slideContent += nextElement.innerText + "\n\n"; }
                     nextElement = nextElement.nextElementSibling;
                 }
@@ -567,7 +565,7 @@
                 }
             });
 
-            pptx.writeFile({ fileName: `OSINT_${document.getElementById('proj-name').value}.pptx` });
+            pptx.writeFile({ fileName: `Strategy_${document.getElementById('proj-name').value}.pptx` });
         }
 
         function toggleChat() { document.getElementById('chat-window').style.display = document.getElementById('chat-window').style.display === 'flex' ? 'none' : 'flex'; }
@@ -578,7 +576,7 @@
             const chatBox = document.getElementById('chat-messages'); chatBox.innerHTML += `<div class="msg user">${msg}</div>`; input.value = ''; chatBox.scrollTop = chatBox.scrollHeight;
             const langStr = currentLang === 'ar' ? 'Arabic' : currentLang === 'en' ? 'English' : 'French';
             try {
-                const reply = await fetchGroq(`You are an elite Market Intelligence AI assistant. Answer politely and provide deep insights strictly in ${langStr}. User: "${msg}"`, 0.6);
+                const reply = await fetchGroq(`You are an elite Market Strategy Consultant. Answer politely, directly, and provide deep strategic insights strictly in ${langStr}. User: "${msg}"`, 0.6);
                 chatBox.innerHTML += `<div class="msg ai">${reply}</div>`; chatBox.scrollTop = chatBox.scrollHeight;
             } catch (err) { chatBox.innerHTML += `<div class="msg ai" style="color:#ff5f56">Error connecting to server.</div>`; }
         }
